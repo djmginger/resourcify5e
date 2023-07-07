@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:9000/testAPI")
         .then((res) => res.json())
-        .then((data) => setMessage(data.message));
+        .then((data) => setMessage(data));
   }, []);
 
   return (

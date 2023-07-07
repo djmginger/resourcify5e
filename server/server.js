@@ -1,15 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors')
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+const connectDB = require('./db');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var testRouter = require('./routes/testAPI');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const testRouter = require('./routes/testAPI');
 
-var server = express();
+const server = express();
 
 // view engine setup
 server.set('views', path.join(__dirname, 'views'));
@@ -25,6 +26,12 @@ server.use(express.static(path.join(__dirname, 'public')));
 server.use('/', indexRouter);
 server.use('/users', usersRouter);
 server.use("/testAPI", testRouter);
+
+connectDB()
+    .catch((error) => {
+      console.error('Failed to connect to the database:', error.message);
+      process.exit(1);
+    });
 
 // catch 404 and forward to error handler
 server.use(function(req, res, next) {
