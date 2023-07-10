@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const testRouter = require('./routes/testAPI');
 const registerRouter = require('./routes/register');
+const loginRouter = require('./routes/login');
 
 const server = express();
 
@@ -28,6 +29,7 @@ server.use('/', indexRouter);
 server.use('/users', usersRouter);
 server.use('/testAPI', testRouter);
 server.use('/register', registerRouter);
+server.use('/login', loginRouter);
 
 //Connect to DB
 connectDB()

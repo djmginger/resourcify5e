@@ -5,7 +5,7 @@ const mongoose = require("mongoose").default;
 
 const db = mongoose.connection;
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
     try {
         //lists uid's for ALL objects
         const data = await User.find(); // Await the User.find() method call

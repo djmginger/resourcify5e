@@ -5,14 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server.">
-      <change afterPath="$PROJECT_DIR$/client/src/Register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/testAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/testAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
@@ -30,6 +34,7 @@
         <option value="com.haulmont.rcb.useInitial" />
         <option value="com.haulmont.rcb.README" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -52,6 +57,7 @@
     "javascript.nodejs.core.library.configured.version": "18.16.1",
     "javascript.nodejs.core.library.typings.version": "18.16.1",
     "last_opened_file_path": "D:/Programming/Web Development/resourcify5e",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,7 +66,8 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "settings.nodejs",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -74,6 +81,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
       <recent name="D:\Programming\Web Development\resourcify5e" />
     </key>
   </component>
@@ -96,6 +104,13 @@
       <workItem from="1688763488539" duration="6034000" />
       <workItem from="1688958329150" duration="1344000" />
       <workItem from="1688962104473" duration="6755000" />
+      <workItem from="1688970842547" duration="177000" />
+      <workItem from="1689006119971" duration="7780000" />
+      <workItem from="1689016491126" duration="1602000" />
+      <workItem from="1689018118370" duration="503000" />
+      <workItem from="1689018634454" duration="665000" />
+      <workItem from="1689019313449" duration="108000" />
+      <workItem from="1689019439603" duration="3914000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -125,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688769565496</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server.">
+      <created>1688970925880</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1688970925880</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +159,8 @@
     </ignored-roots>
     <MESSAGE value="Initial project creation. Installed dependencies and linked React Client to Node Server." />
     <MESSAGE value="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval" />
+    <MESSAGE value="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

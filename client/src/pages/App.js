@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../App.css';
 import {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
