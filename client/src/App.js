@@ -1,16 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import {useEffect, useState} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:9000/testAPI")
-        .then((res) => res.json())
-        .then((data) => setMessage(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:9000/testAPI")
+  //       .then((res) => res.json())
+  //       .then((data) => setMessage(data));
+  // }, []);
 
   return (
     <div className="App">
@@ -22,7 +23,6 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {message}
         </a>
       </header>
     </div>

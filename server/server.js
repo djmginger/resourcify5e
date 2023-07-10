@@ -9,6 +9,7 @@ const connectDB = require('./db');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const testRouter = require('./routes/testAPI');
+const registerRouter = require('./routes/register');
 
 const server = express();
 
@@ -25,8 +26,10 @@ server.use(express.static(path.join(__dirname, 'public')));
 
 server.use('/', indexRouter);
 server.use('/users', usersRouter);
-server.use("/testAPI", testRouter);
+server.use('/testAPI', testRouter);
+server.use('/register', registerRouter);
 
+//Connect to DB
 connectDB()
     .catch((error) => {
       console.error('Failed to connect to the database:', error.message);

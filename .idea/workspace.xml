@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Initial project creation. Installed dependencies and linked React Client to Node Server.">
-      <change afterPath="$PROJECT_DIR$/server/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/schema.js" afterDir="false" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server.">
+      <change afterPath="$PROJECT_DIR$/client/src/Register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/server/bin/www" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/testAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/testAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,24 +44,26 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programming/Web Development/resourcify5e&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "18.16.1",
+    "javascript.nodejs.core.library.typings.version": "18.16.1",
+    "last_opened_file_path": "D:/Programming/Web Development/resourcify5e",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -90,7 +93,9 @@
       <workItem from="1688747628618" duration="772000" />
       <workItem from="1688751109919" duration="3890000" />
       <workItem from="1688756634921" duration="5673000" />
-      <workItem from="1688763488539" duration="5879000" />
+      <workItem from="1688763488539" duration="6034000" />
+      <workItem from="1688958329150" duration="1344000" />
+      <workItem from="1688962104473" duration="6755000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -113,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688709875134</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval">
+      <created>1688769565496</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688769565496</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,7 +136,8 @@
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
     <MESSAGE value="Initial project creation. Installed dependencies and linked React Client to Node Server." />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial project creation. Installed dependencies and linked React Client to Node Server." />
+    <MESSAGE value="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
