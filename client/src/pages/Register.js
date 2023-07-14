@@ -1,14 +1,14 @@
 import axios from 'axios';
 import {useState} from "react";
 import Alert from 'react-bootstrap/Alert';
-import Login from "../components/login"
+import LoginForm from "../components/loginForm"
 import { useNavigate } from "react-router-dom";
 
 function Register() {
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    const [registered, setRegistered] = useState(false);
+    const [registeredDuringSession, setRegisteredDuringSession] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
@@ -16,20 +16,25 @@ function Register() {
         e.preventDefault();
 
         if (email === "") {
-            // Display error message to the user for empty fields
             setErrorMessage('Please provide a valid email');
         } else if (!/(?=.*\d)(?=.*[A-Z]).{8,}/.test(pass)){
             setErrorMessage('Please make sure your password meets all requirements');
         } else {
-            if (!registered) {
+
+            //If a user hasn't registered their email during this session, prompt them to register. Once registration is complete & successful, prompt them to re-enter credentials and treat it as a login attempt.
+            if (!registeredDuringSession) {
                 axios.post('http://localhost:9000/register', {
                     email: email,
                     password: pass,
-                }).then(function () {
-                    setRegistered(true)
+                }).then(function (res) {
+                    if (res.status === 409){
+                        setErrorMessage("Email is already registered!");
+                    } else {
+                        setRegisteredDuringSession(true)
+                        setErrorMessage("");
+                    }
                     setEmail("");
                     setPass("");
-                    setErrorMessage("");
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -37,14 +42,14 @@ function Register() {
                 axios.post('http://localhost:9000/login', {
                     email: email,
                     password: pass,
-                }).then((res) => {
+                }).then(function (res) {
                     if (res.status === 404){
                         setErrorMessage("Email is incorrect or not registered")
                     } else if (res.status === 401){
                         setErrorMessage("Password is incorrect")
                     } else {
-                        navigate("/characters")
-                        //post successful, go to characters.js
+                        //post successful, go to characters page and pass user email for data-loading purposes
+                        navigate("/characters", {state: {email: email}})
                     }
                 }).catch(function (error) {
                     console.log(error);
@@ -55,14 +60,14 @@ function Register() {
 
     return (
         <div>
-            {registered && <Alert variant={"success"}>Registration successful! Please re-enter credentials and log in.</Alert> }
+            {registeredDuringSession && <Alert variant={"success"}>Registration successful! Please re-enter credentials and log in.</Alert> }
             {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
-        <Login
+        <LoginForm
             email={email}
             setEmail={setEmail}
             pass={pass}
             setPass={setPass}
-            registered={registered}
+            registered={registeredDuringSession}
             onSubmit={handleSubmit}
         />
         </div>

@@ -1,8 +1,8 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./login.css";
+import "./loginForm.css";
 
-function Login({email, setEmail, pass, setPass, registered, onSubmit}) {
+function LoginForm({email, setEmail, pass, setPass, registered, onSubmit}) {
     return (
         <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -41,4 +41,4 @@ function Login({email, setEmail, pass, setPass, registered, onSubmit}) {
     );
 }
 
-export default Login;
+export default LoginForm;

@@ -11,6 +11,8 @@ const usersRouter = require('./routes/users');
 const testRouter = require('./routes/testAPI');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
+const charactersRouter = require('./routes/characters');
+const characterDisplayRouter = require('./routes/characterDisplay');
 
 const server = express();
 
@@ -30,6 +32,8 @@ server.use('/users', usersRouter);
 server.use('/testAPI', testRouter);
 server.use('/register', registerRouter);
 server.use('/login', loginRouter);
+server.use('/characters', charactersRouter);
+server.use('/characterDisplay', characterDisplayRouter);
 
 //Connect to DB
 connectDB()

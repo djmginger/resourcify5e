@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server.">
-      <change afterPath="$PROJECT_DIR$/client/src/components/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project.">
+      <change afterPath="$PROJECT_DIR$/client/src/components/characterList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Characters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/ResourceDisplay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/resourceObjects.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/characterDisplay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/loginForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/loginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/testAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/testAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
@@ -33,8 +36,8 @@
         <option value="com.haulmont.rcb.index" />
         <option value="com.haulmont.rcb.useInitial" />
         <option value="com.haulmont.rcb.README" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -49,28 +52,28 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "18.16.1",
-    "javascript.nodejs.core.library.typings.version": "18.16.1",
-    "last_opened_file_path": "D:/Programming/Web Development/resourcify5e",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Programming/Web Development/resourcify5e/client/src/components&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;JavaScript.Libraries&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -80,6 +83,10 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programming\Web Development\resourcify5e\client\src\components" />
+      <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
       <recent name="D:\Programming\Web Development\resourcify5e" />
@@ -110,7 +117,10 @@
       <workItem from="1689018118370" duration="503000" />
       <workItem from="1689018634454" duration="665000" />
       <workItem from="1689019313449" duration="108000" />
-      <workItem from="1689019439603" duration="3914000" />
+      <workItem from="1689019439603" duration="22159000" />
+      <workItem from="1689091684179" duration="43359000" />
+      <workItem from="1689169998454" duration="37187000" />
+      <workItem from="1689288893400" duration="11722000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -147,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688970925880</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Register and Login page functionality and password hashing/validation via bcrypt. Register page now saves valid post request data to DB.">
+      <created>1689024276508</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689024276508</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +177,9 @@
     <MESSAGE value="Initial project creation. Installed dependencies and linked React Client to Node Server." />
     <MESSAGE value="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval" />
     <MESSAGE value="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server." />
+    <MESSAGE value="Added Register and Login page functionality and password hashing/validation via bcrypt. Register page now saves valid post request data to DB." />
+    <MESSAGE value="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

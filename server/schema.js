@@ -11,6 +11,14 @@ const characterSchema = new mongoose.Schema({
             subclass: String,
         },
     ],
+    stats: {
+        str: Number,
+        dex: Number,
+        con: Number,
+        int: Number,
+        wis: Number,
+        cha: Number,
+    },
     resources: [
         {
             _id: false,
@@ -18,7 +26,8 @@ const characterSchema = new mongoose.Schema({
             resourceMax: Number,
             resourceCurrent: Number,
             resetOnLong: Boolean,
-            restOnShort: Boolean,
+            resetOnShort: Boolean,
+            extras: mongoose.Schema.Types.Mixed,
         },
     ],
 });
