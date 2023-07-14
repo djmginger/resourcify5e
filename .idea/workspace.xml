@@ -5,23 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project.">
-      <change afterPath="$PROJECT_DIR$/client/src/components/characterList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/radialSeparators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/resourceDisplay.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Characters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/ResourceDisplay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/resourceObjects.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/server/routes/characterDisplay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/loginForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/loginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/characterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/characterList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +80,7 @@
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\Web Development\resourcify5e\client\src\components" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
       <recent name="D:\Programming\Web Development\resourcify5e" />
     </key>
@@ -120,7 +113,7 @@
       <workItem from="1689019439603" duration="22159000" />
       <workItem from="1689091684179" duration="43359000" />
       <workItem from="1689169998454" duration="37187000" />
-      <workItem from="1689288893400" duration="11722000" />
+      <workItem from="1689288893400" duration="22933000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -164,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689024276508</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project.">
+      <created>1689301697056</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689301697056</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -30,6 +30,7 @@ function CharacterList({email, characters, addCharacter}) {
     const [classErrorMessage, setClassErrorMessage] = useState(false);
     const [subclassErrorMessage, setSubclassErrorMessage] = useState(false);
     const [showDupeCharacterMessage, setShowDupeCharacterMessage] = useState(false);
+    const [characterDataLoaded, setCharacterDataLoaded] = useState(false);
 
     const navigate = useNavigate();
     const classArray = ['Artificer', 'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'];
@@ -54,14 +55,22 @@ function CharacterList({email, characters, addCharacter}) {
 
     useEffect(() => {
         if (classLevel < minLevelForSubclass) {
-            setSubclass(undefined); // Resets the subclass
+            // Resets the subclass when a user changes class
+            setSubclass(undefined);
         }
     }, [classLevel, minLevelForSubclass]);
 
     useEffect(() => {
-        // New useEffect to initialize characterArray based on characters prop
+        // Initialize characterArray based on characters prop
         setCharacterArray(characters);
     }, [characters]);
+
+    useEffect(() => {
+        // Pause on rendering Add Character button until data is loaded, preventing visual stutter
+        if (characterArray.length > 0) {
+            setCharacterDataLoaded(true);
+        }
+    }, [characterArray]);
 
     const characterSelection = (email, characterName) => {
         navigate(`/characters/${characterName}`, {
@@ -163,7 +172,8 @@ function CharacterList({email, characters, addCharacter}) {
                 addCharacter();
                 setShowNewCharacter(false);
             }).catch(function (error) {
-                if (error.status === 409) {
+                if (error.response.status === 409) {
+                    //console.log(error.status)
                     setShowDupeCharacterMessage(true);
                 } else {
                     console.log('Error', error.message);
@@ -184,12 +194,13 @@ function CharacterList({email, characters, addCharacter}) {
                 ))}
             </ListGroup>
 
-            <Button variant="primary" onClick={() => checkTotalCharacters()}>
-                Add a new Character
-            </Button>
+            {characterDataLoaded && (
+                <Button variant="primary" onClick={() => checkTotalCharacters()}>
+                    Add a new Character
+                </Button>
+            )}
 
             {showMaxCharacterMessage && <Alert variant={"danger"}>User limit of 5 characters reached. Please delete a character before adding a new one!</Alert> }
-            {showDupeCharacterMessage && <Alert variant={"danger"}>There is already a character with this name! Please use a different name for your character.</Alert> }
 
             <AddCharacterModal
                 show={showNewCharacter}
@@ -206,6 +217,7 @@ function CharacterList({email, characters, addCharacter}) {
                 classLevel={classLevel}
                 setClassLevel={setClassLevel}
                 nameErrorMessage={nameErrorMessage}
+                showDupeCharacterMessage={showDupeCharacterMessage}
                 levelErrorMessage={levelErrorMessage}
                 subclass={subclass}
                 availableSubclasses={availableSubclasses}
@@ -231,7 +243,7 @@ function CharacterList({email, characters, addCharacter}) {
 }
 
 function AddCharacterModal(props) {
-    const { show, onHide, classArray, characterName, setCharacterName, handleAddCharacter, classSelection, handleClassChange, classLevel, setClassLevel, nameErrorMessage, levelErrorMessage, subclass, availableSubclasses, minLevelForSubclass, handleSubclassChange, classErrorMessage, subclassErrorMessage, str, dex, con, int, wis, cha, setStr, setDex, setCon, setInt, setWis, setCha } = props;
+    const { show, onHide, classArray, characterName, setCharacterName, handleAddCharacter, classSelection, handleClassChange, classLevel, setClassLevel, nameErrorMessage, showDupeCharacterMessage, levelErrorMessage, subclass, availableSubclasses, minLevelForSubclass, handleSubclassChange, classErrorMessage, subclassErrorMessage, str, dex, con, int, wis, cha, setStr, setDex, setCon, setInt, setWis, setCha } = props;
     return (
         <Modal
             show={show}
@@ -255,6 +267,7 @@ function AddCharacterModal(props) {
                         placeholder="Character Name"
                     />
 
+                    {showDupeCharacterMessage && <Alert variant={"danger"}>There is already a character with this name! Please use a different name for your character.</Alert> }
                     {nameErrorMessage && <Alert variant={"danger"}>Length of character name must be between 1 and 50, and must include no special characters</Alert> }
 
                     {/* Class and subclass dropdowns sit next to each other, with subclass hidden until a class reaches a level that has access to them */}
