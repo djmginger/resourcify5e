@@ -2,7 +2,8 @@ import React from 'react';
 import {CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import RadialSeparators from "./radialSeparators";
-import {Card, ListGroup, Button} from "react-bootstrap";
+import {Card} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 function ResourceDisplay({ resource, onDecreaseResource }) {
 
@@ -14,43 +15,39 @@ function ResourceDisplay({ resource, onDecreaseResource }) {
     };
 
     return (
-        <div>
-            <Card style={{ width: "10rem" }} className="align-items-center">
-                <Card.Body >
+        <div >
+            <Card style={{ marginBottom:".5rem", backgroundColor:"#141414", borderColor:"#333333"}} className="align-items-center">
+                <Card.Title style={{fontSize: "0.7rem", paddingTop:".5rem", paddingBottom:".3rem", backgroundColor:"#333333", width:"100%", textAlign:"center", borderTopLeftRadius:"4px", borderTopRightRadius:"4px", color:"#F5F1E3"}}>{resource.resourceName}</Card.Title>
+                <Card.Body>
                     <div style={{ width: "5rem" }}>
-                        <CircularProgressbarWithChildren
-                            value={currentVal / maxVal}
-                            maxValue={1}
-                            counterClockwise={true}
-                            text={`${currentVal}/${maxVal}`}
-                            styles={buildStyles({strokeLinecap: "butt"})}
-                        >
-                            <RadialSeparators
-                                count={maxVal}
-                                style={{
-                                    background: "#fff",
-                                    width: "2px",
-                                    // This needs to be equal to props.strokeWidth
-                                    height: `${10}%`
-                                }}
-                            />
-                        </CircularProgressbarWithChildren>
+                        <Button onClick={decreaseResourceValue}
+                                disabled={currentVal === 0}
+                                style={{ width: "5rem", height: "5rem", borderRadius: "50%", padding: "0", backgroundColor:"transparent", border:"none"}}>
+                            <CircularProgressbarWithChildren
+                                value={currentVal / maxVal}
+                                maxValue={1}
+                                background
+                                backgroundPadding={6}
+                                counterClockwise={true}
+                                text={`${currentVal}/${maxVal}`}
+                                styles={buildStyles({strokeLinecap: "butt", backgroundColor: "#8BB5E5", textColor: "#F5F1E3", pathColor: "#F5F1E3"})}
+                            >
+                                <RadialSeparators
+                                    count={maxVal}
+                                    style={{
+                                        background: "#8BB5E5",
+                                        width: "2px",
+                                        // This needs to be equal to props.strokeWidth
+                                        height: `${10}%`
+                                    }}
+                                />
+                            </CircularProgressbarWithChildren>
+                        </Button>
                     </div>
                 </Card.Body>
-                <ListGroup className="list-group-flush" style={{ width: '100%' }}>
-                    <ListGroup.Item className="text-center">
-                        <Button
-                            variant={currentVal === 0 ? 'secondary' : 'primary'}
-                            onClick={decreaseResourceValue}
-                            disabled={currentVal === 0}
-                        >
-                            {resource.resourceName}
-                        </Button>
-                    </ListGroup.Item>
-                </ListGroup>
+
             </Card>
         </div>
     );
 }
-
 export default ResourceDisplay;

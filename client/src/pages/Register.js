@@ -27,32 +27,32 @@ function Register() {
                     email: email,
                     password: pass,
                 }).then(function (res) {
-                    if (res.status === 409){
-                        setErrorMessage("Email is already registered!");
-                    } else {
-                        setRegisteredDuringSession(true)
-                        setErrorMessage("");
-                    }
+                    setRegisteredDuringSession(true)
+                    setErrorMessage("");
                     setEmail("");
                     setPass("");
                 }).catch(function (error) {
-                    console.log(error);
+                    if (error.response.status === 409){
+                        setErrorMessage("Email is already registered!");
+                    } else {
+                        console.log(error);
+                    }
                 });
             } else {
                 axios.post('http://localhost:9000/login', {
                     email: email,
                     password: pass,
                 }).then(function (res) {
-                    if (res.status === 404){
+                    //post successful, go to characters page and pass user email for data-loading purposes
+                    navigate("/characters", {state: {email: email}})
+                }).catch(function (error) {
+                    if (error.response.status === 404){
                         setErrorMessage("Email is incorrect or not registered")
-                    } else if (res.status === 401){
+                    } else if (error.response.status === 401){
                         setErrorMessage("Password is incorrect")
                     } else {
-                        //post successful, go to characters page and pass user email for data-loading purposes
-                        navigate("/characters", {state: {email: email}})
+                        console.log(error);
                     }
-                }).catch(function (error) {
-                    console.log(error);
                 });
             }
         }

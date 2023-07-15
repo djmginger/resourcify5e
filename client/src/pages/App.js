@@ -1,17 +1,8 @@
 import logo from '../logo.svg';
-import '../App.css';
-import {useEffect, useState} from "react";
+import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-
-  const [message, setMessage] = useState("");
-
-  // useEffect(() => {
-  //   fetch("http://localhost:9000/testAPI")
-  //       .then((res) => res.json())
-  //       .then((data) => setMessage(data));
-  // }, []);
 
   return (
     <div className="App">

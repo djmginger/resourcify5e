@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./loginForm.css";
+import "../css/loginForm.css";
 
 function LoginForm({email, setEmail, pass, setPass, registered, onSubmit}) {
     return (

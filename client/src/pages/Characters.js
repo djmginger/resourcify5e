@@ -26,16 +26,12 @@ function Characters() {
         getCharacters(email);
     }, []);
 
-    const addCharacter = () => {
-        getCharacters(email);
-    }
-
     return (
         <div>
             <CharacterList
                 email={email}
                 characters={characterArray}
-                addCharacter={addCharacter}
+                reloadCharacters={getCharacters}
             />
         </div>
     )

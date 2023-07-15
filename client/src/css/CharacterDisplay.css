@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #141414;
+    height: 100%;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .spacer {
+    width: 10%;
+}
+
+.header .title {
+    width: 80%;
+    text-align: center;
+}
+
+.header .title h1 {
+    color: #F5F1E3;
+}
+
+.header .title h5 {
+    color: #F5F1E3;
+}
+
+.header .actions {
+    width: 10%;
+    justify-content: flex-end;
+}
+
+.header .actions .edit-icon {
+    color: #2660A4;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+}
+
+.button-container .rest {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    background-color: #2660A4;
+    border-color: #2660A4;
+}
+
+.resource-card-container {
+    /* styles for resource cards go here */
+}
+
+.no-resources {
+    text-align: center;
+}

@@ -3,6 +3,10 @@ import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import ResourceDisplay from '../components/resourceDisplay';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import "../css/CharacterDisplay.css"
+
 
 function CharacterDisplay() {
     const { state } = useLocation();
@@ -44,7 +48,6 @@ function CharacterDisplay() {
         if (isFirstLoad) {
             setIsFirstLoad(false);
         } else {
-            console.log("Save useEffect hook triggered.")
             saveCharacter(email, character);
         }
     }, [character, isFirstLoad]);
@@ -53,7 +56,6 @@ function CharacterDisplay() {
         //reject initial onLoad call from connected useEffect Hook
         if (!character) return;
 
-        console.log("Save function triggered")
         axios.post('http://localhost:9000/characterDisplay', {
             email: email,
             character: character,
@@ -125,19 +127,44 @@ function CharacterDisplay() {
     };
 
     return (
-        <div>
-            <Button onClick={() => rest('long')}>Long Rest</Button>
-            <Button onClick={() => rest('short')}>Short Rest</Button>
-            {resourceArray.map((resource, index) => (
-                <div key={index}>
-                    <ResourceDisplay
-                        resource={resource}
-                        onDecreaseResource={decreaseResourceValue}
-                    />
-                </div>
-            ))}
+        <div className={"container"}>
+            {character ? (
+                <>
+                    <div className={"header"}>
+                        <div className={"spacer"}/>
+                        <div className={"title"}>
+                            <h1>{character.characterName}</h1>
+                            {character.classes && character.classes.length > 0 && (
+                                <h5>
+                                    Level {character.classes[0].classLevel} {character.classes[0].className} ({character.classes[0].subclass})
+                                </h5>
+                            )}
+                        </div>
+                        <div className={"actions"}>
+                            <FontAwesomeIcon size={"2x"} icon={faPenToSquare} onClick={() => rest()} className={"edit-icon"}/>
+                        </div>
+                    </div>
+                    <div className={"button-container"}>
+                        <Button onClick={() => rest('long')} className={"btn-sm rest"}>Long Rest</Button>
+                        <Button onClick={() => rest('short')} className={"btn-sm rest"}>Short Rest</Button>
+                    </div>
+                    <div className="resource-card-container">
+                        {resourceArray.map((resource, index) => (
+                            <div key={index}>
+                                <ResourceDisplay
+                                    resource={resource}
+                                    onDecreaseResource={decreaseResourceValue}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </>
+            ) : (
+                <h1 className={"no-resources"}>There are no resources to track! Lucky you!</h1>
+            )}
         </div>
     );
+
 }
 
 export default CharacterDisplay;

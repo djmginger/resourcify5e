@@ -5,10 +5,12 @@ import Row from "react-bootstrap/Row";
 import Group from "react-bootstrap/FormGroup";
 import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
 
-function CharacterList({email, characters, addCharacter}) {
+function CharacterList({email, characters, reloadCharacters}) {
 
     const [characterArray, setCharacterArray] = useState([]);
     const [showNewCharacter, setShowNewCharacter] = useState(false);
@@ -31,6 +33,8 @@ function CharacterList({email, characters, addCharacter}) {
     const [subclassErrorMessage, setSubclassErrorMessage] = useState(false);
     const [showDupeCharacterMessage, setShowDupeCharacterMessage] = useState(false);
     const [characterDataLoaded, setCharacterDataLoaded] = useState(false);
+    const [characterToDelete, setCharacterToDelete] = useState(false);
+    const [deleteConfirmShow, setDeleteConfirmShow] = useState(false);
 
     const navigate = useNavigate();
     const classArray = ['Artificer', 'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'];
@@ -72,6 +76,7 @@ function CharacterList({email, characters, addCharacter}) {
         }
     }, [characterArray]);
 
+    //Navigate to the page for the chosen character
     const characterSelection = (email, characterName) => {
         navigate(`/characters/${characterName}`, {
             state:
@@ -104,13 +109,10 @@ function CharacterList({email, characters, addCharacter}) {
         // Set the minimum level for subclass based on the class selection
         if (option === "Cleric" || option === "Sorcerer" || option === "Warlock") {
             setMinLevelForSubclass(1);
-            console.log("Cleric or Sorc or Warlock chosen")
         } else if (option === "Druid" || option === "Wizard") {
             setMinLevelForSubclass(2);
-            console.log("Druid or Wizard chosen")
         } else {
             setMinLevelForSubclass(3);
-            console.log("Other class chosen")
         }
     };
 
@@ -118,7 +120,7 @@ function CharacterList({email, characters, addCharacter}) {
         setSubclass(option);
     };
 
-    //Called when a user closes the Add Character form before submitting
+    //Clears all form values and error messages within the modal form
     const resetForm = () => {
         setCharacterName("");
         setClassSelection(undefined);
@@ -169,11 +171,12 @@ function CharacterList({email, characters, addCharacter}) {
                     stats: stats
                 }
             }).then((res) => {
-                addCharacter();
+                resetForm();
+                reloadCharacters(email);
                 setShowNewCharacter(false);
             }).catch(function (error) {
                 if (error.response.status === 409) {
-                    //console.log(error.status)
+
                     setShowDupeCharacterMessage(true);
                 } else {
                     console.log('Error', error.message);
@@ -182,20 +185,51 @@ function CharacterList({email, characters, addCharacter}) {
         }
     };
 
+    const handleDeleteCharacter = (characterName) => {
+        axios.delete('http://localhost:9000/characters', {
+            params: {
+                email: email,
+                characterName: characterName
+            }
+        })
+            .then((response) => {
+                console.log('Character deleted successfully');
+                setDeleteConfirmShow(false);
+                setCharacterToDelete(undefined);
+                reloadCharacters(email);
+            })
+            .catch((error) => {
+                // Handle error
+                console.error('Error deleting character', error);
+            });
+    }
+
     return (
         <div>
             <ListGroup>
                 {characterArray.map((character) => (
                     <ListGroup.Item
                         action
-                        onClick={() => characterSelection(email, character.characterName)}>
+                        onClick={() => characterSelection(email, character.characterName)}
+                        className="d-flex justify-content-between align-items-center"
+                    >
                         {character.characterName}
+                        <div
+                            onClick={(e) => {
+                                e.stopPropagation(); // Prevent parent component onClick from triggering
+                                setCharacterToDelete(character.characterName)
+                                setDeleteConfirmShow(true);
+                            }}
+                            style={{ cursor: "pointer" }}
+                        >
+                            <FontAwesomeIcon icon={faTrashCan} style={{color: "#1a090d"}} />
+                        </div>
                     </ListGroup.Item>
                 ))}
             </ListGroup>
 
             {characterDataLoaded && (
-                <Button variant="primary" onClick={() => checkTotalCharacters()}>
+                <Button variant="primary" as="span" onClick={() => checkTotalCharacters()}>
                     Add a new Character
                 </Button>
             )}
@@ -237,6 +271,16 @@ function CharacterList({email, characters, addCharacter}) {
                 handleSubclassChange={handleSubclassChange}
                 classErrorMessage={classErrorMessage}
                 subclassErrorMessage={subclassErrorMessage}
+            />
+
+            <DeleteConfirmation
+                show={deleteConfirmShow}
+                onHide={() => {
+                    setDeleteConfirmShow(false);
+                    setCharacterToDelete(undefined);
+                }}
+                handleDeleteCharacter={handleDeleteCharacter}
+                characterToDelete={characterToDelete}
             />
         </div>
     );
@@ -299,9 +343,6 @@ function AddCharacterModal(props) {
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         {availableSubclasses.map((subclassValue, index) => {
-                                            console.log('classSelection:', classSelection);
-                                            console.log('minLevelForSubclass:', minLevelForSubclass);
-                                            console.log('classLevel:', classLevel);
                                             return (
                                                 <Dropdown.Item eventKey={subclassValue} key={`class-${index}`}>
                                                     {subclassValue}
@@ -490,6 +531,31 @@ function AddCharacterModal(props) {
                 <Button type="submit" onClick={handleAddCharacter}>
                     Add Character
                 </Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
+function DeleteConfirmation({ show, onHide, handleDeleteCharacter, characterToDelete }) {
+    return (
+        <Modal
+            show={show}
+            onHide={onHide}
+            size="sm"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Body>
+                <h8>Are you sure you want to delete this character?</h8>
+            </Modal.Body>
+            <Modal.Footer className="d-flex justify-content-center">
+                <Button variant="danger"
+                        className="btn-sm mr-2"
+                        onClick={() => handleDeleteCharacter(characterToDelete)}
+                >
+                    Yes, delete character
+                </Button>
+                <Button variant="secondary" className="btn-sm" onClick={onHide}>Cancel</Button>
             </Modal.Footer>
         </Modal>
     );

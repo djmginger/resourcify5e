@@ -22,6 +22,32 @@ router.get('/', async function (req, res) {
     }
 });
 
+router.delete('/', async function (req, res) {
+    try {
+        const email = req.query.email; // Access the email as a query parameter
+        const characterName = req.query.characterName;
+
+        const user = await User.findOne({ email: email });
+
+        if (!user) {
+            // User with the given email not found
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        /// Filter out the character with the given name from the characters array
+        user.characters = user.characters.filter(
+            (char) => char.characterName !== characterName
+        );
+
+        await user.save();
+        return res.status(200).json({ message: 'Character deleted successfully' });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ error: 'Error occurred' });
+    }
+});
+
 router.post('/', async function (req, res) {
     //save new character information to user
     try {
@@ -49,16 +75,27 @@ router.post('/', async function (req, res) {
                 //Create an array of resources, then use the resourceObjects file to determine what resource values to add to it.
                 const resourceArray = [];
 
-                const classResources = classes[className][classLevel];
-                if (classResources) {
-                    resourceArray.push(...classResources);
+                if(classes[className][classLevel]){
+                    const classResources = classes[className][classLevel];
+                    if (classResources) {
+                        resourceArray.push(...classResources);
+                    }
+                } else {
+                    console.log('Subclass not found or has no resources for the given class level');
                 }
 
-                if (subclass) {
+                if (
+                    subclass &&
+                    subclasses[className] &&
+                    subclasses[className][subclass] &&
+                    subclasses[className][subclass][classLevel]
+                ) {
                     const subclassResources = subclasses[className][subclass][classLevel];
                     if (subclassResources) {
                         resourceArray.push(...subclassResources);
                     }
+                } else {
+                    console.log('Subclass not found or has no resources for the given class level');
                 }
 
                 const newCharacter = {

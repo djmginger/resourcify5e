@@ -10,7 +10,13 @@ function Separator(props) {
                 transform: `rotate(${props.turns}turn)`
             }}
         >
-            <div style={props.style} />
+            <div
+                style={{
+                    ...props.style,
+                    marginTop: `4px`,
+                    marginBottom: `${props.padding}px`
+                }}
+            />
         </div>
     );
 }
