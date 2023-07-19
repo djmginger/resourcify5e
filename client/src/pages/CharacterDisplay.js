@@ -2,7 +2,8 @@ import axios from 'axios';
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import ResourceDisplay from '../components/resourceDisplay';
+import ResourceDisplay from '../components/ResourceDisplay';
+import SiteNavbar from "../components/SiteNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import "../css/CharacterDisplay.css"
@@ -15,6 +16,7 @@ function CharacterDisplay() {
 
     const [character, setCharacter] = useState()
     const [isFirstLoad, setIsFirstLoad] = useState(true);
+    const [editEnabled, setEditEnabled] = useState(false);
 
     //Make an api call to get the specific character object given an email & characterName
     const getCharacter = function(email, characterName) {
@@ -41,7 +43,7 @@ function CharacterDisplay() {
     // Initial load of character
     useEffect(() => {
         getCharacter(email, characterName);
-    }, []);
+    }, [email, characterName]);
 
     // Save character upon a change
     useEffect(() => {
@@ -76,6 +78,26 @@ function CharacterDisplay() {
                 return {
                     ...resource,
                     resourceCurrent: resource.resourceCurrent - 1,
+                };
+            }
+            return resource;
+        });
+
+        // Update the state with the modified resource array
+        setCharacter((prevCharacter) => ({
+            ...prevCharacter,
+            resources: updatedResources,
+        }));
+    };
+
+    const increaseResourceValue = (selectedResource) => {
+        // Modify the resource value based on the selectedResource
+        const updatedResources = resourceArray.map((resource) => {
+            if (resource === selectedResource) {
+                // Decrease the resourceCurrent value by 1
+                return {
+                    ...resource,
+                    resourceCurrent: resource.resourceCurrent + 1,
                 };
             }
             return resource;
@@ -126,8 +148,14 @@ function CharacterDisplay() {
         }
     };
 
+    const editValueToggle = () => {
+        if(editEnabled) setEditEnabled(false);
+        else setEditEnabled(true);
+    }
+
     return (
-        <div className={"container"}>
+        <div className="character-display-body">
+            <SiteNavbar email={email} />
             {character ? (
                 <>
                     <div className={"header"}>
@@ -141,7 +169,7 @@ function CharacterDisplay() {
                             )}
                         </div>
                         <div className={"actions"}>
-                            <FontAwesomeIcon size={"2x"} icon={faPenToSquare} onClick={() => rest()} className={"edit-icon"}/>
+                            <FontAwesomeIcon size={"2x"} icon={faPenToSquare} onClick={() => editValueToggle()} className={"edit-icon"}/>
                         </div>
                     </div>
                     <div className={"button-container"}>
@@ -154,6 +182,8 @@ function CharacterDisplay() {
                                 <ResourceDisplay
                                     resource={resource}
                                     onDecreaseResource={decreaseResourceValue}
+                                    onIncreaseResource={increaseResourceValue}
+                                    editEnabled={editEnabled}
                                 />
                             </div>
                         ))}

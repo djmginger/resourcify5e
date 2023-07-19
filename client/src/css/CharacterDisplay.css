@@ -1,12 +1,7 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.container {
+.character-display-body {
     background-color: #141414;
-    height: 100%;
     align-items: center;
+    margin-top: 80px;
 }
 
 .header {
@@ -22,6 +17,7 @@ body {
 .header .title {
     width: 80%;
     text-align: center;
+    margin-top: 30px;
 }
 
 .header .title h1 {

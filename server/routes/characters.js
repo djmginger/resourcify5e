@@ -6,9 +6,8 @@ const { getClasses, getSubclasses } = require('../resourceObjects');
 router.get('/', async function (req, res) {
     try {
         const email = req.query.email; // Access the email as a query parameter
-
+        console.log(email)
         const user = await User.findOne({email: email});
-
         if (user) {
             const characterArray = user.characters; // Access the characters array
             //console.log(characterArray);

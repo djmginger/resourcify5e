@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "../css/loginForm.css";
+import "../css/LoginForm.css";
 
 function LoginForm({email, setEmail, pass, setPass, registered, onSubmit}) {
     return (
@@ -35,7 +35,11 @@ function LoginForm({email, setEmail, pass, setPass, registered, onSubmit}) {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-                Submit
+                {!registered ? (
+                    <>Register</>
+                ) : (
+                    <>Login</>
+                )}
             </Button>
         </Form>
     );

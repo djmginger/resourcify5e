@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {useState} from "react";
 import Alert from 'react-bootstrap/Alert';
-import LoginForm from "../components/loginForm"
+import LoginForm from "../components/LoginForm"
+import SiteNavbar from "../components/SiteNavbar";
 import { useNavigate } from "react-router-dom";
+import "../css/Register.css"
 
 function Register() {
 
@@ -59,17 +61,20 @@ function Register() {
     }
 
     return (
-        <div>
-            {registeredDuringSession && <Alert variant={"success"}>Registration successful! Please re-enter credentials and log in.</Alert> }
-            {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
-        <LoginForm
-            email={email}
-            setEmail={setEmail}
-            pass={pass}
-            setPass={setPass}
-            registered={registeredDuringSession}
-            onSubmit={handleSubmit}
-        />
+        <div className="register-body">
+            <SiteNavbar />
+            <div className="register-content">
+                {registeredDuringSession && <Alert variant={"success"}>Registration successful! Please re-enter credentials and log in.</Alert> }
+                {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
+                <LoginForm
+                    email={email}
+                    setEmail={setEmail}
+                    pass={pass}
+                    setPass={setPass}
+                    registered={registeredDuringSession}
+                    onSubmit={handleSubmit}
+                />
+            </div>
         </div>
     );
 }

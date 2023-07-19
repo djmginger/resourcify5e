@@ -1,7 +1,9 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from 'axios';
-import CharacterList from "../components/characterList";
+import CharacterList from "../components/CharacterList";
+import SiteNavbar from "../components/SiteNavbar";
+import "../css/Characters.css"
 
 function Characters() {
     const { state } = useLocation();
@@ -20,19 +22,23 @@ function Characters() {
         }).catch((error) => {
             console.log(error);
         });
-    }
+    };
 
     useEffect(() => {
         getCharacters(email);
     }, []);
 
     return (
-        <div>
-            <CharacterList
-                email={email}
-                characters={characterArray}
-                reloadCharacters={getCharacters}
-            />
+        <div className="character-list-body">
+            <SiteNavbar email={email} />
+            <div className="character-list-content">
+                <h4 className="character-list-title">Character List</h4>
+                <CharacterList
+                    email={email}
+                    characters={characterArray}
+                    reloadCharacters={getCharacters}
+                />
+            </div>
         </div>
     )
 }

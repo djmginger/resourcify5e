@@ -1,0 +1,12 @@
+.edit-icon {
+    color: #2660A4;
+    cursor: pointer;
+}
+
+.edit-icon.minus {
+    margin-right: .75rem;
+}
+
+.edit-icon.plus {
+    margin-left: .75rem;
+}

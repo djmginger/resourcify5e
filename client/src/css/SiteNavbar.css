@@ -1,0 +1,7 @@
+.custom-navbar {
+    background-color: #333333;
+}
+
+.custom-dropdown .nav-link {
+    color: #F5F1E3 !important; /* Set the desired text color */
+}

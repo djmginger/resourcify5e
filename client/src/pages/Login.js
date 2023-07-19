@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {useState} from "react";
 import Alert from 'react-bootstrap/Alert';
-import LoginForm from "../components/loginForm"
+import LoginForm from "../components/LoginForm"
+import SiteNavbar from "../components/SiteNavbar";
 import { useNavigate } from "react-router-dom";
+import "../css/Login.css"
 
 function Login() {
 
@@ -44,16 +46,19 @@ function Login() {
     }
 
     return (
-        <div>
-            {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
-            <LoginForm
+        <div className="login-body">
+            <SiteNavbar />
+            <div className="login-content">
+                {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
+                <LoginForm
 
-                setEmail={setEmail}
-                pass={pass}
-                setPass={setPass}
-                registered={true}
-                onSubmit={handleSubmit}
-            />
+                    setEmail={setEmail}
+                    pass={pass}
+                    setPass={setPass}
+                    registered={true}
+                    onSubmit={handleSubmit}
+                />
+            </div>
         </div>
     );
 }

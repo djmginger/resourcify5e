@@ -4,22 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Created display pages for a users specific character that shows resources and implemented UI components to interact with them.">
-      <change afterPath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" afterDir="false" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling.">
+      <change afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/Characters.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/Login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/Register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/ResourceDisplay.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/SiteNavbar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/characterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/characterList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/loginForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/loginForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/loginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/radialSeparators.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/radialSeparators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/resourceDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/resourceDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/characterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/radialSeparators.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RadialSeparators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/resourceDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/loginForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/LoginForm.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Characters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
     </list>
@@ -52,28 +53,28 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programming/Web Development/resourcify5e/client/src/components&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;JavaScript.Libraries&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "18.16.1",
+    "javascript.nodejs.core.library.typings.version": "18.16.1",
+    "last_opened_file_path": "D:/Programming/Web Development/resourcify5e/client/src/css",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -84,6 +85,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programming\Web Development\resourcify5e\client\src\css" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\components" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
     </key>
@@ -123,7 +125,9 @@
       <workItem from="1689091684179" duration="43359000" />
       <workItem from="1689169998454" duration="37187000" />
       <workItem from="1689288893400" duration="23091000" />
-      <workItem from="1689359439423" duration="29719000" />
+      <workItem from="1689359439423" duration="29848000" />
+      <workItem from="1689630464730" duration="8769000" />
+      <workItem from="1689704869116" duration="13927000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -181,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689316598974</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Refined UI for CharacterDisplay and resourceDisplay. Fixed a few bugs in the axios requests, mainly related to error handling. Began work on styling pages.">
+      <created>1689395261884</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689395261884</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +208,9 @@
     <MESSAGE value="Added Register and Login page functionality and password hashing/validation via bcrypt. Register page now saves valid post request data to DB." />
     <MESSAGE value="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project." />
     <MESSAGE value="Created display pages for a users specific character that shows resources and implemented UI components to interact with them." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created display pages for a users specific character that shows resources and implemented UI components to interact with them." />
+    <MESSAGE value="Refined UI for CharacterDisplay and resourceDisplay. Fixed a few bugs in the axios requests, mainly related to error handling. Began work on styling pages." />
+    <MESSAGE value="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
