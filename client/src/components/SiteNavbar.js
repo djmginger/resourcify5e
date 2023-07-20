@@ -72,7 +72,7 @@ function UserNavbar({ email }){
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="justify-content-end">
-                    <Nav className="ml-auto">
+                    <Nav className="ml-auto nav-options">
                         <Nav.Link style={{ color: "#F5F1E3" }} onClick={characterListNavigate}>Character List</Nav.Link>
 
                         <NavDropdown
@@ -148,9 +148,9 @@ function NoUserNavbar(){
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="justify-content-end">
-                    <Nav className="ml-auto">
+                    <Nav className="ml-auto nav-options">
                         <Nav.Link style={{ color: "#F5F1E3" }} onClick={loginNavigate}>Login</Nav.Link>
-                        <Nav.Link style={{ color: "#F5F1E3" }} onClick={registerNavigate}>Register</Nav.Link>
+                        <Nav.Link style={{ color: "#F5F1E3" }} onClick={registerNavigate} className="register-button">Register</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

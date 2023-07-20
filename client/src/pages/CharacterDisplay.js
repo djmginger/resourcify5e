@@ -17,6 +17,8 @@ function CharacterDisplay() {
     const [character, setCharacter] = useState()
     const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [editEnabled, setEditEnabled] = useState(false);
+    const [resourceArray, setResourceArray] = useState([]);
+    const [userSettings, setUserSettings] = useState()
 
     //Make an api call to get the specific character object given an email & characterName
     const getCharacter = function(email, characterName) {
@@ -26,17 +28,16 @@ function CharacterDisplay() {
                 characterName: characterName
             }
         }).then((res) => {
-            if (res.status === 404){
-                if (res.data.error === 'User not found'){
+            setCharacter(res.data.character);
+            setUserSettings(res.data.settings);
+        }).catch((error) => {
+            if (error.response.status === 404) {
+                if (error.response.error === 'User not found') {
                     // Handle user not found
-                } else if (res.data.error === 'Character not found'){
+                } else if (error.response.error === 'Character not found') {
                     // Handle character not found
                 }
-            } else{
-                setCharacter(res.data);
-            }
-        }).catch((error) => {
-            console.log(error);
+            } else console.log(error);
         });
     }
 
@@ -68,7 +69,9 @@ function CharacterDisplay() {
         });
     }
 
-    const resourceArray = character?.resources || [];
+    if (character?.resources) {
+        setResourceArray(character.resources);
+    }
 
     const decreaseResourceValue = (selectedResource) => {
         // Modify the resource value based on the selectedResource
@@ -158,9 +161,9 @@ function CharacterDisplay() {
             <SiteNavbar email={email} />
             {character ? (
                 <>
-                    <div className={"header"}>
-                        <div className={"spacer"}/>
-                        <div className={"title"}>
+                    <div className="header">
+                        <div className="spacer"/>
+                        <div className="title">
                             <h1>{character.characterName}</h1>
                             {character.classes && character.classes.length > 0 && (
                                 <h5>
@@ -168,14 +171,19 @@ function CharacterDisplay() {
                                 </h5>
                             )}
                         </div>
-                        <div className={"actions"}>
-                            <FontAwesomeIcon size={"2x"} icon={faPenToSquare} onClick={() => editValueToggle()} className={"edit-icon"}/>
+                        <div className="actions">
+                            <FontAwesomeIcon size={"2x"} icon={faPenToSquare} onClick={() => editValueToggle()} className="edit-icon"/>
                         </div>
                     </div>
-                    <div className={"button-container"}>
-                        <Button onClick={() => rest('long')} className={"btn-sm rest"}>Long Rest</Button>
-                        <Button onClick={() => rest('short')} className={"btn-sm rest"}>Short Rest</Button>
+                    <div className="button-container">
+                        <Button onClick={() => rest('long')} className="btn-sm rest">Long Rest</Button>
+                        <Button onClick={() => rest('short')} className="btn-sm rest">Short Rest</Button>
                     </div>
+                    {userSettings?.showSpellpoints && ( //Only show the spellpoint container if the user has spellpoints enabled
+                        <div className="spellpoint-container">
+                            <SpellpointDisplay resourceArray={resourceArray} />
+                        </div>
+                    )}
                     <div className="resource-card-container">
                         {resourceArray.map((resource, index) => (
                             <div key={index}>
@@ -194,7 +202,14 @@ function CharacterDisplay() {
             )}
         </div>
     );
+}
 
+function SpellpointDisplay({ resourceArray }) {
+    return (
+        <>
+
+        </>
+    )
 }
 
 export default CharacterDisplay;

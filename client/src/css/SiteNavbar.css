@@ -2,6 +2,18 @@
     background-color: #333333;
 }
 
+.custom-dropdown {
+    margin-left: 20px;
+}
+
 .custom-dropdown .nav-link {
     color: #F5F1E3 !important; /* Set the desired text color */
+}
+
+.nav-options {
+    margin-right: 40px;
+}
+
+.register-button {
+    margin-left: 20px;
 }

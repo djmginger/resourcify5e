@@ -30,6 +30,16 @@ const characterSchema = new mongoose.Schema({
             extras: mongoose.Schema.Types.Mixed,
         },
     ],
+    spellpoints: {
+        current: Number,
+        max: Number,
+        powerSpells: {
+            six: Boolean,
+            seven: Boolean,
+            eight: Boolean,
+            nine: Boolean,
+        }
+    }
 });
 
 const userSchema = new mongoose.Schema(
@@ -43,6 +53,20 @@ const userSchema = new mongoose.Schema(
             required: true,
         },
         characters: [characterSchema], // Nested array of characters
+        settings: {
+            userTheme: {
+                type: String,
+                default: "dark"
+            },
+            showSpellpoints: {
+                type: Boolean,
+                default: false
+            },
+            showMaxValues: {
+                type: Boolean,
+                default: true
+            }
+        }
     },
     {versionKey: false}
 );

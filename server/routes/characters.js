@@ -108,6 +108,7 @@ router.post('/', async function (req, res) {
                     ],
                     stats: stats,
                     resources: resourceArray,
+                    spellpoints: generateSpellpoints(resourceArray)
                 }
 
                 user.characters.push(newCharacter)
@@ -120,5 +121,50 @@ router.post('/', async function (req, res) {
         return res.status(500).send('Error occurred');
     }
 });
+
+const generateSpellpoints = (resourceArray) => {
+    const spellPointObject = {
+            current: undefined,
+            max: undefined,
+            powerSpells: {
+                six: undefined,
+                seven: undefined,
+                eight: undefined,
+                nine: undefined,
+            }
+        };
+
+    resourceArray.forEach(resource => {
+        //All normal spell slots have an extra object with a pointValue, so check if it exists. If so, then add it to the spellPointObject
+        if (resource.extras && resource.extras.pointValue) {
+            const resourceName = resource.resourceName;
+
+            if (!spellPointObject.max && !spellPointObject.current){
+                spellPointObject.max = resource.extras.pointValue;
+                spellPointObject.current = spellPointObject.max;
+            } else {
+                spellPointObject.max += resource.extras.pointValue;
+                spellPointObject.current = spellPointObject.max;
+            }
+
+            switch (resourceName){
+                case "6th Level Spells":
+                    spellPointObject.powerSpells.six = true;
+                    break;
+                case "7th Level Spells":
+                    spellPointObject.powerSpells.seven = true;
+                    break;
+                case "8th Level Spells":
+                    spellPointObject.powerSpells.eight = true;
+                    break;
+                case "9th Level Spells":
+                    spellPointObject.powerSpells.nine = true;
+                    break;
+            }
+        }
+    });
+
+    return spellPointObject;
+}
 
 module.exports = router;
