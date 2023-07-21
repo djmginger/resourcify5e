@@ -34,10 +34,20 @@ const characterSchema = new mongoose.Schema({
         current: Number,
         max: Number,
         powerSpells: {
-            six: Boolean,
-            seven: Boolean,
-            eight: Boolean,
-            nine: Boolean,
+            "6th Level Spells": Boolean,
+            "7th Level Spells": Boolean,
+            "8th Level Spells": Boolean,
+            "9th Level Spells": Boolean,
+        }
+    },
+    settings: {
+        showSpellpoints: {
+            type: Boolean,
+            default: false
+        },
+        showMaxValues: {
+            type: Boolean,
+            default: true
         }
     }
 });
@@ -52,21 +62,11 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        userTheme: {
+            type: String,
+            default: "dark"
+        },
         characters: [characterSchema], // Nested array of characters
-        settings: {
-            userTheme: {
-                type: String,
-                default: "dark"
-            },
-            showSpellpoints: {
-                type: Boolean,
-                default: false
-            },
-            showMaxValues: {
-                type: Boolean,
-                default: true
-            }
-        }
     },
     {versionKey: false}
 );

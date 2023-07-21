@@ -24,7 +24,7 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
     return (
         <div>
             <Card style={{ marginBottom:".5rem", backgroundColor:"#141414", borderColor:"#333333"}} className="align-items-center">
-                <Card.Title style={{fontSize: "0.7rem", paddingTop:".5rem", paddingBottom:".3rem", backgroundColor:"#333333", width:"100%", textAlign:"center", borderTopLeftRadius:"4px", borderTopRightRadius:"4px", color:"#F5F1E3"}}>{resource.resourceName}</Card.Title>
+                <Card.Title style={{fontSize: "1.2rem", paddingTop:".5rem", paddingBottom:".3rem", backgroundColor:"#333333", width:"100%", textAlign:"center", borderTopLeftRadius:"4px", borderTopRightRadius:"4px", color:"#F5F1E3"}}>{resource.resourceName}</Card.Title>
                 <Card.Body>
                     <div
                         style={{

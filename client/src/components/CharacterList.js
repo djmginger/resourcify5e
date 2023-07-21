@@ -16,6 +16,7 @@ function CharacterList({email, characters, reloadCharacters}) {
     const [showNewCharacter, setShowNewCharacter] = useState(false);
     const [showMaxCharacterMessage, setShowMaxCharacterMessage] = useState(false);
     const [characterName, setCharacterName] = useState("");
+    const [useSpellpoints, setUseSpellpoints] = useState(false);
     const [classSelection, setClassSelection] = useState();
     const [classLevel, setClassLevel] = useState(1);
     const [availableSubclasses, setAvailableSubclasses] = useState([]);
@@ -67,14 +68,8 @@ function CharacterList({email, characters, reloadCharacters}) {
     useEffect(() => {
         // Initialize characterArray based on characters prop
         setCharacterArray(characters);
+        setCharacterDataLoaded(true)
     }, [characters]);
-
-    useEffect(() => {
-        // Pause on rendering Add Character button until data is loaded, preventing visual stutter
-        if (characterArray.length > 0) {
-            setCharacterDataLoaded(true);
-        }
-    }, [characterArray]);
 
     //Navigate to the page for the chosen character
     const characterSelection = (email, characterName) => {
@@ -168,7 +163,10 @@ function CharacterList({email, characters, reloadCharacters}) {
                     className: classSelection,
                     classLevel: classLevel,
                     subclass: subclass,
-                    stats: stats
+                    stats: stats,
+                    settings: {
+                        showSpellpoints: useSpellpoints
+                    }
                 }
             }).then((res) => {
                 resetForm();
@@ -203,6 +201,8 @@ function CharacterList({email, characters, reloadCharacters}) {
                 console.error('Error deleting character', error);
             });
     }
+
+    console.log(characterDataLoaded);
 
     return (
         <div>
@@ -246,6 +246,8 @@ function CharacterList({email, characters, reloadCharacters}) {
                 characterName={characterName}
                 setCharacterName={setCharacterName}
                 handleAddCharacter={handleAddCharacter}
+                useSpellpoints={useSpellpoints}
+                setUseSpellpoints={setUseSpellpoints}
                 classSelection={classSelection}
                 handleClassChange={handleClassChange}
                 classLevel={classLevel}
@@ -287,7 +289,7 @@ function CharacterList({email, characters, reloadCharacters}) {
 }
 
 function AddCharacterModal(props) {
-    const { show, onHide, classArray, characterName, setCharacterName, handleAddCharacter, classSelection, handleClassChange, classLevel, setClassLevel, nameErrorMessage, showDupeCharacterMessage, levelErrorMessage, subclass, availableSubclasses, minLevelForSubclass, handleSubclassChange, classErrorMessage, subclassErrorMessage, str, dex, con, int, wis, cha, setStr, setDex, setCon, setInt, setWis, setCha } = props;
+    const { show, onHide, classArray, characterName, setCharacterName, useSpellpoints, setUseSpellpoints, handleAddCharacter, classSelection, handleClassChange, classLevel, setClassLevel, nameErrorMessage, showDupeCharacterMessage, levelErrorMessage, subclass, availableSubclasses, minLevelForSubclass, handleSubclassChange, classErrorMessage, subclassErrorMessage, str, dex, con, int, wis, cha, setStr, setDex, setCon, setInt, setWis, setCha } = props;
     return (
         <Modal
             show={show}
@@ -313,6 +315,16 @@ function AddCharacterModal(props) {
 
                     {showDupeCharacterMessage && <Alert variant={"danger"}>There is already a character with this name! Please use a different name for your character.</Alert> }
                     {nameErrorMessage && <Alert variant={"danger"}>Length of character name must be between 1 and 50, and must include no special characters</Alert> }
+
+                    <Row>
+                        <Form.Check
+                            type="switch"
+                            id="custom-switch"
+                            label="Use Variant Spell Point Rules"
+                            checked={useSpellpoints}
+                            onChange={() => setUseSpellpoints(prevState => !prevState)}
+                        />
+                    </Row>
 
                     {/* Class and subclass dropdowns sit next to each other, with subclass hidden until a class reaches a level that has access to them */}
                     <Row>

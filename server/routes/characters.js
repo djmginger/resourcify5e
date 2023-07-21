@@ -56,6 +56,7 @@ router.post('/', async function (req, res) {
         const classLevel = req.body.character.classLevel;
         const subclass = req.body.character.subclass;
         const stats = req.body.character.stats;
+        const showSpellpoints = req.body.character.settings.showSpellpoints;
 
         const classes = getClasses(classLevel, stats);
         const subclasses = getSubclasses(classLevel, stats);
@@ -108,7 +109,10 @@ router.post('/', async function (req, res) {
                     ],
                     stats: stats,
                     resources: resourceArray,
-                    spellpoints: generateSpellpoints(resourceArray)
+                    spellpoints: generateSpellpoints(resourceArray),
+                    settings: {
+                        showSpellpoints: showSpellpoints
+                    }
                 }
 
                 user.characters.push(newCharacter)
@@ -127,10 +131,10 @@ const generateSpellpoints = (resourceArray) => {
             current: undefined,
             max: undefined,
             powerSpells: {
-                six: undefined,
-                seven: undefined,
-                eight: undefined,
-                nine: undefined,
+                "6th Level Spells": undefined,
+                "7th Level Spells": undefined,
+                "8th Level Spells": undefined,
+                "9th Level Spells": undefined,
             }
         };
 
@@ -147,18 +151,19 @@ const generateSpellpoints = (resourceArray) => {
                 spellPointObject.current = spellPointObject.max;
             }
 
+            //Because 6th level spells and higher can only be cast once per long rest using spellpoints, we need to track if they are available to use (true) or have been cast already (false)
             switch (resourceName){
                 case "6th Level Spells":
-                    spellPointObject.powerSpells.six = true;
+                    spellPointObject.powerSpells["6th Level Spells"] = true;
                     break;
                 case "7th Level Spells":
-                    spellPointObject.powerSpells.seven = true;
+                    spellPointObject.powerSpells["7th Level Spells"] = true;
                     break;
                 case "8th Level Spells":
-                    spellPointObject.powerSpells.eight = true;
+                    spellPointObject.powerSpells["8th Level Spells"] = true;
                     break;
                 case "9th Level Spells":
-                    spellPointObject.powerSpells.nine = true;
+                    spellPointObject.powerSpells["9th Level Spells"] = true;
                     break;
             }
         }

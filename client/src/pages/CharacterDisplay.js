@@ -1,12 +1,14 @@
 import axios from 'axios';
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import {CircularProgressbar, buildStyles} from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import ResourceDisplay from '../components/ResourceDisplay';
 import SiteNavbar from "../components/SiteNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare, faSquareMinus, faSquarePlus } from '@fortawesome/free-regular-svg-icons';
 import "../css/CharacterDisplay.css"
+import {Card, Col, Container, Row, Button} from "react-bootstrap";
 
 
 function CharacterDisplay() {
@@ -17,7 +19,9 @@ function CharacterDisplay() {
     const [character, setCharacter] = useState()
     const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [editEnabled, setEditEnabled] = useState(false);
+    const [fullResourceArray, setFullResourceArray] = useState([]);
     const [resourceArray, setResourceArray] = useState([]);
+    const [spellpointArray, setSpellpointArray] = useState([]);
     const [userSettings, setUserSettings] = useState()
 
     //Make an api call to get the specific character object given an email & characterName
@@ -30,6 +34,7 @@ function CharacterDisplay() {
         }).then((res) => {
             setCharacter(res.data.character);
             setUserSettings(res.data.settings);
+            setFullResourceArray(res.data.character.resources);
         }).catch((error) => {
             if (error.response.status === 404) {
                 if (error.response.error === 'User not found') {
@@ -46,11 +51,27 @@ function CharacterDisplay() {
         getCharacter(email, characterName);
     }, [email, characterName]);
 
+    useEffect(() => {
+        // If it's the first load, split the resources.
+        if (isFirstLoad && character?.resources) {
+            if (character.settings.showSpellpoints) {
+                const spellpoints = character.resources.filter(item => item.extras && item.extras.pointValue);
+                const otherResources = character.resources.filter(item => !(item.extras && item.extras.pointValue));
+
+                setSpellpointArray(spellpoints);
+                setResourceArray(otherResources);
+            } else {
+                setResourceArray(character.resources);
+                setSpellpointArray([]); // Reset spellpoints
+            }
+
+            setIsFirstLoad(false); // Reset the flag after the initial logic is complete
+        }
+    }, [character, isFirstLoad]);
+
     // Save character upon a change
     useEffect(() => {
-        if (isFirstLoad) {
-            setIsFirstLoad(false);
-        } else {
+        if (!isFirstLoad) {
             saveCharacter(email, character);
         }
     }, [character, isFirstLoad]);
@@ -69,13 +90,9 @@ function CharacterDisplay() {
         });
     }
 
-    if (character?.resources) {
-        setResourceArray(character.resources);
-    }
-
     const decreaseResourceValue = (selectedResource) => {
         // Modify the resource value based on the selectedResource
-        const updatedResources = resourceArray.map((resource) => {
+        const updatedResources = fullResourceArray.map((resource) => {
             if (resource === selectedResource) {
                 // Decrease the resourceCurrent value by 1
                 return {
@@ -86,18 +103,28 @@ function CharacterDisplay() {
             return resource;
         });
 
-        // Update the state with the modified resource array
-        setCharacter((prevCharacter) => ({
+        // Update the character's resources with the adjusted values
+        setCharacter(prevCharacter => ({
             ...prevCharacter,
-            resources: updatedResources,
+            resources: updatedResources
         }));
+
+        // Repopulate the split arrays based on the updated fullResourceArray
+        if (character.settings.showSpellpoints) {
+            const spellpoints = updatedResources.filter(item => item.extras && item.extras.pointValue);
+            const otherResources = updatedResources.filter(item => !(item.extras && item.extras.pointValue));
+            setSpellpointArray(spellpoints);
+            setResourceArray(otherResources);
+        } else {
+            setResourceArray(updatedResources);
+        }
     };
 
     const increaseResourceValue = (selectedResource) => {
         // Modify the resource value based on the selectedResource
-        const updatedResources = resourceArray.map((resource) => {
+        const updatedResources = fullResourceArray.map((resource) => {
             if (resource === selectedResource) {
-                // Decrease the resourceCurrent value by 1
+                // Increase the resourceCurrent value by 1
                 return {
                     ...resource,
                     resourceCurrent: resource.resourceCurrent + 1,
@@ -106,16 +133,66 @@ function CharacterDisplay() {
             return resource;
         });
 
-        // Update the state with the modified resource array
-        setCharacter((prevCharacter) => ({
+        // Update the character's resources with the adjusted values
+        setCharacter(prevCharacter => ({
             ...prevCharacter,
-            resources: updatedResources,
+            resources: updatedResources
+        }));
+
+        // Repopulate the split arrays based on the updated fullResourceArray
+        if (character.settings.showSpellpoints) {
+            const spellpoints = updatedResources.filter(item => item.extras && item.extras.pointValue);
+            const otherResources = updatedResources.filter(item => !(item.extras && item.extras.pointValue));
+            setSpellpointArray(spellpoints);
+            setResourceArray(otherResources);
+        } else {
+            setResourceArray(updatedResources);
+        }
+    };
+
+    const decreaseCurrentSpellpoints = (spellpointValue) => {
+        const updatedSpellpoints = character.spellpoints;
+
+        console.log(updatedSpellpoints);
+
+        //If a 6th level spell or higher was cast, set the value of the corr. spell to false, thereby disabling the corr. button
+        switch(spellpointValue){
+            case 9:
+                updatedSpellpoints.powerSpells["6th Level Spells"] = false;
+                break;
+            case 10:
+                updatedSpellpoints.powerSpells["7th Level Spells"] = false;
+                break;
+            case 11:
+                updatedSpellpoints.powerSpells["8th Level Spells"] = false;
+                break;
+            case 13:
+                updatedSpellpoints.powerSpells["9th Level Spells"] = false;
+                break;
+        }
+
+        updatedSpellpoints.current -= spellpointValue;
+
+        setCharacter(prevCharacter => ({
+            ...prevCharacter,
+            spellpoints: updatedSpellpoints
+        }));
+    };
+
+    const increaseCurrentSpellpoints = (spellpointValue) => {
+        const updatedSpellpoints = character.spellpoints;
+
+        updatedSpellpoints.current += spellpointValue;
+
+        setCharacter(prevCharacter => ({
+            ...prevCharacter,
+            spellpoints: updatedSpellpoints
         }));
     };
 
     const rest = (restType) => {
         if (restType === 'long') {
-            const updatedResources = resourceArray.map((resource) => {
+            const updatedResources = fullResourceArray.map((resource) => {
                 if (resource.resetOnLong) {
                     // Reset resourceCurrent to resourceMax
                     return {
@@ -126,13 +203,23 @@ function CharacterDisplay() {
                 return resource;
             });
 
+            const updatedSpellpoints = character.spellpoints;
+            updatedSpellpoints.current = updatedSpellpoints.max;
+
+            //Go through the powerSpells object within spellpoints, and if the values are not undefined, set them to true, enabling the corresponding buttons for those spells
+            Object.keys(updatedSpellpoints.powerSpells).forEach(key => {
+                if (updatedSpellpoints.powerSpells[key] !== undefined) {
+                    updatedSpellpoints.powerSpells[key] = true;
+                }
+            });
+
             // Update the state with the modified resource array
             setCharacter((prevCharacter) => ({
                 ...prevCharacter,
                 resources: updatedResources,
             }));
         } else if (restType === 'short') {
-            const updatedResources = resourceArray.map((resource) => {
+            const updatedResources = fullResourceArray.map((resource) => {
                 if (resource.resetOnShort) {
                     // Reset resourceCurrent to resourceMax
                     return {
@@ -152,14 +239,13 @@ function CharacterDisplay() {
     };
 
     const editValueToggle = () => {
-        if(editEnabled) setEditEnabled(false);
-        else setEditEnabled(true);
+        setEditEnabled(prevEditEnabled => !prevEditEnabled);
     }
 
     return (
         <div className="character-display-body">
             <SiteNavbar email={email} />
-            {character ? (
+            {character?.resources?.length > 0 ? (
                 <>
                     <div className="header">
                         <div className="spacer"/>
@@ -179,9 +265,15 @@ function CharacterDisplay() {
                         <Button onClick={() => rest('long')} className="btn-sm rest">Long Rest</Button>
                         <Button onClick={() => rest('short')} className="btn-sm rest">Short Rest</Button>
                     </div>
-                    {userSettings?.showSpellpoints && ( //Only show the spellpoint container if the user has spellpoints enabled
+                    {character?.settings.showSpellpoints && spellpointArray.length > 0 && ( //Only show the spellpoint container if the user has spellpoints enabled for this character, and the character has spell resources
                         <div className="spellpoint-container">
-                            <SpellpointDisplay resourceArray={resourceArray} />
+                            <SpellpointDisplay
+                                spellpointArray={spellpointArray}
+                                decreaseSpellpointValue={decreaseCurrentSpellpoints}
+                                increaseSpellpointValue={increaseCurrentSpellpoints}
+                                editEnabled={editEnabled}
+                                spellpointObject={character.spellpoints}
+                            />
                         </div>
                     )}
                     <div className="resource-card-container">
@@ -204,10 +296,119 @@ function CharacterDisplay() {
     );
 }
 
-function SpellpointDisplay({ resourceArray }) {
+function SpellpointDisplay({ spellpointObject, spellpointArray, decreaseSpellpointValue, increaseSpellpointValue, editEnabled }) {
+    const pairedResources = [];
+
+    for (let i = 0; i < spellpointArray.length; i += 2) {
+        pairedResources.push(spellpointArray.slice(i, i + 2));
+    }
+
     return (
         <>
+            <Card
+                style={{
+                    marginBottom: ".5rem",
+                    backgroundColor: "#141414",
+                    borderColor: "#333333"
+                }}
+                className="align-items-center"
+            >
+                <Card.Title
+                    style={{
+                        fontSize: "1.5rem",
+                        paddingTop: ".5rem",
+                        paddingBottom: ".3rem",
+                        backgroundColor: "#333333",
+                        width: "100%",
+                        textAlign: "center",
+                        borderTopLeftRadius: "4px",
+                        borderTopRightRadius: "4px",
+                        color: "#F5F1E3"
+                    }}
+                >
+                    Spellpoints
+                </Card.Title>
+                <Card.Body style={{ width: "100%" }}>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}
+                    >
 
+                        {editEnabled && (
+                            <div>
+                                <FontAwesomeIcon
+                                    size={"2x"}
+                                    icon={faSquareMinus}
+                                    onClick={() => decreaseSpellpointValue(1)}
+                                    className={"edit minus"}
+                                />
+                            </div>
+                        )}
+                            <div style={{ width: "8rem", height: "8rem" }}>
+                                <CircularProgressbar
+                                    value={spellpointObject.current / spellpointObject.max}
+                                    maxValue={1}
+                                    backgroundPadding={6}
+                                    counterClockwise={true}
+                                    text={`${spellpointObject.current}/${spellpointObject.max}`}
+                                    styles={buildStyles({
+                                        strokeLinecap: "butt",
+                                        textAlign: "",
+                                        backgroundColor: "#8BB5E5",
+                                        textColor: "#8BB5E5",
+                                        pathColor: "#8BB5E5"
+                                    })}
+                                />
+                            </div>
+
+                        {editEnabled && (
+                            <div>
+                                <FontAwesomeIcon
+                                    size={"2x"}
+                                    icon={faSquarePlus}
+                                    onClick={() => increaseSpellpointValue(1)}
+                                    className={"edit plus"}
+                                />
+                            </div>
+                        )}
+
+                    </div>
+                    <div>
+                        <Container fluid style={{ margin: "0", padding: "0" }}>
+
+                            {pairedResources.map((chunk, rowIndex) => (
+                                <Row
+                                    key={rowIndex}
+                                    className="h-100"
+                                    style={{ marginTop: rowIndex === 0 ? "1.5rem" : "1.3rem" }}
+                                >
+                                    {chunk.map((resource, colIndex) => {
+                                        const isSingleResource = chunk.length === 1;
+
+                                        // Check if the spell should be disabled due to already having been cast (6th level spells and above can only be cast once per long rest)
+                                        const isDisabled = spellpointObject.powerSpells[resource.resourceName] === false;
+
+                                        return (
+                                            <Col
+                                                key={resource.resourceName}
+                                                md={{ span: 2, offset: isSingleResource ? 5 : colIndex === 1 ? 2 : 3 }}
+                                                style={{ padding: "0" }}
+                                            >
+                                                <Button className="p-0 custom-button" onClick={() => decreaseSpellpointValue(resource.extras.pointValue / resource.resourceMax)} disabled={isDisabled}>
+                                                    {resource.resourceName}
+                                                </Button>
+                                            </Col>
+                                        );
+                                    })}
+                                </Row>
+                            ))}
+                        </Container>
+                    </div>
+                </Card.Body>
+            </Card>
         </>
     )
 }

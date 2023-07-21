@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling.">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/SiteNavbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/SiteNavbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/resourceObjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resourceObjects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/characterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characterDisplay.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schema.js" afterDir="false" />
     </list>
@@ -118,7 +117,8 @@
       <workItem from="1689359439423" duration="29848000" />
       <workItem from="1689630464730" duration="8769000" />
       <workItem from="1689704869116" duration="14543000" />
-      <workItem from="1689784595249" duration="15117000" />
+      <workItem from="1689784595249" duration="15426000" />
+      <workItem from="1689868870288" duration="26495000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -190,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689734204563</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css">
+      <created>1689824101284</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1689824101284</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +215,8 @@
     <MESSAGE value="Created display pages for a users specific character that shows resources and implemented UI components to interact with them." />
     <MESSAGE value="Refined UI for CharacterDisplay and resourceDisplay. Fixed a few bugs in the axios requests, mainly related to error handling. Began work on styling pages." />
     <MESSAGE value="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling." />
+    <MESSAGE value="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
