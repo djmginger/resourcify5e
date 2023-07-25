@@ -1,3 +1,20 @@
+.login-label {
+    color: #F5F1E3;
+}
+
+.text-input {
+    background-color: #F5F1E3;
+}
+
+.login-button {
+    text-align: end;
+}
+
+.password-details {
+    color: #8F8F8F;
+}
+
 .password-requirements-title {
+    margin-top: .6rem;
     margin-bottom: 0;
 }

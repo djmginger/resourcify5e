@@ -1,7 +1,7 @@
 .character-display-body {
     background-color: #141414;
     align-items: center;
-    margin-top: 80px;
+    padding-top: 80px;
 }
 
 .header {
@@ -82,8 +82,17 @@
     background-color: #1f4f8b; /* slightly darker blue for hover */
 }
 
+.spellpoint-container {
+    margin-top: 30px;
+}
+
 .resource-card-container {
+    margin-top: 30px;
     /* styles for resource cards go here */
+}
+
+.resource-card {
+    margin-bottom: 30px;
 }
 
 .no-resources {

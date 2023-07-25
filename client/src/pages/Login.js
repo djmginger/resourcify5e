@@ -5,6 +5,7 @@ import LoginForm from "../components/LoginForm"
 import SiteNavbar from "../components/SiteNavbar";
 import { useNavigate } from "react-router-dom";
 import "../css/Login.css"
+import {Col, Container, Row} from "react-bootstrap";
 
 function Login() {
 
@@ -49,7 +50,13 @@ function Login() {
         <div className="login-body">
             <SiteNavbar />
             <div className="login-content">
-                {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
+                <Container>
+                    <Row className="justify-content-center">
+                        <Col sm={8} md={6} lg={5}>
+                            {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
+                        </Col>
+                    </Row>
+                </Container>
                 <LoginForm
 
                     setEmail={setEmail}

@@ -23,10 +23,10 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
 
     return (
         <div>
-            <Card style={{ marginBottom:".5rem", backgroundColor:"#141414", borderColor:"#333333"}} className="align-items-center">
-                <Card.Title style={{fontSize: "1.2rem", paddingTop:".5rem", paddingBottom:".3rem", backgroundColor:"#333333", width:"100%", textAlign:"center", borderTopLeftRadius:"4px", borderTopRightRadius:"4px", color:"#F5F1E3"}}>{resource.resourceName}</Card.Title>
+            <Card className="align-items-center resource-card">
+                <Card.Title className="resource-card-title">{resource.resourceName}</Card.Title>
                 <Card.Body>
-                    <div
+                    <div className="resource-card-content"
                         style={{
                             display: 'flex',
                             justifyContent: 'space-between',
@@ -41,7 +41,8 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
 
                         <Button onClick={decreaseResourceValue}
                                 disabled={currentVal === 0}
-                                style={{ width: "5rem", height: "5rem", borderRadius: "50%", padding: "0", backgroundColor:"transparent", border:"none"}}>
+                                className="circular-button">
+
                             <CircularProgressbarWithChildren
                                 value={currentVal / maxVal}
                                 maxValue={1}
@@ -49,18 +50,16 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
                                 backgroundPadding={6}
                                 counterClockwise={true}
                                 text={`${currentVal}/${maxVal}`}
-                                styles={buildStyles({strokeLinecap: "butt", backgroundColor: "#8BB5E5", textColor: "#F5F1E3", pathColor: "#F5F1E3"})}
+                                styles={buildStyles({strokeLinecap: "butt", backgroundColor: "#8BB5E5", textColor: "#F5F1E3", pathColor: "#F5F1E3", trailColor:"#707070"})}
                             >
-                                <RadialSeparators
-                                    count={maxVal}
-                                    style={{
-                                        background: "#8BB5E5",
-                                        width: "2px",
-                                        // This needs to be equal to props.strokeWidth
-                                        height: `${10}%`
-                                    }}
+                                <RadialSeparators className="radial-separator" count={maxVal} style={{
+                                    background: "#8BB5E5",
+                                    width: "2px",
+                                    // This needs to be equal to props.strokeWidth
+                                    height: `${10}%`}}
                                 />
                             </CircularProgressbarWithChildren>
+
                         </Button>
 
                         {editEnabled && (

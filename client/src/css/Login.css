@@ -1,3 +1,7 @@
+body {
+    background-color: #141414;
+}
+
 .login-body {
     margin-top: 80px;
     padding: 1px 0;
@@ -5,5 +9,4 @@
 
 .login-content {
     margin-top: 50px;
-    padding: 0 100px
 }

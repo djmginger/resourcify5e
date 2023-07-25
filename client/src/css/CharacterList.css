@@ -1,0 +1,31 @@
+.character-list-container {
+    margin-top: 2rem;
+}
+
+.character-item,
+.character-item:focus {
+    background-color: #333333;
+    border-color: #2660A4;
+    color: #F5F1E3;
+}
+
+.character-item:hover,
+.character-item:active {
+    color: #F5F1E3;
+    background-color: #2660A4;
+}
+
+.delete-icon {
+    color: #F5F1E3;
+}
+
+.add-character-button {
+    margin-top: 2rem;
+    background-color: #2660a4;
+    border-color: #2660a4;
+}
+
+.add-character-button:hover {
+    background-color: #1f4f8b; /* slightly darker blue for hover */
+    border-color: #1f4f8b;
+}

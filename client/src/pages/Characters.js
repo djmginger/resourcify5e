@@ -32,7 +32,7 @@ function Characters() {
         <div className="character-list-body">
             <SiteNavbar email={email} />
             <div className="character-list-content">
-                <h4 className="character-list-title">Character List</h4>
+                <h2 className="character-list-title">Character List</h2>
                 <CharacterList
                     email={email}
                     characters={characterArray}

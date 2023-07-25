@@ -5,6 +5,7 @@ import LoginForm from "../components/LoginForm"
 import SiteNavbar from "../components/SiteNavbar";
 import { useNavigate } from "react-router-dom";
 import "../css/Register.css"
+import {Col, Container, Row} from "react-bootstrap";
 
 function Register() {
 
@@ -64,8 +65,14 @@ function Register() {
         <div className="register-body">
             <SiteNavbar />
             <div className="register-content">
-                {registeredDuringSession && <Alert variant={"success"}>Registration successful! Please re-enter credentials and log in.</Alert> }
-                {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
+                <Container>
+                    <Row className="justify-content-center">
+                        <Col sm={8} md={6} lg={5}>
+                            {registeredDuringSession && <Alert variant={"success"}>Registration successful! Please re-enter credentials and log in.</Alert> }
+                            {errorMessage && <Alert variant={"danger"}>{errorMessage}</Alert> }
+                        </Col>
+                    </Row>
+                </Container>
                 <LoginForm
                     email={email}
                     setEmail={setEmail}

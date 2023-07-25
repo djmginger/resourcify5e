@@ -56,6 +56,7 @@ router.post('/', async function (req, res) {
         foundCharacter.classes = character.classes;
         foundCharacter.stats = character.stats;
         foundCharacter.resources = character.resources;
+        foundCharacter.spellpoints = character.spellpoints;
 
         // Save the updated user object
         await user.save();

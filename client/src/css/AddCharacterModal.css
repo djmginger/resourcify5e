@@ -1,0 +1,34 @@
+.character-modal {
+    background-color: #F5F1E3;
+}
+
+.form-label {
+    margin: 0;
+}
+
+#dropdown-basic {
+    display: flex;
+    justify-content: space-between; /* Pushes children to the extremes */
+    align-items: center;
+    width: 10rem;
+}
+
+.class-container,
+.subclass-container,
+.stat-input-row-first,
+.switch.variant-spellpoint,
+.switch.max-values {
+    margin-top: 20px;
+}
+
+.stat-input-row-second {
+    margin-top: 8px;
+}
+
+.switch {
+    margin-left: 10px;
+}
+
+.add-alert {
+    margin-top: .5rem;
+}

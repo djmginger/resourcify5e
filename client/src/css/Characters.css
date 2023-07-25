@@ -1,15 +1,15 @@
 .character-list-body {
+    background-color: #141414;
     margin-top: 80px;
     padding: 1px 0;
 }
 
 .character-list-content {
-    padding: 0 100px;
     margin-top: 30px;
     text-align: center;
 }
 
 .character-list-title {
     text-decoration: underline;
-    color: #333333;
+    color: #F5F1E3;
 }
