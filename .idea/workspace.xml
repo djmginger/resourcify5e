@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Fixed broken resources within the CharacterDisplay.js, and worked on css styling">
-      <change afterPath="$PROJECT_DIR$/client/src/CharacterContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Protected.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/contextProviders/AuthContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cookieHandler/jwtVerifier.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/userEmail.js" afterDir="false" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Characters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/characterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +122,7 @@
       <workItem from="1690224789952" duration="22530000" />
       <workItem from="1690322971231" duration="17212000" />
       <workItem from="1690400730910" duration="3693000" />
-      <workItem from="1690507226740" duration="11458000" />
+      <workItem from="1690507226740" duration="12099000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -233,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690250662232</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in.">
+      <created>1690522677418</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1690522677418</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +243,8 @@
     <MESSAGE value="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css" />
     <MESSAGE value="Added component and related functional code for the variant Spell Point rules. Also made slight changes to the schema, as well as css changes." />
     <MESSAGE value="Fixed broken resources within the CharacterDisplay.js, and worked on css styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed broken resources within the CharacterDisplay.js, and worked on css styling" />
+    <MESSAGE value="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
