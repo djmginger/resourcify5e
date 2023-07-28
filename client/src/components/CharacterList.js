@@ -5,13 +5,14 @@ import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from '@fortawesome/free-solid-svg-icons'
 import Alert from "react-bootstrap/Alert";
-import axios from "axios";
 import AddCharacterModal from "./AddCharacterModal";
 import "../css/CharacterList.css";
+import axios from "axios";
+import { useCharacters } from '../contextProviders/CharacterContext';
 
-function CharacterList({email, characters, reloadCharacters}) {
+function CharacterList({characters, reloadCharacters}) {
 
-    const [characterArray, setCharacterArray] = useState([]);
+    const { characterArray, setCharacterArray } = useCharacters();
     const [showNewCharacter, setShowNewCharacter] = useState(false);
     const [showMaxCharacterMessage, setShowMaxCharacterMessage] = useState(false);
     const [characterName, setCharacterName] = useState("");
@@ -72,13 +73,10 @@ function CharacterList({email, characters, reloadCharacters}) {
     }, [characters]);
 
     //Navigate to the page for the chosen character
-    const characterSelection = (email, characterName) => {
+    const characterSelection = (characterName) => {
         navigate(`/characters/${characterName}`, {
             state:
-                {
-                    email: email,
-                    characterName: characterName
-                }
+                { characterName: characterName }
         });
     };
 
@@ -159,7 +157,6 @@ function CharacterList({email, characters, reloadCharacters}) {
         } else{
             //api call to add character to use
             axios.post('http://localhost:9000/characters', {
-                email: email,
                 character: {
                     name: characterName,
                     className: classSelection,
@@ -169,10 +166,11 @@ function CharacterList({email, characters, reloadCharacters}) {
                     settings: {
                         showSpellpoints: useSpellpoints
                     }
-                }
-            }).then((res) => {
+                },
+            }, { withCredentials: true }
+            ).then((res) => {
                 resetForm();
-                reloadCharacters(email);
+                reloadCharacters();
                 setShowNewCharacter(false);
             }).catch(function (error) {
                 if (error.response.status === 409) {
@@ -187,15 +185,13 @@ function CharacterList({email, characters, reloadCharacters}) {
 
     const handleDeleteCharacter = (characterName) => {
         axios.delete('http://localhost:9000/characters', {
-            params: {
-                email: email,
-                characterName: characterName
-            }
+            params: { characterName: characterName },
+            withCredentials: true
         })
             .then((res) => {
                 setDeleteConfirmShow(false);
                 setCharacterToDelete(undefined);
-                reloadCharacters(email);
+                reloadCharacters();
             })
             .catch((error) => {
                 // Handle error
@@ -212,9 +208,8 @@ function CharacterList({email, characters, reloadCharacters}) {
                             {characterArray.map((character) => (
                                 <ListGroup.Item
                                     action
-                                    onClick={() => characterSelection(email, character.characterName)}
+                                    onClick={() => characterSelection(character.characterName)}
                                     className="d-flex justify-content-between align-items-center character-item"
-
                                 >
                                     {character.characterName}
                                     <div
@@ -306,7 +301,7 @@ function DeleteConfirmation({ show, onHide, handleDeleteCharacter, characterToDe
             centered
         >
             <Modal.Body>
-                <h8>Are you sure you want to delete this character?</h8>
+                <h6>Are you sure you want to delete this character?</h6>
             </Modal.Body>
             <Modal.Footer className="d-flex justify-content-center">
                 <Button variant="danger"

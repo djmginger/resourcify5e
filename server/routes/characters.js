@@ -2,15 +2,16 @@ var express = require('express');
 var router = express.Router();
 const User = require('../schema');
 const { getClasses, getSubclasses } = require('../resourceObjects');
+const { authenticateJWT } = require('../cookieHandler/jwtVerifier');
 
-router.get('/', async function (req, res) {
+router.get('/', authenticateJWT, async function (req, res) {
     try {
-        const email = req.query.email; // Access the email as a query parameter
+        const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
         console.log(email)
         const user = await User.findOne({email: email});
         if (user) {
             const characterArray = user.characters; // Access the characters array
-            //console.log(characterArray);
+            console.log(characterArray);
             return res.json(characterArray);
         } else {
             return res.status(404).json({ error: 'User not found' });
@@ -21,9 +22,9 @@ router.get('/', async function (req, res) {
     }
 });
 
-router.delete('/', async function (req, res) {
+router.delete('/', authenticateJWT, async function (req, res) {
     try {
-        const email = req.query.email; // Access the email as a query parameter
+        const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
         const characterName = req.query.characterName;
 
         const user = await User.findOne({ email: email });
@@ -47,10 +48,10 @@ router.delete('/', async function (req, res) {
     }
 });
 
-router.post('/', async function (req, res) {
+router.post('/', authenticateJWT, async function (req, res) {
     //save new character information to user
     try {
-        const email = req.body.email;
+        const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
         const characterName = req.body.character.name;
         const className = req.body.character.className;
         const classLevel = req.body.character.classLevel;

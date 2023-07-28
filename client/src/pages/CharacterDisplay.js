@@ -13,7 +13,6 @@ import {Card, Col, Container, Row, Button} from "react-bootstrap";
 
 function CharacterDisplay() {
     const { state } = useLocation();
-    const email = state.email;
     const characterName = state.characterName;
 
     const [character, setCharacter] = useState()
@@ -23,13 +22,11 @@ function CharacterDisplay() {
     const [spellpointArray, setSpellpointArray] = useState([]);
     const [userSettings, setUserSettings] = useState()
 
-    //Make an api call to get the specific character object given an email & characterName
-    const getCharacter = function(email, characterName) {
-        axios.get('http://localhost:9000/characterDisplay', {
-            params: {
-                email: email,
-                characterName: characterName
-            }
+    //Make an api call to get the specific character object given a characterName
+    const getCharacter = function(characterName) {
+        axios.get('http://localhost:9000/characterDisplay',{
+            params: {characterName: characterName},
+            withCredentials: true
         }).then((res) => {
             setCharacter(res.data.character);
             setUserSettings(res.data.settings);
@@ -47,9 +44,9 @@ function CharacterDisplay() {
 
     // Initial load of character
     useEffect(() => {
-        getCharacter(email, characterName);
+        getCharacter(characterName);
         setIsFirstLoad(false);
-    }, [email, characterName]);
+    }, [characterName]);
 
     useEffect(() => {
         //If the character exists, take its resources and assign them to the state values that the display components use (splitting them up if the user has spellpoints enabled)
@@ -70,18 +67,18 @@ function CharacterDisplay() {
     // Save character upon a change
     useEffect(() => {
         if (!isFirstLoad) {
-            saveCharacter(email, character);
+            saveCharacter(character);
         }
     }, [character, isFirstLoad]);
 
-    const saveCharacter = (email, character) =>{
+    const saveCharacter = (character) =>{
         //reject initial onLoad call from connected useEffect Hook
         if (!character) return;
 
         axios.post('http://localhost:9000/characterDisplay', {
-            email: email,
             character: character,
-        }).then((res) => {
+        }, {withCredentials: true}
+        ).then((res) => {
             // Handle success
         }).catch((error) => {
             // Handle error
@@ -223,7 +220,7 @@ function CharacterDisplay() {
 
     return (
         <div className="character-display-body">
-            <SiteNavbar email={email} />
+            <SiteNavbar />
             <div className="content-container">
             {character?.resources?.length > 0 ? (
                 <>

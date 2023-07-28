@@ -20,7 +20,17 @@ const server = express();
 server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'jade');
 
-server.use(cors());
+server.use(cors({
+    origin: 'http://localhost:3000', // this should match the URL of your frontend
+    credentials: true,  // this enables cookies to be sent and received cross-origin
+    allowedHeaders: [
+        'set-cookie',
+        'Content-Type',
+        'Access-Control-Allow-Origin',
+        'Access-Control-Allow-Credentials',
+        'Authorization'
+    ],
+}));
 server.use(logger('dev'));
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));

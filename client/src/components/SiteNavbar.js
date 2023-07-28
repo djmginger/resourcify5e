@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { Nav } from "react-bootstrap";
 import { NavDropdown } from "react-bootstrap";
@@ -6,14 +5,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../logo.svg";
 import "../css/SiteNavbar.css";
 import axios from "axios";
+import { useCharacters } from '../contextProviders/CharacterContext';
+import { useAuth } from "../contextProviders/AuthContext";
 
-function SiteNavbar({ email }) {
-    const isUserLoggedIn = email || false;
+function SiteNavbar() {
+    const { isUserLoggedIn } = useAuth();
 
     return (
         <div>
             {isUserLoggedIn ? (
-                <UserNavbar email={email} />
+                <UserNavbar />
             ) : (
                 <NoUserNavbar />
             )}
@@ -21,42 +22,33 @@ function SiteNavbar({ email }) {
     );
 }
 
-function UserNavbar({ email }){
+function UserNavbar(){
+    const { setIsUserLoggedIn } = useAuth();
     const navigate = useNavigate();
-    const [characterArray, setCharacterArray] = useState([]);
-
+    const { characterArray } = useCharacters();
     const location = useLocation();
     console.log(location.pathname);
 
-    const getCharacters = function(email) {
-        axios.get('http://localhost:9000/characters', {
-            params: { email: email }
-        }).then((res) => {
-            const userCharacters = res.data.map((character) => ({
-                characterName: character.characterName,
-            }));
-            setCharacterArray(userCharacters);
-        }).catch((error) => {
-            console.log(error);
+    const logOut = function () {
+        axios.post('http://localhost:9000/login/logout',
+            {},
+            {withCredentials: true}
+        ).then(res => {
+            setIsUserLoggedIn(false);
+            navigate("/login", { replace: true })
+        })
+        .catch((error) => {
+            console.log("Error logging out", error);
         });
-    };
-
-    useEffect(() => {
-        getCharacters(email);
-    }, []);
+    }
 
     const characterListNavigate = () => {
-        navigate("/characters", { state: { email: email } })
+        navigate("/characters")
     }
 
     const characterNavigate = (characterName) => {
-        console.log("Clicked character name: " + characterName);
         navigate(`/characters/${characterName}`, {
-            state:
-                {
-                    email: email,
-                    characterName: characterName
-                }
+            state: { characterName: characterName }
         });
     };
 
@@ -71,7 +63,7 @@ function UserNavbar({ email }){
                         height="64"
                         className="d-inline-block"
                     />
-                    {" Resourceify 5e"}
+                    {" Resourcify 5e"}
                 </Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -114,7 +106,7 @@ function UserNavbar({ email }){
                                 Settings
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#inputFormPrefilled">
+                            <NavDropdown.Item onClick={logOut}>
                                 Logout
                             </NavDropdown.Item>
                         </NavDropdown>
@@ -150,7 +142,7 @@ function NoUserNavbar(){
                         height="64"
                         className="d-inline-block"
                     />
-                    {" Resourceify 5e"}
+                    {" Resourcify 5e"}
                 </Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

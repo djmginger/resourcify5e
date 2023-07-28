@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Characters from "./pages/Characters";
 import CharacterDisplay from "./pages/CharacterDisplay";
+import Protected from "./components/Protected";
 
 const RouteSwitch = () => {
     return (
@@ -13,8 +14,16 @@ const RouteSwitch = () => {
                 <Route path="/" element={<App />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/characters" element={<Characters />} />
-                <Route path="/characters/:character" element={<CharacterDisplay />} />
+                <Route path="/characters" element={
+                    <Protected>
+                        <Characters />
+                    </Protected>
+                } />
+                <Route path="/characters/:character" element={
+                    <Protected>
+                        <CharacterDisplay />
+                    </Protected>
+                } />
             </Routes>
         </BrowserRouter>
     );

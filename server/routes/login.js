@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../schema');
+const jsonwebtoken = require("jsonwebtoken");
+const { authenticateJWT } = require('../cookieHandler/jwtVerifier');
 
 router.post('/', async function (req, res) {
     try {
@@ -12,18 +14,33 @@ router.post('/', async function (req, res) {
         }
 
         if (!user.validPassword(req.body.password)) {
-            //password doesn't match
             console.log("Password doesn't match")
             return res.status(401).send('Password does not match');
         } else {
-            //password matched
             console.log("Password matches!")
-            return res.send(req.body);    // echo the result back
+
+            const authToken = jsonwebtoken.sign({ email: user.email }, "YOUR_SECRET_KEY_HERE", {
+                expiresIn: '24h'  // token will expire in 24 hours
+            });
+
+            // Set JWT as a cookie
+            res.cookie("authToken", authToken, {
+                httpOnly: true,
+                maxAge: 24 * 60 * 60 * 1000, // 1 day
+                // secure: true, // use this in production when using HTTPS
+            });
+
+            return res.sendStatus(200);
         }
     } catch (err) {
         console.log("Error occurred", err);
         return res.status(500).send('Error occurred');
-    }   // echo the result back
+    }
+});
+
+router.post('/logout', authenticateJWT, function (req, res) {
+    res.clearCookie("authToken");
+    return res.sendStatus(200);
 });
 
 module.exports = router;

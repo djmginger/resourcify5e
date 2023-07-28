@@ -6,6 +6,7 @@ import SiteNavbar from "../components/SiteNavbar";
 import { useNavigate } from "react-router-dom";
 import "../css/Register.css"
 import {Col, Container, Row} from "react-bootstrap";
+import { useAuth } from "../contextProviders/AuthContext";
 
 function Register() {
 
@@ -14,6 +15,7 @@ function Register() {
     const [registeredDuringSession, setRegisteredDuringSession] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+    const { setIsUserLoggedIn } = useAuth();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -46,8 +48,9 @@ function Register() {
                     email: email,
                     password: pass,
                 }).then(function (res) {
-                    //post successful, go to characters page and pass user email for data-loading purposes
-                    navigate("/characters", {state: {email: email}})
+                    //post successful, set global loggedIn context to true
+                    setIsUserLoggedIn(true);
+                    navigate("/characters")
                 }).catch(function (error) {
                     if (error.response.status === 404){
                         setErrorMessage("Email is incorrect or not registered")

@@ -6,13 +6,15 @@ import SiteNavbar from "../components/SiteNavbar";
 import { useNavigate } from "react-router-dom";
 import "../css/Login.css"
 import {Col, Container, Row} from "react-bootstrap";
+import { useAuth } from "../contextProviders/AuthContext";
 
 function Login() {
-
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+
+    const { setIsUserLoggedIn } = useAuth();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,13 +22,15 @@ function Login() {
         if (email === "") {
             setErrorMessage('Please provide a valid email');
         } else {
-            axios.post('http://localhost:9000/login', {
-                email: email,
-                password: pass,
-            }).then((res) => {
+            console.log("attempting post");
+            axios.post('http://localhost:9000/login',
+                { email: email, password: pass},
+                { withCredentials: true}
+            ).then((res) => {
                 //post successful, go to characters page and pass user email for data-loading purposes
                 console.log('Redirecting to Characters page');
-                navigate("/characters", { state: { email: email } })
+                setIsUserLoggedIn(true);
+                navigate("/characters")
             }).catch(function (error) {
                 if (error.response) {
                     // The request was made and the server responded with a status code
@@ -58,7 +62,6 @@ function Login() {
                     </Row>
                 </Container>
                 <LoginForm
-
                     setEmail={setEmail}
                     pass={pass}
                     setPass={setPass}

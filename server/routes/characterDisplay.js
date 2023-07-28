@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../schema');
+const { authenticateJWT } = require('../cookieHandler/jwtVerifier');
 
-router.get('/', async function (req, res) {
+router.get('/', authenticateJWT, async function (req, res) {
     try {
-        const email = req.query.email;
+        const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
         const characterName = req.query.characterName;
 
         const user = await User.findOne({ email: email });
@@ -30,10 +31,11 @@ router.get('/', async function (req, res) {
     }
 });
 
-router.post('/', async function (req, res) {
+router.post('/', authenticateJWT, async function (req, res) {
     console.log("recieved post request")
     try {
-        const { email, character } = req.body;
+        const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
+        const { character } = req.body;
 
         const user = await User.findOne({ email: email });
 

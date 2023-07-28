@@ -4,10 +4,16 @@ import './css/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RouteSwitch from "./RouteSwitch";
 import reportWebVitals from './reportWebVitals';
+import {CharacterProvider} from "./contextProviders/CharacterContext";
+import { AuthProvider } from "./contextProviders/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-        <RouteSwitch />
+    <AuthProvider>
+        <CharacterProvider>
+            <RouteSwitch />
+        </CharacterProvider>
+    </AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
