@@ -3,7 +3,7 @@ import {Col, Container, ListGroup, Modal, Row} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTrashCan} from '@fortawesome/free-solid-svg-icons'
+import {faTrashCan, faGear} from '@fortawesome/free-solid-svg-icons'
 import Alert from "react-bootstrap/Alert";
 import AddCharacterModal from "./AddCharacterModal";
 import "../css/CharacterList.css";
@@ -37,6 +37,7 @@ function CharacterList({characters, reloadCharacters}) {
     const [characterDataLoaded, setCharacterDataLoaded] = useState(false);
     const [characterToDelete, setCharacterToDelete] = useState(false);
     const [deleteConfirmShow, setDeleteConfirmShow] = useState(false);
+    const [isUpdateMode, setIsUpdateMode] = useState(false);
 
     const navigate = useNavigate();
     const classArray = ['Artificer', 'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'];
@@ -75,8 +76,7 @@ function CharacterList({characters, reloadCharacters}) {
     //Navigate to the page for the chosen character
     const characterSelection = (characterName) => {
         navigate(`/characters/${characterName}`, {
-            state:
-                { characterName: characterName }
+            state: { characterName: characterName }
         });
     };
 
@@ -142,21 +142,10 @@ function CharacterList({characters, reloadCharacters}) {
 
         const stats = {str, dex, con, int, wis, cha}
 
-        if (characterName === "" || !/^[\w\s]{1,50}$/.test(characterName) || characterName === undefined){
-            // Check that the length of the name is 50 or less, and has no special characters
-            setNameErrorMessage(true);
-        } else if (!/^(1\d|20|\d)$/.test(classLevel.toString())){
-            // Check that the class level is a value between 1 and 20 (inclusive)
-            setLevelErrorMessage(true);
-        } else if (classSelection === undefined){
-            // Check that a class has been selected
-            setClassErrorMessage(true);
-        } else if (classSelection && minLevelForSubclass <= classLevel && subclass === undefined){
-            // Check that a subclass has been selected (only if the character has access to them)
-            setSubclassErrorMessage(true);
-        } else{
-            //api call to add character to use
-            axios.post('http://localhost:9000/characters', {
+        //If this function is reached as a result of a user clicking on the update button of an existing character:
+        if (isUpdateMode) {
+            // API call to update existing character
+            axios.put(`http://localhost:9000/characters`, {
                 character: {
                     name: characterName,
                     className: classSelection,
@@ -167,19 +156,55 @@ function CharacterList({characters, reloadCharacters}) {
                         showSpellpoints: useSpellpoints
                     }
                 },
-            }, { withCredentials: true }
-            ).then((res) => {
-                resetForm();
-                reloadCharacters();
-                setShowNewCharacter(false);
-            }).catch(function (error) {
-                if (error.response.status === 409) {
-
-                    setShowDupeCharacterMessage(true);
-                } else {
-                    console.log('Error', error.message);
-                }
+            }, { withCredentials: true })
+                .then((res) => {
+                    resetForm();
+                    reloadCharacters();
+                    setIsUpdateMode(false);
+                    setShowNewCharacter(false);
+                }).catch((error) => {
+                console.log('Error', error.message);
             });
+        } else { //Else if a user is adding a completely new character
+            if (characterName === "" || !/^[\w\s]{1,50}$/.test(characterName) || characterName === undefined) {
+                // Check that the length of the name is 50 or less, and has no special characters
+                setNameErrorMessage(true);
+            } else if (!/^(1\d|20|\d)$/.test(classLevel.toString())) {
+                // Check that the class level is a value between 1 and 20 (inclusive)
+                setLevelErrorMessage(true);
+            } else if (classSelection === undefined) {
+                // Check that a class has been selected
+                setClassErrorMessage(true);
+            } else if (classSelection && minLevelForSubclass <= classLevel && subclass === undefined) {
+                // Check that a subclass has been selected (only if the character has access to them)
+                setSubclassErrorMessage(true);
+            } else {
+                //api call to add character to use
+                axios.post('http://localhost:9000/characters', {
+                        character: {
+                            name: characterName,
+                            className: classSelection,
+                            classLevel: classLevel,
+                            subclass: subclass,
+                            stats: stats,
+                            settings: {
+                                showSpellpoints: useSpellpoints
+                            }
+                        },
+                    }, {withCredentials: true}
+                ).then((res) => {
+                    resetForm();
+                    reloadCharacters();
+                    setShowNewCharacter(false);
+                }).catch(function (error) {
+                    if (error.response.status === 409) {
+
+                        setShowDupeCharacterMessage(true);
+                    } else {
+                        console.log('Error', error.message);
+                    }
+                });
+            }
         }
     };
 
@@ -199,6 +224,53 @@ function CharacterList({characters, reloadCharacters}) {
             });
     }
 
+    const showUpdateCharacter = async (existingCharacter) => {
+
+        const getCharacter = async function (characterName) {
+            try {
+                const res = await axios.get('http://localhost:9000/characterDisplay', {
+                    params: {characterName: characterName},
+                    withCredentials: true
+                });
+                return res.data.character;
+            } catch (error) {
+                if (error.response && error.response.status === 404) {
+                    if (error.response.error === 'User not found') {
+                        console.log(error.response.error);
+                        // Handle user not found
+                    } else if (error.response.error === 'Character not found') {
+                        console.log(error.response.error);
+                        // Handle character not found
+                    }
+                } else {
+                    console.log(error);
+                }
+                return null; // Return null in case of an error
+            }
+        }
+
+        //Get the full character object from the characterName, then set all states equal to their existing values and show the modal.
+        const character = await getCharacter(existingCharacter.characterName);
+
+        setCharacterName(character.characterName);
+        handleClassChange(character.classes[0].className);
+        setClassLevel(character.classes[0].classLevel);
+        if (character.classes[0].subclass) {
+            setSubclass(character.classes[0].subclass);
+        }
+        setStr(character.stats.str);
+        setDex(character.stats.dex);
+        setCon(character.stats.con);
+        setInt(character.stats.int);
+        setWis(character.stats.wis);
+        setCha(character.stats.cha);
+        setUseSpellpoints(character.settings.showSpellpoints);
+        setShowMaximums(character.settings.showMaxValues);
+
+        setIsUpdateMode(true);
+        setShowNewCharacter(true);
+    }
+
     return (
         <div className="character-list-container">
             <Container fluid>
@@ -212,6 +284,15 @@ function CharacterList({characters, reloadCharacters}) {
                                     className="d-flex justify-content-between align-items-center character-item"
                                 >
                                     {character.characterName}
+                                    <div
+                                        onClick={(e) => {
+                                            e.stopPropagation(); // Prevent parent component onClick from triggering
+                                            showUpdateCharacter(character);
+                                        }}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <FontAwesomeIcon icon={faGear} className="update-icon" />
+                                    </div>
                                     <div
                                         onClick={(e) => {
                                             e.stopPropagation(); // Prevent parent component onClick from triggering
@@ -240,8 +321,10 @@ function CharacterList({characters, reloadCharacters}) {
                 show={showNewCharacter}
                 onHide={() => {
                     setShowNewCharacter(false);
+                    setIsUpdateMode(false);
                     resetForm();
                 }}
+                isUpdateMode={isUpdateMode}
                 classArray={classArray}
                 characterName={characterName}
                 setCharacterName={setCharacterName}

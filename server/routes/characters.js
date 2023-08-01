@@ -127,6 +127,74 @@ router.post('/', authenticateJWT, async function (req, res) {
     }
 });
 
+router.put('/', authenticateJWT, async function (req, res) {
+    try {
+        const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
+        const characterName = req.body.character.name;
+
+        const user = await User.findOne({email: email});
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Find the character by name
+        const characterIndex = user.characters.findIndex(char => char.characterName === characterName);
+
+        if (characterIndex === -1) {
+            return res.status(404).json({ error: 'Character not found' });
+        }
+
+        // Update the character's details based on the provided data
+        const updatedCharacter = req.body.character;
+
+        const resourceArray = [];
+        const classes = getClasses(updatedCharacter.classLevel, updatedCharacter.stats);
+        const subclasses = getSubclasses(updatedCharacter.classLevel, updatedCharacter.stats);
+
+        if(classes[updatedCharacter.className][updatedCharacter.classLevel]){
+            const classResources = classes[updatedCharacter.className][updatedCharacter.classLevel];
+            if (classResources) {
+                resourceArray.push(...classResources);
+            }
+        }
+
+        if (
+            updatedCharacter.subclass &&
+            subclasses[updatedCharacter.className] &&
+            subclasses[updatedCharacter.className][updatedCharacter.subclass] &&
+            subclasses[updatedCharacter.className][updatedCharacter.subclass][updatedCharacter.classLevel]
+        ) {
+            const subclassResources = subclasses[updatedCharacter.className][updatedCharacter.subclass][updatedCharacter.classLevel];
+            if (subclassResources) {
+                resourceArray.push(...subclassResources);
+            }
+        }
+
+        user.characters[characterIndex] = {
+            characterName: updatedCharacter.name,
+            classes: [
+                {
+                    className: updatedCharacter.className,
+                    classLevel: updatedCharacter.classLevel,
+                    subclass: updatedCharacter.subclass,
+                },
+            ],
+            stats: updatedCharacter.stats,
+            resources: resourceArray,
+            spellpoints: generateSpellpoints(resourceArray),
+            settings: updatedCharacter.settings
+        };
+
+        await user.save();
+        return res.status(200).json({ message: 'Character updated successfully' });
+
+    } catch (err) {
+        console.log("Error occurred", err);
+        return res.status(500).send('Error occurred');
+    }
+});
+
 const generateSpellpoints = (resourceArray) => {
     const spellPointObject = {
             current: undefined,

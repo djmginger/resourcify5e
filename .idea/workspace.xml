@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in.">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Accidentally removed React from Navbar during last commit. Added back.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Protected.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Protected.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RadialSeparators.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RadialSeparators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/contextProviders/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/contextProviders/AuthContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,28 +46,28 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "18.16.1",
-    "javascript.nodejs.core.library.typings.version": "18.16.1",
-    "last_opened_file_path": "D:/Programming/Web Development/resourcify5e/client/src/contextProviders",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "JavaScript.Libraries",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Programming/Web Development/resourcify5e/client/src/contextProviders&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;JavaScript.Libraries&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -122,7 +131,8 @@
       <workItem from="1690224789952" duration="22530000" />
       <workItem from="1690322971231" duration="17212000" />
       <workItem from="1690400730910" duration="3693000" />
-      <workItem from="1690507226740" duration="12099000" />
+      <workItem from="1690507226740" duration="12595000" />
+      <workItem from="1690848584051" duration="9316000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -222,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690522677418</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Accidentally removed React from Navbar during last commit. Added back.">
+      <created>1690523046982</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1690523046982</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +261,8 @@
     <MESSAGE value="Added component and related functional code for the variant Spell Point rules. Also made slight changes to the schema, as well as css changes." />
     <MESSAGE value="Fixed broken resources within the CharacterDisplay.js, and worked on css styling" />
     <MESSAGE value="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in." />
+    <MESSAGE value="Accidentally removed React from Navbar during last commit. Added back." />
+    <option name="LAST_COMMIT_MESSAGE" value="Accidentally removed React from Navbar during last commit. Added back." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

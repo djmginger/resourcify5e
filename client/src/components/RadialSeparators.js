@@ -13,7 +13,7 @@ function Separator(props) {
             <div
                 style={{
                     ...props.style,
-                    marginTop: `4px`,
+                    marginTop: `5px`,
                     marginBottom: `${props.padding}px`
                 }}
             />

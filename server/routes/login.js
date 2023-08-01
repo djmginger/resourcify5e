@@ -43,4 +43,9 @@ router.post('/logout', authenticateJWT, function (req, res) {
     return res.sendStatus(200);
 });
 
+router.get('/validate-token', authenticateJWT, (req, res) => {
+    // If the middleware `authenticateJWT` does not throw an error, the JWT is valid.
+    return res.status(200).json({ valid: true, email: req.user.email });
+});
+
 module.exports = router;

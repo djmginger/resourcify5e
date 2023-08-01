@@ -10,6 +10,7 @@ function AddCharacterModal(props) {
     const {
         show,
         onHide,
+        isUpdateMode,
         classArray,
         characterName,
         setCharacterName,
@@ -55,7 +56,7 @@ function AddCharacterModal(props) {
         >
             <Modal.Header className="character-modal" closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Add New Character
+                    {isUpdateMode ? 'Update Character' : 'Add New Character'}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className="character-modal">
@@ -314,7 +315,7 @@ function AddCharacterModal(props) {
             </Modal.Body>
             <Modal.Footer className="character-modal">
                 <Button type="submit" onClick={handleAddCharacter}>
-                    Add Character
+                    {isUpdateMode ? 'Update' : 'Add Character'}
                 </Button>
             </Modal.Footer>
         </Modal>

@@ -83,10 +83,14 @@
 }
 
 .spellpoint-container {
+    padding-left: 15px;
+    padding-right: 15px;
     margin-top: 30px;
 }
 
 .resource-card-container {
+    padding-left: 15px;
+    padding-right: 15px;
     margin-top: 30px;
     /* styles for resource cards go here */
 }
@@ -96,5 +100,7 @@
 }
 
 .no-resources {
+    margin-top: 50px;
+    color: #F5F1E3;
     text-align: center;
 }

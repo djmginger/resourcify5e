@@ -27,8 +27,6 @@ function UserNavbar(){
     const { setIsUserLoggedIn } = useAuth();
     const navigate = useNavigate();
     const { characterArray } = useCharacters();
-    const location = useLocation();
-    console.log(location.pathname);
 
     const logOut = function () {
         axios.post('http://localhost:9000/login/logout',

@@ -17,6 +17,7 @@ function CharacterDisplay() {
 
     const [character, setCharacter] = useState()
     const [isFirstLoad, setIsFirstLoad] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [editEnabled, setEditEnabled] = useState(false);
     const [resourceArray, setResourceArray] = useState([]);
     const [spellpointArray, setSpellpointArray] = useState([]);
@@ -24,13 +25,14 @@ function CharacterDisplay() {
 
     //Make an api call to get the specific character object given a characterName
     const getCharacter = function(characterName) {
+        setIsLoading(true);
         axios.get('http://localhost:9000/characterDisplay',{
             params: {characterName: characterName},
             withCredentials: true
         }).then((res) => {
             setCharacter(res.data.character);
             setUserSettings(res.data.settings);
-            //setFullResourceArray(res.data.character.resources);
+            setIsLoading(false);
         }).catch((error) => {
             if (error.response.status === 404) {
                 if (error.response.error === 'User not found') {
@@ -221,73 +223,77 @@ function CharacterDisplay() {
     return (
         <div className="character-display-body">
             <SiteNavbar />
-            <div className="content-container">
-            {character?.resources?.length > 0 ? (
-                <>
-                    <div className="header">
-                        <div className="spacer"/>
-                        <div className="title">
-                            <h1>{character.characterName}</h1>
-                            {character.classes && character.classes.length > 0 && (
-                                <h5>
-                                    Level {character.classes[0].classLevel} {character.classes[0].subclass} {character.classes[0].className}
-                                </h5>
-                            )}
+            {isLoading ? null : (
+                <div className="content-container">
+                {character?.resources?.length > 0 ? (
+                    <>
+                        <div className="header">
+                            <div className="spacer"/>
+                            <div className="title">
+                                <h1>{character.characterName}</h1>
+                                {character.classes && character.classes.length > 0 && (
+                                    <h5>
+                                        Level {character.classes[0].classLevel} {character.classes[0].subclass} {character.classes[0].className}
+                                    </h5>
+                                )}
+                            </div>
+                            <div className="actions">
+                                <FontAwesomeIcon size={"2x"} icon={faPenToSquare} onClick={() => editValueToggle()} className="edit-icon"/>
+                            </div>
                         </div>
-                        <div className="actions">
-                            <FontAwesomeIcon size={"2x"} icon={faPenToSquare} onClick={() => editValueToggle()} className="edit-icon"/>
+                        <div className="button-container">
+                            <Button onClick={() => rest('long')} className="btn-sm rest">Long Rest</Button>
+                            <Button onClick={() => rest('short')} className="btn-sm rest">Short Rest</Button>
                         </div>
-                    </div>
-                    <div className="button-container">
-                        <Button onClick={() => rest('long')} className="btn-sm rest">Long Rest</Button>
-                        <Button onClick={() => rest('short')} className="btn-sm rest">Short Rest</Button>
-                    </div>
-                    {character?.settings.showSpellpoints && spellpointArray.length > 0 && ( //Only show the spellpoint container if the user has spellpoints enabled for this character, and the character has spell resources
-                        <div className="spellpoint-container row justify-content-md-center" >
-                            <SpellpointDisplay
-                                spellpointArray={spellpointArray}
-                                decreaseSpellpointValue={decreaseCurrentSpellpoints}
-                                increaseSpellpointValue={increaseCurrentSpellpoints}
-                                editEnabled={editEnabled}
-                                spellpointObject={character.spellpoints}
-                            />
-                        </div>
-                    )}
-                    <div className="resource-card-container">
-                        {resourceArray.map((resource, index) => {
-                            if (index % 2 === 0) {
-                                // It's the first resource of the pair
-                                return (
-                                    <div className="row justify-content-md-center" key={index}>
-                                        <div className="col-2 resource-card">
-                                            <ResourceDisplay
-                                                resource={resource}
-                                                onDecreaseResource={decreaseResourceValue}
-                                                onIncreaseResource={increaseResourceValue}
-                                                editEnabled={editEnabled}
-                                            />
-                                        </div>
-                                        {resourceArray[index + 1] && ( // Check if the second resource exists
-                                            <div className="col-2 offset-1 resource-card">
+                        {character?.settings.showSpellpoints && spellpointArray.length > 0 && ( //Only show the spellpoint container if the user has spellpoints enabled for this character, and the character has spell resources
+                            <div className="spellpoint-container" >
+                                <div className="row justify-content-md-center" >
+                                    <SpellpointDisplay
+                                        spellpointArray={spellpointArray}
+                                        decreaseSpellpointValue={decreaseCurrentSpellpoints}
+                                        increaseSpellpointValue={increaseCurrentSpellpoints}
+                                        editEnabled={editEnabled}
+                                        spellpointObject={character.spellpoints}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        <div className="resource-card-container">
+                            {resourceArray.map((resource, index) => {
+                                if (index % 2 === 0) {
+                                    // It's the first resource of the pair
+                                    return (
+                                        <div className="row justify-content-md-center" key={index}>
+                                            <div className="col-2 resource-card">
                                                 <ResourceDisplay
-                                                    resource={resourceArray[index + 1]}
+                                                    resource={resource}
                                                     onDecreaseResource={decreaseResourceValue}
                                                     onIncreaseResource={increaseResourceValue}
                                                     editEnabled={editEnabled}
                                                 />
                                             </div>
-                                        )}
-                                    </div>
-                                );
-                            }
-                            return null; // Return null for odd indices, as they are handled by even indices
-                        })}
-                    </div>
-                </>
-            ) : (
-                <h1 className={"no-resources"}>There are no resources to track! Lucky you!</h1>
+                                            {resourceArray[index + 1] && ( // Check if the second resource exists
+                                                <div className="col-2 offset-1 resource-card">
+                                                    <ResourceDisplay
+                                                        resource={resourceArray[index + 1]}
+                                                        onDecreaseResource={decreaseResourceValue}
+                                                        onIncreaseResource={increaseResourceValue}
+                                                        editEnabled={editEnabled}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                }
+                                return null; // Return null for odd indices, as they are handled by even indices
+                            })}
+                        </div>
+                    </>
+                ) : (
+                    <h1 className={"no-resources"}>There are no resources to track! Lucky you!</h1>
+                )}
+                </div>
             )}
-            </div>
         </div>
     );
 }
