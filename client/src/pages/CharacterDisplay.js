@@ -224,7 +224,7 @@ function CharacterDisplay() {
         <div className="character-display-body">
             <SiteNavbar />
             {isLoading ? null : (
-                <div className="content-container">
+                <div>
                 {character?.resources?.length > 0 ? (
                     <>
                         <div className="header">
@@ -263,8 +263,8 @@ function CharacterDisplay() {
                                 if (index % 2 === 0) {
                                     // It's the first resource of the pair
                                     return (
-                                        <div className="row justify-content-md-center" key={index}>
-                                            <div className="col-2 resource-card">
+                                        <div className="row justify-content-center" key={index}>
+                                            <div className="col-6 col-sm-5 col-md-3 col-lg-2 resource-card">
                                                 <ResourceDisplay
                                                     resource={resource}
                                                     onDecreaseResource={decreaseResourceValue}
@@ -273,7 +273,7 @@ function CharacterDisplay() {
                                                 />
                                             </div>
                                             {resourceArray[index + 1] && ( // Check if the second resource exists
-                                                <div className="col-2 offset-1 resource-card">
+                                                <div className="col-6 col-sm-5 col-md-3 col-lg-2 offset-sm-1 resource-card">
                                                     <ResourceDisplay
                                                         resource={resourceArray[index + 1]}
                                                         onDecreaseResource={decreaseResourceValue}

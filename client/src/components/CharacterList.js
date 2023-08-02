@@ -284,24 +284,28 @@ function CharacterList({characters, reloadCharacters}) {
                                     className="d-flex justify-content-between align-items-center character-item"
                                 >
                                     {character.characterName}
-                                    <div
-                                        onClick={(e) => {
-                                            e.stopPropagation(); // Prevent parent component onClick from triggering
-                                            showUpdateCharacter(character);
-                                        }}
-                                        style={{ cursor: "pointer" }}
-                                    >
-                                        <FontAwesomeIcon icon={faGear} className="update-icon" />
-                                    </div>
-                                    <div
-                                        onClick={(e) => {
-                                            e.stopPropagation(); // Prevent parent component onClick from triggering
-                                            setCharacterToDelete(character.characterName)
-                                            setDeleteConfirmShow(true);
-                                        }}
-                                        style={{ cursor: "pointer" }}
-                                    >
-                                        <FontAwesomeIcon icon={faTrashCan} className="delete-icon" />
+                                    <div className="icon-wrapper">
+
+                                        <div
+                                            onClick={(e) => {
+                                                e.stopPropagation(); // Prevent parent listgroup.item onClick from triggering
+                                                showUpdateCharacter(character);
+                                            }}
+                                            className="icon-action update-action"
+                                        >
+                                            <FontAwesomeIcon icon={faGear} className="update-icon" />
+                                        </div>
+
+                                        <div
+                                            onClick={(e) => {
+                                                e.stopPropagation(); // Prevent parent component onClick from triggering
+                                                setCharacterToDelete(character.characterName)
+                                                setDeleteConfirmShow(true);
+                                            }}
+                                            className="icon-action delete-action"
+                                        >
+                                            <FontAwesomeIcon icon={faTrashCan} className="delete-icon" />
+                                        </div>
                                     </div>
                                 </ListGroup.Item>
                             ))}
@@ -310,7 +314,7 @@ function CharacterList({characters, reloadCharacters}) {
                 </Row>
 
             {characterDataLoaded && (
-                <Button variant="primary" className="add-character-button" onClick={() => checkTotalCharacters()}>
+                <Button className="add-character-button" onClick={() => checkTotalCharacters()}>
                     Add a new Character
                 </Button>
             )}

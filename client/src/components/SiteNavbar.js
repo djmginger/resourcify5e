@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { Nav } from "react-bootstrap";
 import { NavDropdown } from "react-bootstrap";
@@ -11,11 +11,29 @@ import { useAuth } from "../contextProviders/AuthContext";
 
 function SiteNavbar() {
     const { isUserLoggedIn } = useAuth();
+    const [expanded, setExpanded] = useState(false); // Add expanded state
+    const navbarRef = useRef(null);
+
+    // Check if the user clicked on a component outside the expanded navbar. If so, collapse the navbar
+    const handleOutsideClick = (e) => {
+        if (expanded && navbarRef.current && !navbarRef.current.contains(e.target)) {
+            console.log("If statement reached")
+            setExpanded(false);
+        }
+    };
+
+    // Add the above function to the entire document, in order to check each click.
+    useEffect(() => {
+        document.addEventListener("click", handleOutsideClick);
+        return () => {
+            document.removeEventListener("click", handleOutsideClick);
+        };
+    }, [expanded]);
 
     return (
         <div>
             {isUserLoggedIn ? (
-                <UserNavbar />
+                <UserNavbar navbarRef={navbarRef} expanded={expanded} setExpanded={setExpanded} />
             ) : (
                 <NoUserNavbar />
             )}
@@ -23,10 +41,12 @@ function SiteNavbar() {
     );
 }
 
-function UserNavbar(){
+function UserNavbar({ navbarRef, expanded, setExpanded }){
     const { setIsUserLoggedIn } = useAuth();
     const navigate = useNavigate();
     const { characterArray } = useCharacters();
+    const location = useLocation();
+    const isListPage = location.pathname === "/characters";
 
     const logOut = function () {
         axios.post('http://localhost:9000/login/logout',
@@ -52,8 +72,8 @@ function UserNavbar(){
     };
 
     return (
-        <div>
-            <Navbar className="fixed-top" style={{ backgroundColor: "#333333" }} >
+        <div ref={navbarRef}>
+            <Navbar className="fixed-top" style={{ backgroundColor: "#333333" }} expand="md" variant="dark">
                 <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }} href="#home">
                     <img
                         alt="logo"
@@ -65,10 +85,20 @@ function UserNavbar(){
                     {" Resourcify 5e"}
                 </Navbar.Brand>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse className="justify-content-end">
+                <Navbar.Toggle
+                    aria-controls="basic-navbar-nav"
+                    className="custom-navbar-toggle"
+                    onClick={() => {
+                        console.log("Navbar.Toggle clicked!");
+                        setExpanded(!expanded)
+                    }} // Toggle the expanded state on click
+                    bg="light" // Change the color of the hamburger menu (use "light" or "dark")
+                />
+                <Navbar.Collapse className="justify-content-end" in={expanded}>
                     <Nav className="ml-auto nav-options">
-                        <Nav.Link style={{ color: "#F5F1E3" }} onClick={characterListNavigate}>Character List</Nav.Link>
+                        <Nav.Link hidden={isListPage} style={{ color: "#F5F1E3" }} onClick={characterListNavigate}>
+                            Character List
+                        </Nav.Link>
                         {characterArray && characterArray.length > 0 && (
                             <NavDropdown
                                 title="View Character"

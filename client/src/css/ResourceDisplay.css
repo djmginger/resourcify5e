@@ -20,13 +20,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
-.circular-button {
+.resource-button-container {
     width: 7.5rem;
     height: 7.5rem;
-    border-radius: 50%;
+}
+
+.circular-button,
+.circular-button:focus,
+.circular-button:hover,
+.circular-button:active,
+.circular-button:disabled {
+    margin: 0;
     padding: 0;
+    border-radius: 50%;
     background-color: transparent;
     border: none;
 }
@@ -42,4 +51,14 @@
 
 .edit-icon.plus {
     margin-left: .75rem;
+}
+
+@media (max-width: 767px) {
+    .edit-icon.minus {
+        margin-right: .5rem;
+    }
+
+    .edit-icon.plus {
+        margin-left: .5rem;
+    }
 }

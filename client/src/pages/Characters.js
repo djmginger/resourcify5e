@@ -17,7 +17,6 @@ function Characters() {
 
 function CharacterListComponent() {
     const { characterArray, getCharacters } = useCharacters();
-    console.log(characterArray);
     return (
         <CharacterList
             characters={characterArray}

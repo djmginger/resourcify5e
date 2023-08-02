@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Alert from 'react-bootstrap/Alert';
 import LoginForm from "../components/LoginForm"
 import SiteNavbar from "../components/SiteNavbar";
@@ -15,7 +15,12 @@ function Register() {
     const [registeredDuringSession, setRegisteredDuringSession] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    const { setIsUserLoggedIn } = useAuth();
+    const { isUserLoggedIn, setIsUserLoggedIn } = useAuth();
+
+    //If the user is already logged in, redirect them to the character list page
+    useEffect(() => {
+        if (isUserLoggedIn) navigate("/characters");
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -15,6 +15,19 @@
     background-color: #2660A4;
 }
 
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.icon-action {
+    cursor: pointer;
+}
+
+.update-action {
+    margin-right: 25px;
+}
+
 .delete-icon {
     color: #F5F1E3;
 }
@@ -26,6 +39,6 @@
 }
 
 .add-character-button:hover {
-    background-color: #1f4f8b; /* slightly darker blue for hover */
+    background-color: #1f4f8b;
     border-color: #1f4f8b;
 }
