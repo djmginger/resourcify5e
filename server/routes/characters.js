@@ -130,7 +130,7 @@ router.post('/', authenticateJWT, async function (req, res) {
 router.put('/', authenticateJWT, async function (req, res) {
     try {
         const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
-        const characterName = req.body.character.name;
+        const prevCharName = req.body.prevCharName;
 
         const user = await User.findOne({email: email});
 
@@ -138,12 +138,15 @@ router.put('/', authenticateJWT, async function (req, res) {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        // Find the character by name
-        const characterIndex = user.characters.findIndex(char => char.characterName === characterName);
+        // Find the character by name;
+        const characterIndex = user.characters.findIndex(char => char.characterName === prevCharName);
 
         if (characterIndex === -1) {
             return res.status(404).json({ error: 'Character not found' });
         }
+
+        console.log(user);
+        console.log(characterIndex)
 
         // Update the character's details based on the provided data
         const updatedCharacter = req.body.character;

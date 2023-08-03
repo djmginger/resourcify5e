@@ -10,6 +10,28 @@
     color: #F5F1E3; /* Set the desired text color */
 }
 
+.custom-dropdown .dropdown-menu {
+    padding: 3px 0;
+    background-color: #666666;
+    border-color: #5C5C5C;
+}
+
+.custom-dropdown-item {
+    padding: 7px 16px;
+    color: #F5F1E3;
+    background-color: #666666;
+}
+
+.custom-dropdown-item:hover {
+    color: #F5F1E3;
+    background-color: #5C5C5C;
+}
+
+.custom-divider {
+    margin: 0;
+    background-color: #5C5C5C;
+}
+
 .custom-navbar-toggle {
     margin-right: 40px;
 }

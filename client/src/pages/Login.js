@@ -7,8 +7,10 @@ import { useNavigate } from "react-router-dom";
 import "../css/Login.css"
 import {Col, Container, Row} from "react-bootstrap";
 import { useAuth } from "../contextProviders/AuthContext";
+import {useCharacters} from "../contextProviders/CharacterContext";
 
 function Login() {
+    const { getCharacters } = useCharacters();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [errorMessage, setErrorMessage] = useState('');
@@ -35,6 +37,7 @@ function Login() {
                 //post successful, go to characters page and pass user email for data-loading purposes
                 console.log('Redirecting to Characters page');
                 setIsUserLoggedIn(true);
+                getCharacters();
                 navigate("/characters")
             }).catch(function (error) {
                 if (error.response) {

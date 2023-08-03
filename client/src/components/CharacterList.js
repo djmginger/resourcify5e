@@ -10,7 +10,7 @@ import "../css/CharacterList.css";
 import axios from "axios";
 import { useCharacters } from '../contextProviders/CharacterContext';
 
-function CharacterList({characters, reloadCharacters}) {
+function CharacterList({reloadCharacters}) {
 
     const { characterArray, setCharacterArray } = useCharacters();
     const [showNewCharacter, setShowNewCharacter] = useState(false);
@@ -38,6 +38,7 @@ function CharacterList({characters, reloadCharacters}) {
     const [characterToDelete, setCharacterToDelete] = useState(false);
     const [deleteConfirmShow, setDeleteConfirmShow] = useState(false);
     const [isUpdateMode, setIsUpdateMode] = useState(false);
+    const [prevCharName, setPrevCharName] = useState();
 
     const navigate = useNavigate();
     const classArray = ['Artificer', 'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'];
@@ -69,9 +70,9 @@ function CharacterList({characters, reloadCharacters}) {
 
     useEffect(() => {
         // Initialize characterArray based on characters prop
-        setCharacterArray(characters);
+        setCharacterArray(characterArray);
         setCharacterDataLoaded(true)
-    }, [characters]);
+    }, [characterArray]);
 
     //Navigate to the page for the chosen character
     const characterSelection = (characterName) => {
@@ -132,6 +133,7 @@ function CharacterList({characters, reloadCharacters}) {
         setSubclassErrorMessage(false);
         setUseSpellpoints(false);
         setShowMaximums(true);
+        setPrevCharName(undefined);
     }
 
     const handleAddCharacter = () => {
@@ -156,6 +158,7 @@ function CharacterList({characters, reloadCharacters}) {
                         showSpellpoints: useSpellpoints
                     }
                 },
+                prevCharName: prevCharName
             }, { withCredentials: true })
                 .then((res) => {
                     resetForm();
@@ -248,6 +251,9 @@ function CharacterList({characters, reloadCharacters}) {
                 return null; // Return null in case of an error
             }
         }
+
+        //Set the state with the original character so that you can update it if the name is changed.
+        setPrevCharName(existingCharacter.characterName);
 
         //Get the full character object from the characterName, then set all states equal to their existing values and show the modal.
         const character = await getCharacter(existingCharacter.characterName);

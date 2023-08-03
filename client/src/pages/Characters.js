@@ -16,10 +16,9 @@ function Characters() {
 }
 
 function CharacterListComponent() {
-    const { characterArray, getCharacters } = useCharacters();
+    const { getCharacters } = useCharacters();
     return (
         <CharacterList
-            characters={characterArray}
             reloadCharacters={getCharacters}
         />
     )

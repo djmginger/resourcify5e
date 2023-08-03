@@ -27,7 +27,7 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
             <Card className="align-items-center resource-card">
                 <Card.Title className="resource-card-title">{resource.resourceName}</Card.Title>
                 <Card.Body className="d-flex justify-content-center align-items-center">
-                    <div className="resource-card-content col-10 col-sm-12 d-flex justify-content-center align-items-center">
+                    <div className="resource-card-content col-10 col-sm-12">
                         {editEnabled && (
                             <div>
                                 <FontAwesomeIcon size={"lg"} icon={faSquareMinus} onClick={decreaseResourceValue} className={"edit-icon minus"}/>

@@ -17,7 +17,6 @@ function SiteNavbar() {
     // Check if the user clicked on a component outside the expanded navbar. If so, collapse the navbar
     const handleOutsideClick = (e) => {
         if (expanded && navbarRef.current && !navbarRef.current.contains(e.target)) {
-            console.log("If statement reached")
             setExpanded(false);
         }
     };
@@ -89,7 +88,6 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
                     aria-controls="basic-navbar-nav"
                     className="custom-navbar-toggle"
                     onClick={() => {
-                        console.log("Navbar.Toggle clicked!");
                         setExpanded(!expanded)
                     }} // Toggle the expanded state on click
                     bg="light" // Change the color of the hamburger menu (use "light" or "dark")
@@ -101,7 +99,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
                         </Nav.Link>
                         {characterArray && characterArray.length > 0 && (
                             <NavDropdown
-                                title="View Character"
+                                title="Character"
                                 id="basic-nav-dropdown"
                                 className="custom-dropdown"
                                 align="end"
@@ -111,9 +109,9 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
                                     characterArray.map((character, index) => (
                                         <React.Fragment key={character.characterName}>
 
-                                            {index > 0 && <NavDropdown.Divider />} {/* If there's more than one character, add a dividing line */}
+                                            {index > 0 && <NavDropdown.Divider className="custom-divider" />} {/* If there's more than one character, add a dividing line */}
 
-                                            <NavDropdown.Item onClick={() => characterNavigate(character.characterName)}>
+                                            <NavDropdown.Item className="custom-dropdown-item" onClick={() => characterNavigate(character.characterName)}>
                                                 {character.characterName}
                                             </NavDropdown.Item>
                                         </React.Fragment>
@@ -131,11 +129,11 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
                             className="custom-dropdown"
                             align="end"
                         >
-                            <NavDropdown.Item href="#csvUpload">
+                            <NavDropdown.Item className="custom-dropdown-item" href="#csvUpload">
                                 Settings
                             </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item onClick={logOut}>
+                            <NavDropdown.Divider className="custom-divider" />
+                            <NavDropdown.Item className="custom-dropdown-item" onClick={logOut}>
                                 Logout
                             </NavDropdown.Item>
                         </NavDropdown>

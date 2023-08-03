@@ -32,3 +32,9 @@
 .add-alert {
     margin-top: .5rem;
 }
+
+.disclaimer {
+    color: #8F8F8F;
+    font-size: .7rem;
+    margin: 0 25px;
+}
