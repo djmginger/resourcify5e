@@ -1,14 +1,14 @@
 import axios from 'axios';
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import {CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import ResourceDisplay from '../components/ResourceDisplay';
 import SiteNavbar from "../components/SiteNavbar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faSquareMinus, faSquarePlus } from '@fortawesome/free-regular-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPenToSquare} from '@fortawesome/free-regular-svg-icons';
 import "../css/CharacterDisplay.css"
-import {Card, Col, Container, Row, Button} from "react-bootstrap";
+import {Button} from "react-bootstrap";
+import SpellpointDisplay from "../components/SpellpointDisplay";
 
 
 function CharacterDisplay() {
@@ -247,7 +247,7 @@ function CharacterDisplay() {
                         </div>
                         {character?.settings.showSpellpoints && spellpointArray.length > 0 && ( //Only show the spellpoint container if the user has spellpoints enabled for this character, and the character has spell resources
                             <div className="spellpoint-container" >
-                                <div className="row justify-content-md-center" >
+                                <div className="row justify-content-center" >
                                     <SpellpointDisplay
                                         spellpointArray={spellpointArray}
                                         decreaseSpellpointValue={decreaseCurrentSpellpoints}
@@ -296,123 +296,6 @@ function CharacterDisplay() {
             )}
         </div>
     );
-}
-
-function SpellpointDisplay({ spellpointObject, spellpointArray, decreaseSpellpointValue, increaseSpellpointValue, editEnabled }) {
-    const pairedResources = [];
-
-    for (let i = 0; i < spellpointArray.length; i += 2) {
-        pairedResources.push(spellpointArray.slice(i, i + 2));
-    }
-
-    return (
-        <div className="col-4">
-            <Card
-                style={{
-                    marginBottom: ".5rem",
-                    backgroundColor: "#141414",
-                    borderColor: "#333333"
-                }}
-                className="align-items-center"
-            >
-                <Card.Title
-                    style={{
-                        fontSize: "1.5rem",
-                        paddingTop: ".5rem",
-                        paddingBottom: ".3rem",
-                        backgroundColor: "#333333",
-                        width: "100%",
-                        textAlign: "center",
-                        borderTopLeftRadius: "4px",
-                        borderTopRightRadius: "4px",
-                        color: "#F5F1E3"
-                    }}
-                >
-                    Spellpoints
-                </Card.Title>
-                <Card.Body style={{ width: "100%" }}>
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center"
-                        }}
-                    >
-
-                        {editEnabled && (
-                            <div>
-                                <FontAwesomeIcon
-                                    size={"2x"}
-                                    icon={faSquareMinus}
-                                    onClick={() => decreaseSpellpointValue(1)}
-                                    className={"edit minus"}
-                                />
-                            </div>
-                        )}
-                            <div style={{ width: "8rem", height: "8rem" }}>
-                                <CircularProgressbar
-                                    value={spellpointObject.current / spellpointObject.max}
-                                    maxValue={1}
-                                    backgroundPadding={6}
-                                    counterClockwise={true}
-                                    text={`${spellpointObject.current}/${spellpointObject.max}`}
-                                    styles={buildStyles({
-                                        strokeLinecap: "butt",
-                                        textAlign: "",
-                                        backgroundColor: "#8BB5E5",
-                                        textColor: "#8BB5E5",
-                                        pathColor: "#8BB5E5"
-                                    })}
-                                />
-                            </div>
-
-                        {editEnabled && (
-                            <div>
-                                <FontAwesomeIcon
-                                    size={"2x"}
-                                    icon={faSquarePlus}
-                                    onClick={() => increaseSpellpointValue(1)}
-                                    className={"edit plus"}
-                                />
-                            </div>
-                        )}
-
-                    </div>
-                    <div>
-                        <Container fluid style={{ margin: "0", padding: "0" }}>
-
-                            {pairedResources.map((chunk, rowIndex) => (
-                                <Row
-                                    key={rowIndex}
-                                    className="h-100"
-                                    style={{ marginTop: rowIndex === 0 ? "1.5rem" : "1.3rem" }}
-                                >
-                                    {chunk.map((resource, colIndex) => {
-                                        const isSingleResource = chunk.length === 1;
-
-                                        // Check if the spell should be disabled due to already having been cast (6th level spells and above can only be cast once per long rest)
-                                        const isDisabled = spellpointObject.powerSpells[resource.resourceName] === false;
-
-                                        return (
-                                            <Col
-                                                key={resource.resourceName}
-                                                md={{ span: 4, offset: isSingleResource ? 4 : colIndex === 0 ? 1 : 2 }}
-                                                style={{ padding: "0" }}
-                                            >
-                                                <Button className="p-0 custom-button" onClick={() => decreaseSpellpointValue(resource.extras.pointValue / resource.resourceMax)} disabled={isDisabled}>
-                                                    {resource.resourceName}
-                                                </Button>
-                                            </Col>
-                                        );
-                                    })}
-                                </Row>
-                            ))}
-                        </Container>
-                    </div>
-                </Card.Body>
-            </Card>
-        </div>
-    )
 }
 
 export default CharacterDisplay;
