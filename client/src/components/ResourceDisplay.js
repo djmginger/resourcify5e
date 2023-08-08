@@ -8,13 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareMinus, faSquarePlus} from '@fortawesome/free-regular-svg-icons';
 import "../css/ResourceDisplay.css"
 
-function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, editEnabled }) {
+function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, editEnabled, maxEnabled }) {
 
     const currentVal = resource.resourceCurrent;
     const maxVal = resource.resourceMax;
 
     const decreaseResourceValue = () => {
-        console.log("click!")
         onDecreaseResource(resource); // Invoke the function defined in CharacterDisplay to decrease the current value of the resource
     };
 
@@ -35,18 +34,19 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
                         )}
                         <div className="resource-button-container">
                             <Button onClick={decreaseResourceValue}
-                                    disabled={currentVal === 0}
+                                    // 9999999999 is the placeholder used to represent an infinite resource
+                                    disabled={currentVal === 0 || currentVal === 9999999999}
                                     className="circular-button">
                                 <CircularProgressbarWithChildren
-                                    value={currentVal / maxVal}
+                                    value={maxVal === 9999999999 ? 1 : currentVal / maxVal}
                                     maxValue={1}
                                     background
                                     backgroundPadding={6}
                                     counterClockwise={true}
-                                    text={`${currentVal}/${maxVal}`}
+                                    text={maxVal === 9999999999 ? '∞' : maxEnabled ? `${resource.resourceCurrent}/${resource.resourceMax}` : `${resource.resourceCurrent}`}
                                     styles={buildStyles({strokeLinecap: "butt", backgroundColor: "#8BB5E5", textColor: "#F5F1E3", pathColor: "#F5F1E3", trailColor:"#707070"})}
                                 >
-                                    <RadialSeparators className="radial-separator" count={maxVal} style={{
+                                    <RadialSeparators className="radial-separator" count={maxVal === 9999999999 ? 0 : maxVal} style={{
                                         background: "#8BB5E5",
                                         width: "2px",
                                         // This needs to be equal to props.strokeWidth

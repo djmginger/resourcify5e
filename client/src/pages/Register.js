@@ -7,14 +7,17 @@ import { useNavigate } from "react-router-dom";
 import "../css/Register.css"
 import {Col, Container, Row} from "react-bootstrap";
 import { useAuth } from "../contextProviders/AuthContext";
+import {useCharacters} from "../contextProviders/CharacterContext";
 
 function Register() {
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const [confirmPass, setConfirmPass] = useState("");
     const [registeredDuringSession, setRegisteredDuringSession] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+    const { getCharacters } = useCharacters();
     const { isUserLoggedIn, setIsUserLoggedIn } = useAuth();
 
     //If the user is already logged in, redirect them to the character list page
@@ -29,18 +32,20 @@ function Register() {
             setErrorMessage('Please provide a valid email');
         } else if (!/(?=.*\d)(?=.*[A-Z]).{8,}/.test(pass)){
             setErrorMessage('Please make sure your password meets all requirements');
+        } else if (!registeredDuringSession && !(pass === confirmPass)){
+            setErrorMessage('Passwords do not match! Please try again!');
         } else {
-
             //If a user hasn't registered their email during this session, prompt them to register. Once registration is complete & successful, prompt them to re-enter credentials and treat it as a login attempt.
             if (!registeredDuringSession) {
-                axios.post('http://localhost:9000/register', {
-                    email: email,
-                    password: pass,
-                }).then(function (res) {
+                axios.post('http://localhost:9000/register',
+                    {email: email, password: pass},
+                    { withCredentials: true}
+                ).then(function (res) {
                     setRegisteredDuringSession(true)
                     setErrorMessage("");
                     setEmail("");
                     setPass("");
+                    setConfirmPass("");
                 }).catch(function (error) {
                     if (error.response.status === 409){
                         setErrorMessage("Email is already registered!");
@@ -49,12 +54,13 @@ function Register() {
                     }
                 });
             } else {
-                axios.post('http://localhost:9000/login', {
-                    email: email,
-                    password: pass,
-                }).then(function (res) {
+                axios.post('http://localhost:9000/login',
+                    {email: email, password: pass},
+                    { withCredentials: true}
+                ).then(function (res) {
                     //post successful, set global loggedIn context to true
                     setIsUserLoggedIn(true);
+                    getCharacters();
                     navigate("/characters")
                 }).catch(function (error) {
                     if (error.response.status === 404){
@@ -86,6 +92,8 @@ function Register() {
                     setEmail={setEmail}
                     pass={pass}
                     setPass={setPass}
+                    confirmPass={confirmPass}
+                    setConfirmPass={setConfirmPass}
                     registered={registeredDuringSession}
                     onSubmit={handleSubmit}
                 />

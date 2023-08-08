@@ -139,7 +139,7 @@ function getClasses(classLevel, stats) {
             17: [createResource("Rages", 5, true, false)],
             18: [createResource("Rages", 5, true, false)],
             19: [createResource("Rages", 5, true, false)],
-            20: [createResource("Rages", Infinity, true, false)],
+            20: [createResource("Rages", 9999999999, true, false)],
         },
         "Bard": {
             1: [
@@ -677,7 +677,7 @@ function getClasses(classLevel, stats) {
                 createResource("7th Level Spells", 2, true, false, {pointValue: 20}),
                 createResource("8th Level Spells", 1, true, false, {pointValue: 11}),
                 createResource("9th Level Spells", 1, true, false, {pointValue: 13}),
-                createResource("Wild Shape", Infinity, true, true),
+                createResource("Wild Shape", 9999999999, true, true),
             ]
         },
         "Fighter": {

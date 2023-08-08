@@ -155,7 +155,8 @@ function CharacterList({reloadCharacters}) {
                     subclass: subclass,
                     stats: stats,
                     settings: {
-                        showSpellpoints: useSpellpoints
+                        showSpellpoints: useSpellpoints,
+                        showMaxValues: showMaximums,
                     }
                 },
                 prevCharName: prevCharName
@@ -191,7 +192,8 @@ function CharacterList({reloadCharacters}) {
                             subclass: subclass,
                             stats: stats,
                             settings: {
-                                showSpellpoints: useSpellpoints
+                                showSpellpoints: useSpellpoints,
+                                showMaxValues: showMaximums,
                             }
                         },
                     }, {withCredentials: true}

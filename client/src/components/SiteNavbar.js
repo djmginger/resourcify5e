@@ -65,6 +65,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
     }
 
     const characterNavigate = (characterName) => {
+        setExpanded(false);
         navigate(`/characters/${characterName}`, {
             state: { characterName: characterName }
         });

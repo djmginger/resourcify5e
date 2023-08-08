@@ -16,12 +16,11 @@ function CharacterDisplay() {
     const characterName = state.characterName;
 
     const [character, setCharacter] = useState()
-    const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
     const [editEnabled, setEditEnabled] = useState(false);
     const [resourceArray, setResourceArray] = useState([]);
     const [spellpointArray, setSpellpointArray] = useState([]);
-    const [userSettings, setUserSettings] = useState()
+    const [initialCharacter, setInitialCharacter] = useState();
 
     //Make an api call to get the specific character object given a characterName
     const getCharacter = function(characterName) {
@@ -30,8 +29,8 @@ function CharacterDisplay() {
             params: {characterName: characterName},
             withCredentials: true
         }).then((res) => {
+            console.log(res.data.character);
             setCharacter(res.data.character);
-            setUserSettings(res.data.settings);
             setIsLoading(false);
         }).catch((error) => {
             if (error.response.status === 404) {
@@ -47,31 +46,35 @@ function CharacterDisplay() {
     // Initial load of character
     useEffect(() => {
         getCharacter(characterName);
-        setIsFirstLoad(false);
     }, [characterName]);
-
-    useEffect(() => {
-        //If the character exists, take its resources and assign them to the state values that the display components use (splitting them up if the user has spellpoints enabled)
-        if (character?.resources) {
-            if (character.settings.showSpellpoints) {
-                const spellpoints = character.resources.filter(item => item.extras && item.extras.pointValue);
-                const otherResources = character.resources.filter(item => !(item.extras && item.extras.pointValue));
-
-                setSpellpointArray(spellpoints);
-                setResourceArray(otherResources);
-            } else {
-                setSpellpointArray([]);
-                setResourceArray(character.resources);
-            }
-        }
-    }, [character]);
 
     // Save character upon a change
     useEffect(() => {
-        if (!isFirstLoad) {
+        if (character && initialCharacter && JSON.stringify(character) !== JSON.stringify(initialCharacter)) {
             saveCharacter(character);
         }
-    }, [character, isFirstLoad]);
+    }, [character, initialCharacter]);
+
+    useEffect(() => {
+        //Only trigger once the first useEffect has successfully called getCharacter
+        if (character) {
+            //
+            setInitialCharacter(character);
+            //If the character exists, take its resources and assign them to the state values that the display components use (splitting them up if the user has spellpoints enabled)
+            if (character?.resources) {
+                if (character.settings.showSpellpoints) {
+                    const spellpoints = character.resources.filter(item => item.extras && item.extras.pointValue);
+                    const otherResources = character.resources.filter(item => !(item.extras && item.extras.pointValue));
+
+                    setSpellpointArray(spellpoints);
+                    setResourceArray(otherResources);
+                } else {
+                    setSpellpointArray([]);
+                    setResourceArray(character.resources);
+                }
+            }
+        }
+    }, [character]);
 
     const saveCharacter = (character) =>{
         //reject initial onLoad call from connected useEffect Hook
@@ -254,6 +257,7 @@ function CharacterDisplay() {
                                         increaseSpellpointValue={increaseCurrentSpellpoints}
                                         editEnabled={editEnabled}
                                         spellpointObject={character.spellpoints}
+                                        maxEnabled={character.settings.showMaxValues}
                                     />
                                 </div>
                             </div>
@@ -270,6 +274,7 @@ function CharacterDisplay() {
                                                     onDecreaseResource={decreaseResourceValue}
                                                     onIncreaseResource={increaseResourceValue}
                                                     editEnabled={editEnabled}
+                                                    maxEnabled={character.settings.showMaxValues}
                                                 />
                                             </div>
                                             {resourceArray[index + 1] && ( // Check if the second resource exists
@@ -279,6 +284,7 @@ function CharacterDisplay() {
                                                         onDecreaseResource={decreaseResourceValue}
                                                         onIncreaseResource={increaseResourceValue}
                                                         editEnabled={editEnabled}
+                                                        maxEnabled={character.settings.showMaxValues}
                                                     />
                                                 </div>
                                             )}

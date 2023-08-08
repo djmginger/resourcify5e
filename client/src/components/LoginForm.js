@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import "../css/LoginForm.css";
 import {Col, Container, Row} from "react-bootstrap";
 
-function LoginForm({email, setEmail, pass, setPass, registered, onSubmit}) {
+function LoginForm({email, setEmail, pass, setPass, confirmPass = "", setConfirmPass = () => {}, registered, onSubmit}) {
     return (
         <Form onSubmit={onSubmit}>
             <Container fluid>
@@ -30,8 +30,22 @@ function LoginForm({email, setEmail, pass, setPass, registered, onSubmit}) {
                                 value={pass}
                                 onChange={(e) => setPass(e.target.value)}
                                 className="login-input" />
+                        </Form.Group>
+                    </Col>
+                </Row>
 
-                            {!registered && (
+                {!registered && (
+                    <Row className="justify-content-center">
+                        <Col sm={8} md={6} lg={5}>
+                            <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+                                <Form.Label className="login-label">Confirm Password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    value={confirmPass}
+                                    onChange={(e) => setConfirmPass(e.target.value)}
+                                    className="login-input" />
+
                                 <Form.Text className="password-details">
                                     <p className="password-requirements-title">Your password must include the following:</p>
                                     <ul>
@@ -40,10 +54,10 @@ function LoginForm({email, setEmail, pass, setPass, registered, onSubmit}) {
                                         <li>At least 8 characters long</li>
                                     </ul>
                                 </Form.Text>
-                            )}
-                        </Form.Group>
-                    </Col>
-                </Row>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                )}
                 <Row className="justify-content-center">
                     <Col sm={8} md={6} lg={5} className="login-button">
                         <Button variant="primary" type="submit">

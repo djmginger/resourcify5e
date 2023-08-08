@@ -7,11 +7,9 @@ const { authenticateJWT } = require('../cookieHandler/jwtVerifier');
 router.get('/', authenticateJWT, async function (req, res) {
     try {
         const email = req.user.email; // Access the email from the cookie provided by authenticateJWT
-        console.log(email)
         const user = await User.findOne({email: email});
         if (user) {
             const characterArray = user.characters; // Access the characters array
-            console.log(characterArray);
             return res.json(characterArray);
         } else {
             return res.status(404).json({ error: 'User not found' });
@@ -58,6 +56,7 @@ router.post('/', authenticateJWT, async function (req, res) {
         const subclass = req.body.character.subclass;
         const stats = req.body.character.stats;
         const showSpellpoints = req.body.character.settings.showSpellpoints;
+        const showMaximums = req.body.character.settings.showMaximums;
 
         const classes = getClasses(classLevel, stats);
         const subclasses = getSubclasses(classLevel, stats);
@@ -79,6 +78,7 @@ router.post('/', authenticateJWT, async function (req, res) {
                 if(classes[className][classLevel]){
                     const classResources = classes[className][classLevel];
                     if (classResources) {
+                        console.log(classResources);
                         resourceArray.push(...classResources);
                     }
                 } else {
@@ -112,7 +112,8 @@ router.post('/', authenticateJWT, async function (req, res) {
                     resources: resourceArray,
                     spellpoints: generateSpellpoints(resourceArray),
                     settings: {
-                        showSpellpoints: showSpellpoints
+                        showSpellpoints: showSpellpoints,
+                        showMaximums: showMaximums,
                     }
                 }
 
@@ -144,9 +145,6 @@ router.put('/', authenticateJWT, async function (req, res) {
         if (characterIndex === -1) {
             return res.status(404).json({ error: 'Character not found' });
         }
-
-        console.log(user);
-        console.log(characterIndex)
 
         // Update the character's details based on the provided data
         const updatedCharacter = req.body.character;

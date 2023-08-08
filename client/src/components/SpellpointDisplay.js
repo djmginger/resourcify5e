@@ -9,7 +9,8 @@ function SpellpointDisplay(
         spellpointArray,
         decreaseSpellpointValue,
         increaseSpellpointValue,
-        editEnabled
+        editEnabled,
+        showMaxValues: maxEnabled
     })
 {
     const pairedResources = [];
@@ -45,7 +46,7 @@ function SpellpointDisplay(
                                 maxValue={1}
                                 backgroundPadding={6}
                                 counterClockwise={true}
-                                text={`${spellpointObject.current}/${spellpointObject.max}`}
+                                text={maxEnabled ? `${spellpointObject.current}/${spellpointObject.max}` : `${spellpointObject.current}`}
                                 styles={buildStyles({
                                     strokeLinecap: "butt",
                                     textAlign: "",
