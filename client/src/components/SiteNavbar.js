@@ -53,7 +53,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
             {withCredentials: true}
         ).then(res => {
             setIsUserLoggedIn(false);
-            navigate("/login", { replace: true })
+            navigate("/login", { replace: true });
         })
         .catch((error) => {
             console.log("Error logging out", error);
@@ -62,6 +62,10 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
 
     const characterListNavigate = () => {
         navigate("/characters")
+    }
+
+    const profileNavigate = () => {
+        navigate("/profile")
     }
 
     const characterNavigate = (characterName) => {
@@ -130,8 +134,8 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
                             className="custom-dropdown"
                             align="end"
                         >
-                            <NavDropdown.Item className="custom-dropdown-item" href="#csvUpload">
-                                Settings
+                            <NavDropdown.Item className="custom-dropdown-item" onClick={profileNavigate}>
+                                Profile
                             </NavDropdown.Item>
                             <NavDropdown.Divider className="custom-divider" />
                             <NavDropdown.Item className="custom-dropdown-item" onClick={logOut}>

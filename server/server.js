@@ -13,6 +13,7 @@ const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const charactersRouter = require('./routes/characters');
 const characterDisplayRouter = require('./routes/characterDisplay');
+const profileRouter = require('./routes/profile');
 
 const server = express();
 
@@ -44,6 +45,7 @@ server.use('/register', registerRouter);
 server.use('/login', loginRouter);
 server.use('/characters', charactersRouter);
 server.use('/characterDisplay', characterDisplayRouter);
+server.use('/profile', profileRouter);
 
 //Connect to DB
 connectDB()

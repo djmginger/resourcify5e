@@ -1,14 +1,15 @@
 import Button from "react-bootstrap/Button";
-import {Col, Container, ListGroup, Modal, Row} from "react-bootstrap";
+import {Col, Container, ListGroup, Row} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTrashCan, faGear} from '@fortawesome/free-solid-svg-icons'
+import {faGear, faTrashCan} from '@fortawesome/free-solid-svg-icons'
 import Alert from "react-bootstrap/Alert";
 import AddCharacterModal from "./AddCharacterModal";
 import "../css/CharacterList.css";
 import axios from "axios";
-import { useCharacters } from '../contextProviders/CharacterContext';
+import {useCharacters} from '../contextProviders/CharacterContext';
+import {DeleteConfirmation} from "./DeleteConfirmation";
 
 function CharacterList({reloadCharacters}) {
 
@@ -378,36 +379,12 @@ function CharacterList({reloadCharacters}) {
                     setDeleteConfirmShow(false);
                     setCharacterToDelete(undefined);
                 }}
-                handleDeleteCharacter={handleDeleteCharacter}
+                handleDelete={handleDeleteCharacter}
                 characterToDelete={characterToDelete}
+                isProfileDelete={false}
             />
             </Container>
         </div>
-    );
-}
-
-function DeleteConfirmation({ show, onHide, handleDeleteCharacter, characterToDelete }) {
-    return (
-        <Modal
-            show={show}
-            onHide={onHide}
-            size="sm"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Body>
-                <h6>Are you sure you want to delete this character?</h6>
-            </Modal.Body>
-            <Modal.Footer className="d-flex justify-content-center">
-                <Button variant="danger"
-                        className="btn-sm mr-2"
-                        onClick={() => handleDeleteCharacter(characterToDelete)}
-                >
-                    Yes, delete character
-                </Button>
-                <Button variant="secondary" className="btn-sm" onClick={onHide}>Cancel</Button>
-            </Modal.Footer>
-        </Modal>
     );
 }
 

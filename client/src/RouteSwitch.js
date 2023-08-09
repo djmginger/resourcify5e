@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Characters from "./pages/Characters";
 import CharacterDisplay from "./pages/CharacterDisplay";
 import Protected from "./components/Protected";
+import Profile from "./pages/Profile";
 
 const RouteSwitch = () => {
     return (
@@ -22,6 +23,11 @@ const RouteSwitch = () => {
                 <Route path="/characters/:character" element={
                     <Protected>
                         <CharacterDisplay />
+                    </Protected>
+                } />
+                <Route path="/profile" element={
+                    <Protected>
+                        <Profile />
                     </Protected>
                 } />
             </Routes>

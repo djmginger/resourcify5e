@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added reactive styling for SpellpointDisplay">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account.">
+      <change afterPath="$PROJECT_DIR$/client/src/components/DeleteConfirmation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/Profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/CharacterList.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/CharacterList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/resourceObjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resourceObjects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/characterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +88,7 @@
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\components" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="D:\Programming\Web Development\resourcify5e\client\src\components\DeleteConfirmation.js" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\components\SpellpointDisplay.js" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\components\AddCharacterModal.js" />
     </key>
@@ -138,7 +136,8 @@
       <workItem from="1690924251614" duration="17368000" />
       <workItem from="1691020313462" duration="11903000" />
       <workItem from="1691100498971" duration="8801000" />
-      <workItem from="1691444647651" duration="9297000" />
+      <workItem from="1691444647651" duration="10150000" />
+      <workItem from="1691538644596" duration="14385000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -273,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691109383649</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account.">
+      <created>1691454841296</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1691454841296</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +306,8 @@
     <MESSAGE value="Worked on styling for site. Improved responsiveness for mobile devices. Added breakpoint for navbar collapse." />
     <MESSAGE value="Fixed bugs relating to:&#10; - Updating an existing character&#10; - Loading character list on first login&#10; - Extra margin causing unwanted scrollbar on CharacterDisplay page" />
     <MESSAGE value="Added reactive styling for SpellpointDisplay" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added reactive styling for SpellpointDisplay" />
+    <MESSAGE value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
