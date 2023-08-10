@@ -1,4 +1,7 @@
 const jsonwebtoken = require('jsonwebtoken');
+require('dotenv').config();
+
+const jwtSecret = process.env.JWT_SECRET;
 
 function authenticateJWT(req, res, next) {
     const token = req.cookies.authToken;
@@ -6,7 +9,7 @@ function authenticateJWT(req, res, next) {
     if (token) {
         //console.log("Token before verification:", token);
 
-        jsonwebtoken.verify(token, "YOUR_SECRET_KEY_HERE", (err, user) => {
+        jsonwebtoken.verify(token, jwtSecret, (err, user) => {
             if (err) {
                 //console.log("Error in verifier: " + err);
                 return res.sendStatus(403);  // Forbidden

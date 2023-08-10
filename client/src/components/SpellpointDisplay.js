@@ -10,7 +10,7 @@ function SpellpointDisplay(
         decreaseSpellpointValue,
         increaseSpellpointValue,
         editEnabled,
-        showMaxValues: maxEnabled
+        maxEnabled
     })
 {
     const pairedResources = [];
@@ -73,7 +73,11 @@ function SpellpointDisplay(
                         {pairedResources.map((chunk, rowIndex) => (
                             <div key={rowIndex} className="center-flex no-pad-no-marg" style={{ marginTop: rowIndex === 0 ? "1.5rem" : "1.3rem" }}>
                                 {chunk.map((resource, resourceIndex) => {
-                                    const isDisabled = spellpointObject.powerSpells[resource.resourceName] === false;
+                                    let isDisabled;
+                                    //If a character has powerspells (6th level +), and this specific resource exists within the powerSpells object, use the value to determine if the button is disabled or not.
+                                    if (spellpointObject.powerSpells && (resource.resourceName in spellpointObject.powerSpells)) {
+                                        isDisabled = spellpointObject.powerSpells[resource.resourceName] === false;
+                                    } else isDisabled = false;
                                     let colClasses = "spellpoint-button col-5 col-md-4 col-lg-3 ";
                                     if (resourceIndex % 2 !== 0) {
                                         colClasses += "ms-4"; // Add offsets for every second item

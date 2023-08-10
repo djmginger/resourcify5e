@@ -152,9 +152,8 @@ function CharacterDisplay() {
 
     const decreaseCurrentSpellpoints = (spellpointValue) => {
         const updatedSpellpoints = { ...character.spellpoints, powerSpells: { ...character.spellpoints.powerSpells } };
-
-
-
+        console.log("Spellpoints before:")
+        console.log(updatedSpellpoints)
         //If a 6th level spell or higher was cast, set the value of the corr. spell to false, thereby disabling the corr. button
         switch(spellpointValue){
             case 9:
@@ -172,7 +171,8 @@ function CharacterDisplay() {
         }
 
         updatedSpellpoints.current -= spellpointValue;
-
+        console.log("Spellpoints after:")
+        console.log(updatedSpellpoints)
         setCharacter(prevCharacter => ({
             ...prevCharacter,
             spellpoints: updatedSpellpoints

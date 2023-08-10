@@ -4,16 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account.">
-      <change afterPath="$PROJECT_DIR$/client/src/components/DeleteConfirmation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/css/Profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/profile.js" afterDir="false" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added a profile page where a user can change their password or delete their account.">
+      <change afterPath="$PROJECT_DIR$/client/src/components/Copyright.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/images/sample1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/images/sample2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/images/sample3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/images/sample4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/DeleteConfirmation.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DeleteConfirmation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cookieHandler/jwtVerifier.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/cookieHandler/jwtVerifier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +92,11 @@
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\Web Development\resourcify5e\client\src\images" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\contextProviders" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src" />
       <recent name="D:\Programming\Web Development\resourcify5e\server\cookieHandlers" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\css" />
-      <recent name="D:\Programming\Web Development\resourcify5e\client\src\components" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\components\DeleteConfirmation.js" />
@@ -137,7 +148,8 @@
       <workItem from="1691020313462" duration="11903000" />
       <workItem from="1691100498971" duration="8801000" />
       <workItem from="1691444647651" duration="10150000" />
-      <workItem from="1691538644596" duration="14385000" />
+      <workItem from="1691538644596" duration="15179000" />
+      <workItem from="1691622484588" duration="12034000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -279,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691454841296</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added a profile page where a user can change their password or delete their account.">
+      <created>1691554177518</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1691554177518</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +326,8 @@
     <MESSAGE value="Fixed bugs relating to:&#10; - Updating an existing character&#10; - Loading character list on first login&#10; - Extra margin causing unwanted scrollbar on CharacterDisplay page" />
     <MESSAGE value="Added reactive styling for SpellpointDisplay" />
     <MESSAGE value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
+    <MESSAGE value="Added a profile page where a user can change their password or delete their account." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a profile page where a user can change their password or delete their account." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

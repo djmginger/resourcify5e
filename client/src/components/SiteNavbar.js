@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Nav } from "react-bootstrap";
 import { NavDropdown } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "../logo.svg";
+import logo from "../images/logo.png";
 import "../css/SiteNavbar.css";
 import axios from "axios";
 import { useCharacters } from '../contextProviders/CharacterContext';
@@ -60,6 +60,10 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
         });
     }
 
+    const homeNavigate = () => {
+        navigate("/")
+    }
+
     const characterListNavigate = () => {
         navigate("/characters")
     }
@@ -77,16 +81,17 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
 
     return (
         <div ref={navbarRef}>
-            <Navbar className="fixed-top" style={{ backgroundColor: "#333333" }} expand="md" variant="dark">
-                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }} href="#home">
+            <Navbar className="fixed-top" style={{ backgroundColor: "#333333", paddingLeft: "10px", fontSize: "1.2rem", borderBottomStyle:"solid", borderBottomColor:"#F5F1E3", borderBottomWidth: "1px" }} expand="md" variant="dark">
+                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }} onClick={homeNavigate}>
                     <img
                         alt="logo"
                         src={logo}
                         width="64"
                         height="64"
                         className="d-inline-block"
+                        style={{ marginRight: "10px" }}
                     />
-                    {" Resourcify 5e"}
+                    {"Resourcify 5e"}
                 </Navbar.Brand>
 
                 <Navbar.Toggle
@@ -97,7 +102,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
                     }} // Toggle the expanded state on click
                     bg="light" // Change the color of the hamburger menu (use "light" or "dark")
                 />
-                <Navbar.Collapse className="justify-content-end" in={expanded}>
+                <Navbar.Collapse className="justify-content-end" style={{ marginTop: "10px"}} in={expanded}>
                     <Nav className="ml-auto nav-options">
                         <Nav.Link hidden={isListPage} style={{ color: "#F5F1E3" }} onClick={characterListNavigate}>
                             Character List
@@ -151,7 +156,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
 
 function NoUserNavbar(){
     const location = useLocation();
-    const isLoginPage = location.pathname === "/login";
+    const isLoginPage = location.pathname === "/login" || location.pathname === "/";
 
     const navigate = useNavigate();
 
@@ -165,14 +170,15 @@ function NoUserNavbar(){
 
     return (
         <div>
-            <Navbar className="fixed-top" style={{ backgroundColor: "#333333" }} >
-                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }} href="#home">
+            <Navbar className="fixed-top" style={{ backgroundColor: "#333333", paddingLeft: "10px", fontSize: "1.2rem", borderBottomStyle:"solid", borderBottomColor:"#F5F1E3", borderBottomWidth: "1px"  }} >
+                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }}>
                     <img
                         alt="logo"
                         src={logo}
                         width="64"
                         height="64"
                         className="d-inline-block"
+                        style={{ marginRight: "10px"}}
                     />
                     {" Resourcify 5e"}
                 </Navbar.Brand>

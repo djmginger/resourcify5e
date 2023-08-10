@@ -3,9 +3,13 @@ var router = express.Router();
 const User = require('../schema');
 const jsonwebtoken = require("jsonwebtoken");
 const { authenticateJWT } = require('../cookieHandler/jwtVerifier');
+require('dotenv').config();
+
+const jwtSecret = process.env.JWT_SECRET;
 
 router.post('/', async function (req, res) {
     try {
+        console.log(jwtSecret);
         const user = await User.findOne({email: req.body.email});
 
         if (!user) {
@@ -19,7 +23,7 @@ router.post('/', async function (req, res) {
         } else {
             console.log("Password matches!")
 
-            const authToken = jsonwebtoken.sign({ email: user.email }, "YOUR_SECRET_KEY_HERE", {
+            const authToken = jsonwebtoken.sign({ email: user.email }, jwtSecret, {
                 expiresIn: '24h'  // token will expire in 24 hours
             });
 

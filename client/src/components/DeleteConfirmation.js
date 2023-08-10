@@ -16,7 +16,7 @@ export function DeleteConfirmation({show, onHide, handleDelete, characterToDelet
             <Modal.Footer className="d-flex justify-content-center">
                 <Button variant="danger"
                         className="btn-sm mr-2"
-                        onClick={isProfileDelete ? () => handleDelete(characterToDelete) : () => handleDelete()}
+                        onClick={isProfileDelete ? () => handleDelete() : () => handleDelete(characterToDelete)}
                 >
                     {isProfileDelete ? "Yes, delete account" : "Yes, delete character"}
                 </Button>

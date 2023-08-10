@@ -1,5 +1,7 @@
 const mongoose = require('mongoose').default;
-const uri = 'mongodb+srv://resourcify:jobYSkctbZnPV1KN@resourcify-test.1asfhex.mongodb.net/data?retryWrites=true&w=majority';
+require('dotenv').config();
+
+const uri = process.env.CON_URI;
 
 const connectDB = async () => {
     try {
