@@ -10,6 +10,7 @@
     text-align: end;
 }
 
+
 .password-details {
     color: #8F8F8F;
 }
@@ -17,4 +18,15 @@
 .password-requirements-title {
     margin-top: .6rem;
     margin-bottom: 0;
+}
+
+.sign-up-text {
+    color:#F5F1E3;
+    font-size: .95rem;
+}
+
+.sign-up-link {
+    color: #8BB5E5;
+    text-decoration: underline;
+    cursor: pointer;
 }

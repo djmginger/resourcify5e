@@ -77,8 +77,8 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
 
     return (
         <div ref={navbarRef}>
-            <Navbar className="fixed-top" style={{ backgroundColor: "#333333", paddingLeft: "10px", fontSize: "1.2rem", borderBottomStyle:"solid", borderBottomColor:"#F5F1E3", borderBottomWidth: "1px" }} expand="md" variant="dark">
-                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }}>
+            <Navbar className="fixed-top site-nav" style={{ }} expand="md" variant="dark">
+                <Navbar.Brand className="site-nav-brand">
                     <img
                         alt="logo"
                         src={logo}
@@ -100,7 +100,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
                 />
                 <Navbar.Collapse className="justify-content-end" style={{ marginTop: "10px"}} in={expanded}>
                     <Nav className="ml-auto nav-options">
-                        <Nav.Link hidden={isListPage} style={{ color: "#F5F1E3" }} onClick={characterListNavigate}>
+                        <Nav.Link hidden={isListPage} onClick={characterListNavigate}>
                             Character List
                         </Nav.Link>
                         {characterArray && characterArray.length > 0 && (
@@ -166,8 +166,8 @@ function NoUserNavbar(){
 
     return (
         <div>
-            <Navbar className="fixed-top" style={{ backgroundColor: "#333333", paddingLeft: "10px", fontSize: "1.2rem", borderBottomStyle:"solid", borderBottomColor:"#F5F1E3", borderBottomWidth: "1px"  }} >
-                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }}>
+            <Navbar className="fixed-top site-nav">
+                <Navbar.Brand className="site-nav-brand">
                     <img
                         alt="logo"
                         src={logo}
@@ -182,8 +182,8 @@ function NoUserNavbar(){
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav className="ml-auto nav-options">
-                        <Nav.Link hidden={isLoginPage} style={{ color: "#F5F1E3" }} onClick={loginNavigate}>Login</Nav.Link>
-                        <Nav.Link hidden={!isLoginPage} style={{ color: "#F5F1E3" }} onClick={registerNavigate} className="register-button">Register</Nav.Link>
+                        <Nav.Link hidden={isLoginPage} onClick={loginNavigate}>Login</Nav.Link>
+                        <Nav.Link hidden={!isLoginPage} onClick={registerNavigate} className="register-button">Register</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

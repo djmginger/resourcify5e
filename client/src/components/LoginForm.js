@@ -2,8 +2,15 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../css/LoginForm.css";
 import {Col, Container, Row} from "react-bootstrap";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function LoginForm({email, setEmail, pass, setPass, confirmPass = "", setConfirmPass = () => {}, registered, onSubmit}) {
+    const navigate = useNavigate();
+    const registerNavigate = () => navigate("/register");
+
+    const location = useLocation();
+    const isLoginPage = location.pathname === "/login" || location.pathname === "/";
+
     return (
         <Form onSubmit={onSubmit}>
             <Container fluid>
@@ -59,7 +66,11 @@ function LoginForm({email, setEmail, pass, setPass, confirmPass = "", setConfirm
                     </Row>
                 )}
                 <Row className="justify-content-center">
-                    <Col sm={8} md={6} lg={5} className="login-button">
+                    {isLoginPage && (
+                        <Col className="sign-up-text" xs={6} sm={5} md={4} lg={3}><p>Don't have an account? <a onClick={registerNavigate} className="sign-up-link" >Sign up!</a></p></Col>
+                        )}
+
+                    <Col className="login-button" {...(isLoginPage ? {xs:6, sm:3, md:2, lg:2} : {sm:8, md:6, lg:5})}>
                         <Button variant="primary" type="submit">
                             {!registered ? (
                                 <>Register</>

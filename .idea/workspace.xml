@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells).">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added a Copyright footer to all pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Copyright.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Copyright.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/Characters.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Characters.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/ResourceDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/ResourceDisplay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Characters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/characterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characterDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/LoginForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/LoginForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/SiteNavbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/SiteNavbar.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +134,8 @@
       <workItem from="1691100498971" duration="8801000" />
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
-      <workItem from="1691622484588" duration="15098000" />
+      <workItem from="1691622484588" duration="15138000" />
+      <workItem from="1691702447622" duration="3644000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -300,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691638457597</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added a Copyright footer to all pages">
+      <created>1691641211375</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1691641211375</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +328,8 @@
     <MESSAGE value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
     <MESSAGE value="Added a profile page where a user can change their password or delete their account." />
     <MESSAGE value="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells)." />
+    <MESSAGE value="Added a Copyright footer to all pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a Copyright footer to all pages" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

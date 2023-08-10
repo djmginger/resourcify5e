@@ -1,12 +1,22 @@
-.custom-navbar {
+.site-nav{
     background-color: #333333;
+    padding-left: 10px;
+    font-size: 1.2rem;
+    border-bottom-style:solid;
+    border-bottom-color:#F5F1E3;
+    border-bottom-width: 1px;
+}
+
+.site-nav-brand {
+    color: #F5F1E3;
+    padding: 0
 }
 
 .custom-dropdown {
     margin-left: 20px;
 }
 
-.custom-dropdown .nav-link {
+.site-nav .nav-link {
     color: #F5F1E3; /* Set the desired text color */
 }
 
