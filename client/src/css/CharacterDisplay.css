@@ -4,6 +4,10 @@
     padding-top: 80px;
 }
 
+.character-display-content {
+    min-height: calc(100vh - 35px - 80px); /* 80px is the padding-top of .character-display-body */
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -17,14 +21,14 @@
 .header .title {
     width: 80%;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .header .title h1 {
     color: #F5F1E3;
 }
 
-.header .title h5 {
+.header .title h4 {
     color: #F5F1E3;
 }
 
@@ -42,13 +46,13 @@
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
-    margin-top: .5rem;
+    margin-top: 1.2rem;
 }
 
 .button-container .rest {
     margin-right: 1.5rem;
     margin-left: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     background-color: #2660A4;
     border-color: #2660A4;
 }
@@ -71,9 +75,6 @@
     /* styles for resource cards go here */
 }
 
-.resource-card {
-    margin-bottom: 30px;
-}
 
 .no-resources {
     margin-top: 50px;

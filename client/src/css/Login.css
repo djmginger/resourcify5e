@@ -5,8 +5,12 @@ body {
 .login-body {
     margin-top: 80px;
     padding: 1px 0;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
 }
 
 .login-content {
+    flex: 1;
     margin-top: 50px;
 }

@@ -2,11 +2,15 @@
     background-color: #141414;
     margin-top: 80px;
     padding: 1px 0;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
 }
 
 .character-list-content {
-    margin-top: 30px;
+    margin-top: 50px;
     text-align: center;
+    flex: 1;
 }
 
 .character-list-title {

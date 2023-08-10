@@ -8,6 +8,7 @@ import "../css/Login.css"
 import {Col, Container, Row} from "react-bootstrap";
 import { useAuth } from "../contextProviders/AuthContext";
 import {useCharacters} from "../contextProviders/CharacterContext";
+import Copyright from "../components/Copyright";
 
 function Login() {
     const { getCharacters } = useCharacters();
@@ -77,6 +78,7 @@ function Login() {
                     onSubmit={handleSubmit}
                 />
             </div>
+            <Copyright />
         </div>
     );
 }

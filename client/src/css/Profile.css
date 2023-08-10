@@ -1,10 +1,14 @@
 .profile-body {
     margin-top: 80px;
     padding: 1px 0;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-content {
     margin-top: 40px;
+    flex: 1;
 }
 
 .profile-title {
@@ -20,6 +24,9 @@
 .profile-button {
     padding: 10px;
     width: 100%;
+    font-size: 1.2rem;
+    background-color: #2660A4;
+    border-color: #2660A4;
 }
 
 .change-modal {

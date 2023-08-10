@@ -8,6 +8,7 @@ import "../css/Register.css"
 import {Col, Container, Row} from "react-bootstrap";
 import { useAuth } from "../contextProviders/AuthContext";
 import {useCharacters} from "../contextProviders/CharacterContext";
+import Copyright from "../components/Copyright";
 
 function Register() {
 
@@ -98,6 +99,7 @@ function Register() {
                     onSubmit={handleSubmit}
                 />
             </div>
+            <Copyright/>
         </div>
     );
 }

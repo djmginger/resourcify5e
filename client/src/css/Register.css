@@ -1,8 +1,12 @@
 .register-body {
     margin-top: 80px;
     padding: 1px 0;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
 }
 
 .register-content {
     margin-top: 50px;
+    flex: 1;
 }

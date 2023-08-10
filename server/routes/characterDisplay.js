@@ -22,8 +22,6 @@ router.get('/', authenticateJWT, async function (req, res) {
             return res.status(404).json({ error: 'Character not found' });
         }
 
-        console.log(character);
-
         return res.status(200).json({ character, settings });
 
     } catch (error) {

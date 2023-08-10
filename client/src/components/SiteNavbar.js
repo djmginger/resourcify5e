@@ -60,10 +60,6 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
         });
     }
 
-    const homeNavigate = () => {
-        navigate("/")
-    }
-
     const characterListNavigate = () => {
         navigate("/characters")
     }
@@ -82,7 +78,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
     return (
         <div ref={navbarRef}>
             <Navbar className="fixed-top" style={{ backgroundColor: "#333333", paddingLeft: "10px", fontSize: "1.2rem", borderBottomStyle:"solid", borderBottomColor:"#F5F1E3", borderBottomWidth: "1px" }} expand="md" variant="dark">
-                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }} onClick={homeNavigate}>
+                <Navbar.Brand style={{ color: "#F5F1E3", padding: 0 }}>
                     <img
                         alt="logo"
                         src={logo}

@@ -6,25 +6,26 @@ function Copyright() {
 
     return (
         <footer style={footerStyle}>
-            <p style={textStyle}>© {currentYear} YourName or YourCompany. All rights reserved.</p>
+            <p style={textStyle}>© {currentYear} Redhead Development. All rights reserved.</p>
         </footer>
     );
 }
 
 const footerStyle = {
-    backgroundColor: '#f5f5f5',
     textAlign: 'center',
-    padding: '10px 0',
+    padding: '10px 0 5px',
     position: 'relative',
+    left:'0',
+    right:'0',
     bottom: '0',
     width: '100%',
-    borderTop: '1px solid #eaeaea'
+    borderTop: '1px solid #F5F1E3'
 };
 
 const textStyle = {
     margin: '0',
     fontSize: '0.8em',
-    color: '#333'
+    color: '#F5F1E3'
 };
 
 export default Copyright;

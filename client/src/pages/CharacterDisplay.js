@@ -9,6 +9,7 @@ import {faPenToSquare} from '@fortawesome/free-regular-svg-icons';
 import "../css/CharacterDisplay.css"
 import {Button} from "react-bootstrap";
 import SpellpointDisplay from "../components/SpellpointDisplay";
+import Copyright from "../components/Copyright";
 
 
 function CharacterDisplay() {
@@ -227,7 +228,7 @@ function CharacterDisplay() {
         <div className="character-display-body">
             <SiteNavbar />
             {isLoading ? null : (
-                <div>
+                <div className="character-display-content">
                 {character?.resources?.length > 0 ? (
                     <>
                         <div className="header">
@@ -235,9 +236,9 @@ function CharacterDisplay() {
                             <div className="title">
                                 <h1>{character.characterName}</h1>
                                 {character.classes && character.classes.length > 0 && (
-                                    <h5>
+                                    <h4>
                                         Level {character.classes[0].classLevel} {character.classes[0].subclass} {character.classes[0].className}
-                                    </h5>
+                                    </h4>
                                 )}
                             </div>
                             <div className="actions">
@@ -300,6 +301,7 @@ function CharacterDisplay() {
                 )}
                 </div>
             )}
+            <Copyright/>
         </div>
     );
 }

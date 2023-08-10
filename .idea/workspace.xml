@@ -4,27 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added a profile page where a user can change their password or delete their account.">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Copyright.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/images/sample1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/images/sample2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/images/sample3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/images/sample4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/DeleteConfirmation.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DeleteConfirmation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Copyright.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Copyright.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/Characters.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Characters.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/ResourceDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/ResourceDisplay.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cookieHandler/jwtVerifier.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/cookieHandler/jwtVerifier.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Characters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/characterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characterDisplay.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +144,7 @@
       <workItem from="1691100498971" duration="8801000" />
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
-      <workItem from="1691622484588" duration="12034000" />
+      <workItem from="1691622484588" duration="15098000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -298,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691554177518</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells).">
+      <created>1691638457597</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1691638457597</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +329,8 @@
     <MESSAGE value="Added reactive styling for SpellpointDisplay" />
     <MESSAGE value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
     <MESSAGE value="Added a profile page where a user can change their password or delete their account." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a profile page where a user can change their password or delete their account." />
+    <MESSAGE value="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells)." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

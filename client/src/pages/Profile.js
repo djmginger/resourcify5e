@@ -10,6 +10,7 @@ import {useAuth} from "../contextProviders/AuthContext";
 import {useNavigate} from "react-router-dom";
 import "../css/Profile.css"
 import {DeleteConfirmation} from "../components/DeleteConfirmation";
+import Copyright from "../components/Copyright";
 
 function Profile() {
     const { setIsUserLoggedIn } = useAuth();
@@ -126,6 +127,7 @@ function Profile() {
                     isProfileDelete={true}
                 />
             </div>
+            <Copyright/>
         </div>
     );
 }
