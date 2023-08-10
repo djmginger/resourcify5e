@@ -12,6 +12,7 @@ import {useCharacters} from '../contextProviders/CharacterContext';
 import {DeleteConfirmation} from "./DeleteConfirmation";
 
 function CharacterList({reloadCharacters}) {
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const { characterArray, setCharacterArray } = useCharacters();
     const [showNewCharacter, setShowNewCharacter] = useState(false);
@@ -148,7 +149,7 @@ function CharacterList({reloadCharacters}) {
         //If this function is reached as a result of a user clicking on the update button of an existing character:
         if (isUpdateMode) {
             // API call to update existing character
-            axios.put(`http://localhost:9000/characters`, {
+            axios.put(`${apiUrl}/characters`, {
                 character: {
                     name: characterName,
                     className: classSelection,
@@ -185,7 +186,7 @@ function CharacterList({reloadCharacters}) {
                 setSubclassErrorMessage(true);
             } else {
                 //api call to add character to use
-                axios.post('http://localhost:9000/characters', {
+                axios.post(`${apiUrl}/characters`, {
                         character: {
                             name: characterName,
                             className: classSelection,
@@ -215,7 +216,7 @@ function CharacterList({reloadCharacters}) {
     };
 
     const handleDeleteCharacter = (characterName) => {
-        axios.delete('http://localhost:9000/characters', {
+        axios.delete(`${apiUrl}/characters'`, {
             params: { characterName: characterName },
             withCredentials: true
         })
@@ -234,7 +235,7 @@ function CharacterList({reloadCharacters}) {
 
         const getCharacter = async function (characterName) {
             try {
-                const res = await axios.get('http://localhost:9000/characterDisplay', {
+                const res = await axios.get(`${apiUrl}/characterDisplay`, {
                     params: {characterName: characterName},
                     withCredentials: true
                 });

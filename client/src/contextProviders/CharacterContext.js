@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const CharacterContext = createContext();
 
 export const useCharacters = () => {
@@ -12,7 +14,7 @@ export const CharacterProvider = ({ children }) => {
 
     //Make an api call to get the list of characters given an email, and add them to the characterArray state value
     const getCharacters = function() {
-        axios.get('http://localhost:9000/characters',
+        axios.get(`${apiUrl}/characters`,
             { withCredentials: true}
         ).then((res) => {
             const userCharacters = res.data.map((character) => ({

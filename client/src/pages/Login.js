@@ -11,6 +11,8 @@ import {useCharacters} from "../contextProviders/CharacterContext";
 import Copyright from "../components/Copyright";
 
 function Login() {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const { getCharacters } = useCharacters();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
@@ -31,7 +33,7 @@ function Login() {
             setErrorMessage('Please provide a valid email');
         } else {
             console.log("attempting post");
-            axios.post('http://localhost:9000/login',
+            axios.post(`${apiUrl}/login`,
                 { email: email, password: pass},
                 { withCredentials: true}
             ).then((res) => {

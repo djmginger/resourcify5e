@@ -13,6 +13,8 @@ import Copyright from "../components/Copyright";
 
 
 function CharacterDisplay() {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const { state } = useLocation();
     const characterName = state.characterName;
 
@@ -26,7 +28,7 @@ function CharacterDisplay() {
     //Make an api call to get the specific character object given a characterName
     const getCharacter = function(characterName) {
         setIsLoading(true);
-        axios.get('http://localhost:9000/characterDisplay',{
+        axios.get(`${apiUrl}/characterDisplay`,{
             params: {characterName: characterName},
             withCredentials: true
         }).then((res) => {
@@ -81,7 +83,7 @@ function CharacterDisplay() {
         //reject initial onLoad call from connected useEffect Hook
         if (!character) return;
 
-        axios.post('http://localhost:9000/characterDisplay', {
+        axios.post(`${apiUrl}/characterDisplay`, {
             character: character,
         }, {withCredentials: true}
         ).then((res) => {

@@ -11,6 +11,7 @@ import {useCharacters} from "../contextProviders/CharacterContext";
 import Copyright from "../components/Copyright";
 
 function Register() {
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
@@ -38,7 +39,7 @@ function Register() {
         } else {
             //If a user hasn't registered their email during this session, prompt them to register. Once registration is complete & successful, prompt them to re-enter credentials and treat it as a login attempt.
             if (!registeredDuringSession) {
-                axios.post('http://localhost:9000/register',
+                axios.post(`${apiUrl}/register`,
                     {email: email, password: pass},
                     { withCredentials: true}
                 ).then(function (res) {
@@ -55,7 +56,7 @@ function Register() {
                     }
                 });
             } else {
-                axios.post('http://localhost:9000/login',
+                axios.post(`${apiUrl}/login`,
                     {email: email, password: pass},
                     { withCredentials: true}
                 ).then(function (res) {

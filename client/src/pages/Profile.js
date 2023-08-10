@@ -13,6 +13,8 @@ import {DeleteConfirmation} from "../components/DeleteConfirmation";
 import Copyright from "../components/Copyright";
 
 function Profile() {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const { setIsUserLoggedIn } = useAuth();
     const navigate = useNavigate();
 
@@ -39,7 +41,7 @@ function Profile() {
         } else if (!(newPass === confirmNewPass)) {
             setErrorMessage('New passwords do not match! Please try again!');
         } else {
-            axios.put('http://localhost:9000/profile/updatePass',
+            axios.put(`${apiUrl}/profile/updatePass`,
                 {oldPassword: currentPass, newPassword: newPass},
                 {withCredentials: true}
             ).then(function (res) {
@@ -57,7 +59,7 @@ function Profile() {
     }
 
     const handleDelete = () => {
-        axios.delete('http://localhost:9000/profile',
+        axios.delete(`${apiUrl}/profile`,
             {withCredentials: true}
         ).then(function (res) {
             resetForm();

@@ -1,6 +1,8 @@
 import {createContext, useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -15,7 +17,7 @@ export function AuthProvider({ children }) {
         // Function to check token validity
         const validateToken = async () => {
             try {
-                const response = await axios.get('http://localhost:9000/login/validate-token', { withCredentials: true });
+                const response = await axios.get(`${apiUrl}/login/validate-token`, { withCredentials: true });
                 if (response.data.valid) {
                     setIsUserLoggedIn(true);
                 }

@@ -10,6 +10,7 @@ import { useCharacters } from '../contextProviders/CharacterContext';
 import { useAuth } from "../contextProviders/AuthContext";
 
 function SiteNavbar() {
+
     const { isUserLoggedIn } = useAuth();
     const [expanded, setExpanded] = useState(false); // Add expanded state
     const navbarRef = useRef(null);
@@ -41,6 +42,8 @@ function SiteNavbar() {
 }
 
 function UserNavbar({ navbarRef, expanded, setExpanded }){
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const { setIsUserLoggedIn } = useAuth();
     const navigate = useNavigate();
     const { characterArray } = useCharacters();
@@ -48,7 +51,7 @@ function UserNavbar({ navbarRef, expanded, setExpanded }){
     const isListPage = location.pathname === "/characters";
 
     const logOut = function () {
-        axios.post('http://localhost:9000/login/logout',
+        axios.post(`${apiUrl}/login/logout`,
             {},
             {withCredentials: true}
         ).then(res => {
