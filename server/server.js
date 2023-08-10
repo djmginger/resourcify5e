@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -6,9 +5,6 @@ const logger = require('morgan');
 const cors = require('cors');
 const connectDB = require('./db');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const testRouter = require('./routes/testAPI');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const charactersRouter = require('./routes/characters');
@@ -38,9 +34,6 @@ server.use(express.urlencoded({ extended: false }));
 server.use(cookieParser());
 server.use(express.static(path.join(__dirname, 'public')));
 
-server.use('/', indexRouter);
-server.use('/users', usersRouter);
-server.use('/testAPI', testRouter);
 server.use('/register', registerRouter);
 server.use('/login', loginRouter);
 server.use('/characters', charactersRouter);
