@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Slightly refactored Navbar styling, and added a &quot;Sign up here&quot; style prompt on the login page.">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Refactored frontend to use an env variable for api url">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SiteNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/contextProviders/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/contextProviders/AuthContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/contextProviders/CharacterContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/contextProviders/CharacterContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +132,7 @@
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
       <workItem from="1691622484588" duration="15138000" />
-      <workItem from="1691702447622" duration="6512000" />
+      <workItem from="1691702447622" duration="7528000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -309,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691706194824</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Refactored frontend to use an env variable for api url">
+      <created>1691709974201</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1691709974201</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +341,8 @@
     <MESSAGE value="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells)." />
     <MESSAGE value="Added a Copyright footer to all pages" />
     <MESSAGE value="Slightly refactored Navbar styling, and added a &quot;Sign up here&quot; style prompt on the login page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Slightly refactored Navbar styling, and added a &quot;Sign up here&quot; style prompt on the login page." />
+    <MESSAGE value="Refactored frontend to use an env variable for api url" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored frontend to use an env variable for api url" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
