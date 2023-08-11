@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
     }, []);
 
     // Only render children once we know if the user is authenticated or not
-    if (loading) return null;
+    //if (loading) return null;
 
     const value = {
         isUserLoggedIn,
