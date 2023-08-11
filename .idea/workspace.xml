@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Refactored frontend to use an env variable for api url">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Removed even more unused code that was throwing an error on Render">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +131,7 @@
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
       <workItem from="1691622484588" duration="15138000" />
-      <workItem from="1691702447622" duration="7528000" />
+      <workItem from="1691702447622" duration="9243000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -309,7 +308,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691709974201</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Removed unused code that was throwing an error on Render">
+      <created>1691710718171</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1691710718171</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Removed even more unused code that was throwing an error on Render">
+      <created>1691710923356</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1691710923356</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +355,20 @@
     <MESSAGE value="Added a Copyright footer to all pages" />
     <MESSAGE value="Slightly refactored Navbar styling, and added a &quot;Sign up here&quot; style prompt on the login page." />
     <MESSAGE value="Refactored frontend to use an env variable for api url" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored frontend to use an env variable for api url" />
+    <MESSAGE value="Removed unused code that was throwing an error on Render" />
+    <MESSAGE value="Removed even more unused code that was throwing an error on Render" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed even more unused code that was throwing an error on Render" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/server.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
