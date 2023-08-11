@@ -7,7 +7,8 @@ function authenticateJWT(req, res, next) {
     const token = req.cookies.authToken;
 
     if (token) {
-        //console.log("Token before verification:", token);
+        console.log("Token before verification:");
+        console.log(token)
 
         jsonwebtoken.verify(token, jwtSecret, (err, user) => {
             if (err) {
@@ -20,6 +21,7 @@ function authenticateJWT(req, res, next) {
         });
     } else {
         res.sendStatus(401);  // Unauthorized
+        console.log("token not made or doesn't exist")
     }
 }
 
