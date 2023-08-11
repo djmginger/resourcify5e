@@ -7,12 +7,10 @@ function authenticateJWT(req, res, next) {
     const token = req.cookies.authToken;
 
     if (token) {
-        console.log("Token before verification:");
-        console.log(token)
 
         jsonwebtoken.verify(token, jwtSecret, (err, user) => {
             if (err) {
-                //console.log("Error in verifier: " + err);
+                console.log("Error in verifier: " + err);
                 return res.sendStatus(403);  // Forbidden
             }
 

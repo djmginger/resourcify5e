@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added secure property for authToken">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Fixed bugs with Spellpoint and Resource displays that allows negative current values.&#10;Removed several input restrictions on class level and stats, and moved validation to the resulting onSubmit function isntead.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cookieHandler/jwtVerifier.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/cookieHandler/jwtVerifier.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +133,9 @@
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
       <workItem from="1691622484588" duration="15138000" />
-      <workItem from="1691702447622" duration="20086000" />
+      <workItem from="1691702447622" duration="20828000" />
+      <workItem from="1691733391486" duration="608000" />
+      <workItem from="1691775051411" duration="1332000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -362,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691715848636</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Fixed bugs with Spellpoint and Resource displays that allows negative current values.&#10;Removed several input restrictions on class level and stats, and moved validation to the resulting onSubmit function isntead.">
+      <created>1691724875261</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1691724875261</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +378,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Created display pages for a users specific character that shows resources and implemented UI components to interact with them." />
     <MESSAGE value="Refined UI for CharacterDisplay and resourceDisplay. Fixed a few bugs in the axios requests, mainly related to error handling. Began work on styling pages." />
     <MESSAGE value="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling." />
     <MESSAGE value="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css" />
@@ -397,7 +402,8 @@
     <MESSAGE value="Refactored Server to use env variable for cors in order to work with render." />
     <MESSAGE value="Added log statements for debugging production" />
     <MESSAGE value="Added secure property for authToken" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added secure property for authToken" />
+    <MESSAGE value="Fixed bugs with Spellpoint and Resource displays that allows negative current values.&#10;Removed several input restrictions on class level and stats, and moved validation to the resulting onSubmit function isntead." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs with Spellpoint and Resource displays that allows negative current values.&#10;Removed several input restrictions on class level and stats, and moved validation to the resulting onSubmit function isntead." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
