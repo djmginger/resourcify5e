@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Refactored Server to use env variable for cors in order to work with render.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added log statements for debugging production" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +129,7 @@
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
       <workItem from="1691622484588" duration="15138000" />
-      <workItem from="1691702447622" duration="11839000" />
+      <workItem from="1691702447622" duration="12313000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -343,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691714348772</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added log statements for debugging production">
+      <created>1691715306907</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1691715306907</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +358,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Added Register and Login page functionality and password hashing/validation via bcrypt. Register page now saves valid post request data to DB." />
     <MESSAGE value="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project." />
     <MESSAGE value="Created display pages for a users specific character that shows resources and implemented UI components to interact with them." />
     <MESSAGE value="Refined UI for CharacterDisplay and resourceDisplay. Fixed a few bugs in the axios requests, mainly related to error handling. Began work on styling pages." />
@@ -378,7 +382,8 @@
     <MESSAGE value="Installed missing fontawesome dependency" />
     <MESSAGE value="Added proper icons and site title for index.html" />
     <MESSAGE value="Refactored Server to use env variable for cors in order to work with render." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Server to use env variable for cors in order to work with render." />
+    <MESSAGE value="Added log statements for debugging production" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added log statements for debugging production" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

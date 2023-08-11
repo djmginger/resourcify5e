@@ -31,7 +31,7 @@ router.post('/', async function (req, res) {
             res.cookie("authToken", authToken, {
                 httpOnly: true,
                 maxAge: 24 * 60 * 60 * 1000, // 1 day
-                // secure: true, // use this in production when using HTTPS
+                secure: true, // use this in production when using HTTPS
             });
 
             return res.sendStatus(200);
