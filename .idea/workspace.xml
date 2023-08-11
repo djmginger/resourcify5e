@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Installed missing fontawesome dependency">
-      <change afterPath="$PROJECT_DIR$/client/public/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/favicon-32x32.png" afterDir="false" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added proper icons and site title for index.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/logo512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +132,7 @@
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
       <workItem from="1691622484588" duration="15138000" />
-      <workItem from="1691702447622" duration="10599000" />
+      <workItem from="1691702447622" duration="11046000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -336,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691712564861</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added proper icons and site title for index.html">
+      <created>1691713831808</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1691713831808</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +347,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval" />
     <MESSAGE value="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server." />
     <MESSAGE value="Added Register and Login page functionality and password hashing/validation via bcrypt. Register page now saves valid post request data to DB." />
     <MESSAGE value="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project." />
@@ -371,18 +371,8 @@
     <MESSAGE value="Removed unused code that was throwing an error on Render" />
     <MESSAGE value="Removed even more unused code that was throwing an error on Render" />
     <MESSAGE value="Installed missing fontawesome dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="Installed missing fontawesome dependency" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/server.js</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added proper icons and site title for index.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added proper icons and site title for index.html" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

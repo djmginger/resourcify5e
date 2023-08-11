@@ -4,6 +4,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const connectDB = require('./db');
+require('dotenv').config();
+
+const frontendUrl = process.env.FRONTEND_URL;
 
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
@@ -18,7 +21,7 @@ server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'jade');
 
 server.use(cors({
-    origin: 'http://localhost:3000', // this should match the URL of your frontend
+    origin: frontendUrl, // this should match the URL of your frontend
     credentials: true,  // this enables cookies to be sent and received cross-origin
     allowedHeaders: [
         'set-cookie',
