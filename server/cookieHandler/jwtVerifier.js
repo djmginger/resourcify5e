@@ -10,7 +10,7 @@ function authenticateJWT(req, res, next) {
 
         jsonwebtoken.verify(token, jwtSecret, (err, user) => {
             if (err) {
-                console.log("Error in verifier: " + err);
+                //console.log("Error in verifier: " + err);
                 return res.sendStatus(403);  // Forbidden
             }
 
@@ -22,4 +22,5 @@ function authenticateJWT(req, res, next) {
         console.log("token not made or doesn't exist")
     }
 }
+
 module.exports = { authenticateJWT };

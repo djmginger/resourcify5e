@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added placeholder components in root index.html to display to the user while the server is booting up after inactivity">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/contextProviders/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/contextProviders/AuthContext.js" afterDir="false" />
-    </list>
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Removed conditional rendering in AuthContext that was possibly nullifying the components in Index.html before server fully spun up." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,7 +131,7 @@
       <workItem from="1691622484588" duration="15138000" />
       <workItem from="1691702447622" duration="20828000" />
       <workItem from="1691733391486" duration="608000" />
-      <workItem from="1691775051411" duration="2836000" />
+      <workItem from="1691775051411" duration="3177000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -388,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691776572340</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Removed conditional rendering in AuthContext that was possibly nullifying the components in Index.html before server fully spun up.">
+      <created>1691779488294</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1691779488294</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +402,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling." />
     <MESSAGE value="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css" />
     <MESSAGE value="Added component and related functional code for the variant Spell Point rules. Also made slight changes to the schema, as well as css changes." />
     <MESSAGE value="Fixed broken resources within the CharacterDisplay.js, and worked on css styling" />
@@ -423,7 +426,8 @@
     <MESSAGE value="Added secure property for authToken" />
     <MESSAGE value="Fixed bugs with Spellpoint and Resource displays that allows negative current values.&#10;Removed several input restrictions on class level and stats, and moved validation to the resulting onSubmit function isntead." />
     <MESSAGE value="Added placeholder components in root index.html to display to the user while the server is booting up after inactivity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added placeholder components in root index.html to display to the user while the server is booting up after inactivity" />
+    <MESSAGE value="Removed conditional rendering in AuthContext that was possibly nullifying the components in Index.html before server fully spun up." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed conditional rendering in AuthContext that was possibly nullifying the components in Index.html before server fully spun up." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
