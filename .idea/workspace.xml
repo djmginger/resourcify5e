@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added log statements for debugging production" />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Added secure property for authToken">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ResourceDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +136,7 @@
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
       <workItem from="1691622484588" duration="15138000" />
-      <workItem from="1691702447622" duration="12313000" />
+      <workItem from="1691702447622" duration="20086000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -348,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691715306907</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Added secure property for authToken">
+      <created>1691715848636</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1691715848636</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,7 +372,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Created Characters page where user is redirected after a successful login. Also created resourceObjects.js, which contain objects necessary to lookup available resources for created characters. Added various validation across project." />
     <MESSAGE value="Created display pages for a users specific character that shows resources and implemented UI components to interact with them." />
     <MESSAGE value="Refined UI for CharacterDisplay and resourceDisplay. Fixed a few bugs in the axios requests, mainly related to error handling. Began work on styling pages." />
     <MESSAGE value="Added SiteNavbar component, as well as functionality for Edit button in CharacterDisplay.js. Also began work on css styling." />
@@ -383,7 +396,8 @@
     <MESSAGE value="Added proper icons and site title for index.html" />
     <MESSAGE value="Refactored Server to use env variable for cors in order to work with render." />
     <MESSAGE value="Added log statements for debugging production" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added log statements for debugging production" />
+    <MESSAGE value="Added secure property for authToken" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added secure property for authToken" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

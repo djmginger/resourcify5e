@@ -32,6 +32,7 @@ function AddCharacterModal(props) {
         handleSubclassChange,
         classErrorMessage,
         subclassErrorMessage,
+        statsErrorMessage,
         str,
         dex,
         con,
@@ -103,18 +104,15 @@ function AddCharacterModal(props) {
                                 inputMode={"numeric"}
                                 type="number"
                                 value={classLevel}
-                                min={1}
-                                max={20}
-                                //Allows the user to only input numerical digits or deletion keys
-                                onKeyDown={(e) => {
-                                    if (!/^\d$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                                //Allows the user to only input values between 1 and 20
                                 onChange={(e) => {
-                                    const value = parseInt(e.target.value);
-                                    if (value >= 1 && value <= 20) {
+                                    // Allow empty input for user to clear the field
+                                    if (e.target.value === "") {
+                                        setClassLevel("");
+                                        return;
+                                    }
+                                    // Ensure input is 1 or 2 digits and non-negative
+                                    if (e.target.value.length <= 2 && e.target.value >= 0) {
+                                        const value = parseInt(e.target.value);
                                         setClassLevel(value);
                                     }
                                 }}
@@ -147,8 +145,6 @@ function AddCharacterModal(props) {
 
                     {subclassErrorMessage && <Alert variant={"danger"} className="add-alert">Please select a subclass</Alert>}
 
-
-
                     {/* Two rows of 3 number inputs for stat collection */}
                     <Row className="stat-input-row-first">
                         <Group as={Col}>
@@ -157,18 +153,15 @@ function AddCharacterModal(props) {
                                 type="number"
                                 // You'll need to handle the state for each stat value
                                 value={str}
-                                min={1}
-                                max={30}
-                                //Allows the user to only input numerical digits or deletion keys
-                                onKeyDown={(e) => {
-                                    if (!/^\d$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                                //Allows the user to only input values between 1 and 30
                                 onChange={(e) => {
-                                    const value = parseInt(e.target.value);
-                                    if (value >= 1 && value <= 30) {
+                                    // Allow empty input for user to clear the field
+                                    if (e.target.value === "") {
+                                        setStr("");
+                                        return;
+                                    }
+                                    // Ensure input is 1 or 2 digits and non-negative
+                                    if (e.target.value.length <= 2 && e.target.value >= 0) {
+                                        const value = parseInt(e.target.value);
                                         setStr(value);
                                     }
                                 }}
@@ -180,18 +173,15 @@ function AddCharacterModal(props) {
                             <Form.Control
                                 type="number"
                                 value={dex}
-                                min={1}
-                                max={30}
-                                //Allows the user to only input numerical digits or deletion keys
-                                onKeyDown={(e) => {
-                                    if (!/^\d$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                                //Allows the user to only input values between 1 and 30
                                 onChange={(e) => {
-                                    const value = parseInt(e.target.value);
-                                    if (value >= 1 && value <= 30) {
+                                    // Allow empty input for user to clear the field
+                                    if (e.target.value === "") {
+                                        setDex("");
+                                        return;
+                                    }
+                                    // Ensure input is 1 or 2 digits and non-negative
+                                    if (e.target.value.length <= 2 && e.target.value >= 0) {
+                                        const value = parseInt(e.target.value);
                                         setDex(value);
                                     }
                                 }}
@@ -203,18 +193,15 @@ function AddCharacterModal(props) {
                             <Form.Control
                                 type="number"
                                 value={con}
-                                min={1}
-                                max={30}
-                                //Allows the user to only input numerical digits or deletion keys
-                                onKeyDown={(e) => {
-                                    if (!/^\d$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                                //Allows the user to only input values between 1 and 30
                                 onChange={(e) => {
-                                    const value = parseInt(e.target.value);
-                                    if (value >= 1 && value <= 30) {
+                                    // Allow empty input for user to clear the field
+                                    if (e.target.value === "") {
+                                        setCon("");
+                                        return;
+                                    }
+                                    // Ensure input is 1 or 2 digits and non-negative
+                                    if (e.target.value.length <= 2 && e.target.value >= 0) {
+                                        const value = parseInt(e.target.value);
                                         setCon(value);
                                     }
                                 }}
@@ -228,18 +215,15 @@ function AddCharacterModal(props) {
                             <Form.Control
                                 type="number"
                                 value={int}
-                                min={1}
-                                max={30}
-                                //Allows the user to only input numerical digits or deletion keys
-                                onKeyDown={(e) => {
-                                    if (!/^\d$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                                //Allows the user to only input values between 1 and 30
                                 onChange={(e) => {
-                                    const value = parseInt(e.target.value);
-                                    if (value >= 1 && value <= 30) {
+                                    // Allow empty input for user to clear the field
+                                    if (e.target.value === "") {
+                                        setInt("");
+                                        return;
+                                    }
+                                    // Ensure input is 1 or 2 digits and non-negative
+                                    if (e.target.value.length <= 2 && e.target.value >= 0) {
+                                        const value = parseInt(e.target.value);
                                         setInt(value);
                                     }
                                 }}
@@ -251,18 +235,15 @@ function AddCharacterModal(props) {
                             <Form.Control
                                 type="number"
                                 value={wis}
-                                min={1}
-                                max={30}
-                                //Allows the user to only input numerical digits or deletion keys
-                                onKeyDown={(e) => {
-                                    if (!/^\d$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                                //Allows the user to only input values between 1 and 30
                                 onChange={(e) => {
-                                    const value = parseInt(e.target.value);
-                                    if (value >= 1 && value <= 30) {
+                                    // Allow empty input for user to clear the field
+                                    if (e.target.value === "") {
+                                        setWis("");
+                                        return;
+                                    }
+                                    // Ensure input is 1 or 2 digits and non-negative
+                                    if (e.target.value.length <= 2 && e.target.value >= 0) {
+                                        const value = parseInt(e.target.value);
                                         setWis(value);
                                     }
                                 }}
@@ -274,24 +255,25 @@ function AddCharacterModal(props) {
                             <Form.Control
                                 type="number"
                                 value={cha}
-                                min={1}
-                                max={30}
-                                //Allows the user to only input numerical digits or deletion keys
-                                onKeyDown={(e) => {
-                                    if (!/^\d$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                                //Allows the user to only input values between 1 and 30
                                 onChange={(e) => {
-                                    const value = parseInt(e.target.value);
-                                    if (value >= 1 && value <= 30) {
+                                    // Allow empty input for user to clear the field
+                                    if (e.target.value === "") {
+                                        setCha("");
+                                        return;
+                                    }
+                                    // Ensure input is 1 or 2 digits and non-negative
+                                    if (e.target.value.length <= 2 && e.target.value >= 0) {
+                                        const value = parseInt(e.target.value);
                                         setCha(value);
                                     }
                                 }}
                             />
                         </Group>
                     </Row>
+
+                    {statsErrorMessage &&
+                        <Alert variant={"danger"} className="add-alert">All stats must be greater than 0</Alert>}
+
                     <Row>
                         <Form.Check
                             type="switch"

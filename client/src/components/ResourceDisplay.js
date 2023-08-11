@@ -29,7 +29,15 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
                     <div className="resource-card-content col-10 col-sm-12">
                         {editEnabled && (
                             <div>
-                                <FontAwesomeIcon size={"lg"} icon={faSquareMinus} onClick={decreaseResourceValue} className={"edit-icon minus"}/>
+                                <FontAwesomeIcon
+                                    size={"lg"}
+                                    icon={faSquareMinus}
+                                    onClick={() => {
+                                        if (resource.resourceCurrent > 0) {
+                                            decreaseResourceValue();
+                                        }
+                                    }}
+                                    className={"edit-icon minus"}/>
                             </div>
                         )}
                         <div className="resource-button-container">

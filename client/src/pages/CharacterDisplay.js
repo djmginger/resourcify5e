@@ -174,6 +174,8 @@ function CharacterDisplay() {
         }
 
         updatedSpellpoints.current -= spellpointValue;
+        if (updatedSpellpoints.current < 0) updatedSpellpoints.current = 0;
+
         console.log("Spellpoints after:")
         console.log(updatedSpellpoints)
         setCharacter(prevCharacter => ({

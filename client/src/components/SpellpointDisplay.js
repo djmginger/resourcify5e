@@ -35,7 +35,12 @@ function SpellpointDisplay(
                                 <FontAwesomeIcon
                                     size={"2x"}
                                     icon={faSquareMinus}
-                                    onClick={() => decreaseSpellpointValue(1)}
+                                    onClick={() => {
+                                        if (spellpointObject.current > 0) {
+                                            decreaseSpellpointValue(1);
+                                        }
+                                    }}
+
                                     className="edit minus"
                                 />
                             </div>
@@ -62,7 +67,11 @@ function SpellpointDisplay(
                                 <FontAwesomeIcon
                                     size={"2x"}
                                     icon={faSquarePlus}
-                                    onClick={() => increaseSpellpointValue(1)}
+                                    onClick={() => {
+                                        if (spellpointObject.current < spellpointObject.max){
+                                        increaseSpellpointValue(1)
+                                        }
+                                    }}
                                     className="edit plus"
                                 />
                             </div>
@@ -78,6 +87,7 @@ function SpellpointDisplay(
                                     if (spellpointObject.powerSpells && (resource.resourceName in spellpointObject.powerSpells)) {
                                         isDisabled = spellpointObject.powerSpells[resource.resourceName] === false;
                                     } else isDisabled = false;
+                                    if (spellpointObject.current === 0) isDisabled = true;
                                     let colClasses = "spellpoint-button col-5 col-md-4 col-lg-3 ";
                                     if (resourceIndex % 2 !== 0) {
                                         colClasses += "ms-4"; // Add offsets for every second item

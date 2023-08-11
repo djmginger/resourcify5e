@@ -35,6 +35,7 @@ function CharacterList({reloadCharacters}) {
     const [levelErrorMessage, setLevelErrorMessage] = useState(false);
     const [classErrorMessage, setClassErrorMessage] = useState(false);
     const [subclassErrorMessage, setSubclassErrorMessage] = useState(false);
+    const [statsErrorMessage, setStatsErrorMessage] = useState(false);
     const [showDupeCharacterMessage, setShowDupeCharacterMessage] = useState(false);
     const [characterDataLoaded, setCharacterDataLoaded] = useState(false);
     const [characterToDelete, setCharacterToDelete] = useState(false);
@@ -133,6 +134,7 @@ function CharacterList({reloadCharacters}) {
         setLevelErrorMessage(false);
         setClassErrorMessage(false);
         setSubclassErrorMessage(false);
+        setStatsErrorMessage(false);
         setUseSpellpoints(false);
         setShowMaximums(true);
         setPrevCharName(undefined);
@@ -143,12 +145,28 @@ function CharacterList({reloadCharacters}) {
         setLevelErrorMessage(false);
         setClassErrorMessage(false);
         setSubclassErrorMessage(false);
+        setStatsErrorMessage(false);
 
         const stats = {str, dex, con, int, wis, cha}
+        const areStatsValid = Object.values(stats).every(value => value >= 1);
 
-        //If this function is reached as a result of a user clicking on the update button of an existing character:
-        if (isUpdateMode) {
-            // API call to update existing character
+        if (characterName === "" || !/^[\w\s]{1,50}$/.test(characterName) || characterName === undefined) {
+            // Check that the length of the name is 50 or less, and has no special characters
+            setNameErrorMessage(true);
+        } else if (!/^(1\d|20|\d)$/.test(classLevel.toString())) {
+            // Check that the class level is a value between 1 and 20 (inclusive)
+            setLevelErrorMessage(true);
+        } else if (classSelection === undefined) {
+            // Check that a class has been selected
+            setClassErrorMessage(true);
+        } else if (classSelection && minLevelForSubclass <= classLevel && subclass === undefined) {
+            // Check that a subclass has been selected (only if the character has access to them)
+            setSubclassErrorMessage(true);
+        } else if(!areStatsValid){
+            // Check that all stat values are greater than 0
+            setStatsErrorMessage(true);
+        } else if (isUpdateMode) {
+            // If this function was reached by clicking on the update button, make an API call to update existing character
             axios.put(`${apiUrl}/characters`, {
                 character: {
                     name: characterName,
@@ -171,49 +189,35 @@ function CharacterList({reloadCharacters}) {
                 }).catch((error) => {
                 console.log('Error', error.message);
             });
-        } else { //Else if a user is adding a completely new character
-            if (characterName === "" || !/^[\w\s]{1,50}$/.test(characterName) || characterName === undefined) {
-                // Check that the length of the name is 50 or less, and has no special characters
-                setNameErrorMessage(true);
-            } else if (!/^(1\d|20|\d)$/.test(classLevel.toString())) {
-                // Check that the class level is a value between 1 and 20 (inclusive)
-                setLevelErrorMessage(true);
-            } else if (classSelection === undefined) {
-                // Check that a class has been selected
-                setClassErrorMessage(true);
-            } else if (classSelection && minLevelForSubclass <= classLevel && subclass === undefined) {
-                // Check that a subclass has been selected (only if the character has access to them)
-                setSubclassErrorMessage(true);
-            } else {
-                //api call to add character to use
-                axios.post(`${apiUrl}/characters`, {
-                        character: {
-                            name: characterName,
-                            className: classSelection,
-                            classLevel: classLevel,
-                            subclass: subclass,
-                            stats: stats,
-                            settings: {
-                                showSpellpoints: useSpellpoints,
-                                showMaxValues: showMaximums,
-                            }
-                        },
-                    }, {withCredentials: true}
-                ).then((res) => {
-                    resetForm();
-                    reloadCharacters();
-                    setShowNewCharacter(false);
-                }).catch(function (error) {
-                    if (error.response.status === 409) {
-
-                        setShowDupeCharacterMessage(true);
-                    } else {
-                        console.log('Error', error.message);
-                    }
-                });
-            }
+        } else {
+            // API call to add a new character
+            axios.post(`${apiUrl}/characters`, {
+                    character: {
+                        name: characterName,
+                        className: classSelection,
+                        classLevel: classLevel,
+                        subclass: subclass,
+                        stats: stats,
+                        settings: {
+                            showSpellpoints: useSpellpoints,
+                            showMaxValues: showMaximums,
+                        }
+                    },
+                }, {withCredentials: true}
+            ).then((res) => {
+                resetForm();
+                reloadCharacters();
+                setShowNewCharacter(false);
+            }).catch(function (error) {
+                if (error.response.status === 409) {
+                    setShowDupeCharacterMessage(true);
+                } else {
+                    console.log('Error', error.message);
+                }
+            });
         }
     };
+
 
     const handleDeleteCharacter = (characterName) => {
         axios.delete(`${apiUrl}/characters'`, {
@@ -357,6 +361,10 @@ function CharacterList({reloadCharacters}) {
                 subclass={subclass}
                 availableSubclasses={availableSubclasses}
                 minLevelForSubclass={minLevelForSubclass}
+                handleSubclassChange={handleSubclassChange}
+                classErrorMessage={classErrorMessage}
+                subclassErrorMessage={subclassErrorMessage}
+                statsErrorMessage={statsErrorMessage}
                 str={str}
                 dex={dex}
                 con={con}
@@ -369,9 +377,6 @@ function CharacterList({reloadCharacters}) {
                 setInt={setInt}
                 setWis={setWis}
                 setCha={setCha}
-                handleSubclassChange={handleSubclassChange}
-                classErrorMessage={classErrorMessage}
-                subclassErrorMessage={subclassErrorMessage}
             />
 
             <DeleteConfirmation
