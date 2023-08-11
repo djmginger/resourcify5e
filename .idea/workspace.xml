@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Removed even more unused code that was throwing an error on Render">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Installed missing fontawesome dependency">
+      <change afterPath="$PROJECT_DIR$/client/public/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/favicon-32x32.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/logo192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/logo512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +80,11 @@
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\Web Development\resourcify5e\client\public" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\images" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\contextProviders" />
       <recent name="D:\Programming\Web Development\resourcify5e\client\src" />
       <recent name="D:\Programming\Web Development\resourcify5e\server\cookieHandlers" />
-      <recent name="D:\Programming\Web Development\resourcify5e\client\src\css" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="D:\Programming\Web Development\resourcify5e\client\src\components\DeleteConfirmation.js" />
@@ -131,7 +138,7 @@
       <workItem from="1691444647651" duration="10150000" />
       <workItem from="1691538644596" duration="15179000" />
       <workItem from="1691622484588" duration="15138000" />
-      <workItem from="1691702447622" duration="9243000" />
+      <workItem from="1691702447622" duration="10599000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -322,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691710923356</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Installed missing fontawesome dependency">
+      <created>1691712564861</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1691712564861</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +346,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Initial project creation. Installed dependencies and linked React Client to Node Server." />
     <MESSAGE value="Added Mongoose, connected to MongoDB server, setup schema/model and tested data retrieval" />
     <MESSAGE value="Added Axios, Bootstrap-react, and React-router-dom. Set up a basic registration form to test http post between client and server." />
     <MESSAGE value="Added Register and Login page functionality and password hashing/validation via bcrypt. Register page now saves valid post request data to DB." />
@@ -357,7 +370,8 @@
     <MESSAGE value="Refactored frontend to use an env variable for api url" />
     <MESSAGE value="Removed unused code that was throwing an error on Render" />
     <MESSAGE value="Removed even more unused code that was throwing an error on Render" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed even more unused code that was throwing an error on Render" />
+    <MESSAGE value="Installed missing fontawesome dependency" />
+    <option name="LAST_COMMIT_MESSAGE" value="Installed missing fontawesome dependency" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
