@@ -22,5 +22,5 @@ function authenticateJWT(req, res, next) {
         console.log("token not made or doesn't exist")
     }
 }
-
+console.log("woah")
 module.exports = { authenticateJWT };
