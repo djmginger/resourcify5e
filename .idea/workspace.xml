@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Removed conditional rendering in AuthContext that was possibly nullifying the components in Index.html before server fully spun up." />
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Reverted last batch of commits related to index.html. Attempted solutions did not work.">
+      <change afterPath="$PROJECT_DIR$/server/routes/cleric.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +137,8 @@
       <workItem from="1691622484588" duration="15138000" />
       <workItem from="1691702447622" duration="20828000" />
       <workItem from="1691733391486" duration="608000" />
-      <workItem from="1691775051411" duration="3177000" />
+      <workItem from="1691775051411" duration="3887000" />
+      <workItem from="1692226025340" duration="2712000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -392,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691779488294</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Reverted last batch of commits related to index.html. Attempted solutions did not work.">
+      <created>1691781215468</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1691781215468</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +416,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Edited Mongoose schema to include a set of user settings, as well as a &quot;spellpoints&quot; object within each characerSchema. Spellpoints gets generated when a user adds a new character. Also tweaked navbar css" />
     <MESSAGE value="Added component and related functional code for the variant Spell Point rules. Also made slight changes to the schema, as well as css changes." />
     <MESSAGE value="Fixed broken resources within the CharacterDisplay.js, and worked on css styling" />
     <MESSAGE value="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in." />
@@ -427,7 +440,8 @@
     <MESSAGE value="Fixed bugs with Spellpoint and Resource displays that allows negative current values.&#10;Removed several input restrictions on class level and stats, and moved validation to the resulting onSubmit function isntead." />
     <MESSAGE value="Added placeholder components in root index.html to display to the user while the server is booting up after inactivity" />
     <MESSAGE value="Removed conditional rendering in AuthContext that was possibly nullifying the components in Index.html before server fully spun up." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed conditional rendering in AuthContext that was possibly nullifying the components in Index.html before server fully spun up." />
+    <MESSAGE value="Reverted last batch of commits related to index.html. Attempted solutions did not work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reverted last batch of commits related to index.html. Attempted solutions did not work." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
