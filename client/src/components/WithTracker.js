@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 
-function WithTracker(WrappedComponent, options = {}) {
-    return function Component(props) {
+const WithTracker = (WrappedComponent, options = {}) => {
+    function Component(props) {
         useEffect(() => {
+            console.log("Tracking page:", window.location.pathname);
             trackPage(window.location.pathname);
         }, [window.location.pathname]);
 
@@ -14,7 +15,9 @@ function WithTracker(WrappedComponent, options = {}) {
         };
 
         return <WrappedComponent {...props} />;
-    };
+    }
+
+    return Component;
 }
 
 export default WithTracker;

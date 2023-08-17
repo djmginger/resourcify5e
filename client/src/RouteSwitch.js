@@ -9,26 +9,31 @@ import WithTracker from "./components/WithTracker";
 import Profile from "./pages/Profile";
 
 const RouteSwitch = () => {
+    const TrackedLogin = WithTracker(Login);
+    const TrackedRegister = WithTracker(Register);
+    const TrackedCharacters = WithTracker(Characters);
+    const TrackedCharacterDisplay = WithTracker(CharacterDisplay);
+    const TrackedProfile = WithTracker(Profile);
 
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={WithTracker(Login)} />
-                <Route path="/register" element={WithTracker(Register)} />
-                <Route path="/login" element={WithTracker(Login)} />
+                <Route path="/" element={<TrackedLogin />} />
+                <Route path="/register" element={<TrackedRegister />} />
+                <Route path="/login" element={<TrackedLogin />} />
                 <Route path="/characters" element={
                     <Protected>
-                        {WithTracker(Characters)}
+                        {<TrackedCharacters />}
                     </Protected>
                 } />
                 <Route path="/characters/:character" element={
                     <Protected>
-                        {WithTracker(CharacterDisplay)}
+                        {<TrackedCharacterDisplay />}
                     </Protected>
                 } />
                 <Route path="/profile" element={
                     <Protected>
-                        {WithTracker(Profile)}
+                        {<TrackedProfile />}
                     </Protected>
                 } />
             </Routes>
