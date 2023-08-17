@@ -7,9 +7,11 @@
     border-bottom-width: 1px;
 }
 
-.site-nav-brand {
+.site-nav-brand, .site-nav-brand:hover {
     color: #F5F1E3;
-    padding: 0
+    padding: 0;
+    user-select: none;
+    cursor: default;
 }
 
 .custom-dropdown {
