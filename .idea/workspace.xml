@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Enabled Google analytics collection, and bugfixed navbar brand">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Refactored RouteSwitch in order to properly collect page navigation info">
+      <change afterPath="$PROJECT_DIR$/client/src/components/WithTracker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/RouteSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/RouteSwitch.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +140,7 @@
       <workItem from="1691733391486" duration="608000" />
       <workItem from="1691775051411" duration="3887000" />
       <workItem from="1692226025340" duration="3369000" />
-      <workItem from="1692310334294" duration="1683000" />
+      <workItem from="1692310334294" duration="3494000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -418,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692311894748</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Refactored RouteSwitch in order to properly collect page navigation info">
+      <created>1692312228572</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1692312228572</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +439,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Added a cookie/JWT system in order to track when a user is logged in. Also added context providers for authorization and characters in order to better manage state for those values. &#10;&#10;Added a Protected component that reroutes users to the login page from pages requiring authentication when the user is not logged in." />
     <MESSAGE value="Accidentally removed React from Navbar during last commit. Added back." />
     <MESSAGE value="Added check for AuthContext to see if there is an existing cookie upon a refresh/reload, preventing accidential reroutes when a user is still logged in but refreshes. &#10;&#10;Also added the ability to update an existing character from the Character List page.&#10;&#10;Closes #5 and closes #6" />
     <MESSAGE value="Worked on styling for site. Improved responsiveness for mobile devices. Added breakpoint for navbar collapse." />
@@ -453,7 +463,8 @@
     <MESSAGE value="Reverted last batch of commits related to index.html. Attempted solutions did not work." />
     <MESSAGE value="Added cleric service to enable quicker loads" />
     <MESSAGE value="Enabled Google analytics collection, and bugfixed navbar brand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enabled Google analytics collection, and bugfixed navbar brand" />
+    <MESSAGE value="Refactored RouteSwitch in order to properly collect page navigation info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored RouteSwitch in order to properly collect page navigation info" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
