@@ -11,7 +11,7 @@
     box-sizing: border-box;
     border: none;
     outline: none;
-    font-size: 1rem;
+    font-size: .97rem;
     background-color: #2660a4;
     transition: background-color 0.3s; /* smooth transition for background color */
 }

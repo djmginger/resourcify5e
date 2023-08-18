@@ -20,7 +20,7 @@ function SpellpointDisplay(
     }
 
     return (
-        <div className="col-10 col-sm-8 col-md-6 col-lg-4">
+        <div className="col-10 col-sm-8 col-md-6 col-lg-5">
             <Card className="align-items-center spellpoint-card">
                 <Card.Title
                     className="spellpoint-title"
@@ -87,8 +87,8 @@ function SpellpointDisplay(
                                     if (spellpointObject.powerSpells && (resource.resourceName in spellpointObject.powerSpells)) {
                                         isDisabled = spellpointObject.powerSpells[resource.resourceName] === false;
                                     } else isDisabled = false;
-                                    if (spellpointObject.current === 0) isDisabled = true;
-                                    let colClasses = "spellpoint-button col-5 col-md-4 col-lg-3 ";
+                                    if (spellpointObject.current === 0 || (resource.extras.pointValue / resource.resourceMax) > spellpointObject.current) isDisabled = true;
+                                    let colClasses = "spellpoint-button col-5 col-md-4 col-lg-4 ";
                                     if (resourceIndex % 2 !== 0) {
                                         colClasses += "ms-4"; // Add offsets for every second item
                                     }
@@ -98,7 +98,7 @@ function SpellpointDisplay(
                                                 className="custom-button"
                                                 onClick={() => decreaseSpellpointValue(resource.extras.pointValue / resource.resourceMax)}
                                                 disabled={isDisabled}>
-                                                {resource.resourceName}
+                                                {resource.resourceName} ({resource.extras.pointValue / resource.resourceMax} pts)
                                             </Button>
                                         </div>
                                     );
