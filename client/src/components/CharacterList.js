@@ -218,9 +218,8 @@ function CharacterList({reloadCharacters}) {
         }
     };
 
-
     const handleDeleteCharacter = (characterName) => {
-        axios.delete(`${apiUrl}/characters'`, {
+        axios.delete(`${apiUrl}/characters`, {
             params: { characterName: characterName },
             withCredentials: true
         })

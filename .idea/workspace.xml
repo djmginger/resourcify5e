@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Disabled spellpoint buttons if their value exceeds available spellpoints.">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Removed unused Readme file generated in client folder upon project creation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,6 +137,7 @@
       <workItem from="1692226025340" duration="3369000" />
       <workItem from="1692310334294" duration="7619000" />
       <workItem from="1693011411611" duration="606000" />
+      <workItem from="1694627866718" duration="3710000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -446,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692317769897</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Removed unused Readme file generated in client folder upon project creation.">
+      <created>1694628069308</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1694628069308</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -456,7 +464,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Fixed bugs relating to:&#10; - Updating an existing character&#10; - Loading character list on first login&#10; - Extra margin causing unwanted scrollbar on CharacterDisplay page" />
     <MESSAGE value="Added reactive styling for SpellpointDisplay" />
     <MESSAGE value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
     <MESSAGE value="Added a profile page where a user can change their password or delete their account." />
@@ -481,7 +488,8 @@
     <MESSAGE value="Refactored react frontend to work with GA4, previous implementation was outdated" />
     <MESSAGE value="Second Attempt at integrating GA4" />
     <MESSAGE value="Disabled spellpoint buttons if their value exceeds available spellpoints." />
-    <option name="LAST_COMMIT_MESSAGE" value="Disabled spellpoint buttons if their value exceeds available spellpoints." />
+    <MESSAGE value="Removed unused Readme file generated in client folder upon project creation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused Readme file generated in client folder upon project creation." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
