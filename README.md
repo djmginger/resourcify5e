@@ -19,17 +19,15 @@ Upon a successful login, the server generates a JSON Web Token, and stores it wi
 The following images show examples of what each page looks like, populated with example data.
 <hr>
 <p float="left" align="middle">
-<img align="top" title="Login page" src="https://github.com/djmginger/resourcify5e/assets/68353048/6a222ebb-67ee-436b-b05f-e36ff97113e3" width="400"/>
-<img align="top" title="Character List page. Redirected here after a successful login" src="https://github.com/djmginger/resourcify5e/assets/68353048/8af4f057-a072-42df-9426-5e551002fd52" width="400"/>
+<img align="top" title="Login page" src="https://github.com/djmginger/resourcify5e/assets/68353048/7ea82785-1192-4c37-ad1d-0cc1ae6e7273" width="400"/>
+<img align="top" title="Character List page. Redirected here after a successful login" src="https://github.com/djmginger/resourcify5e/assets/68353048/a79c684b-2ebf-4fb8-b1cd-7590af693c73" width="400"/>
 </p>
 <p float="left" align="middle">
-<img align="top" title="Form to add a new character" src="https://github.com/djmginger/resourcify5e/assets/68353048/5cc5fb85-4712-4198-ba21-d2e56e134c84" width="400"/>
-<img align="top" title="Character Display page. Redirected here after selecting a character from the list" src="https://github.com/djmginger/resourcify5e/assets/68353048/e337fe33-55a0-49aa-837b-5140a5aafdfb" width="400"/>
+<img align="top" title="Form to add a new character" src="https://github.com/djmginger/resourcify5e/assets/68353048/aee75d28-8fef-4b00-bbf3-b8829c19e41d" width="400"/>
+<img align="top" title="Character Display page. Redirected here after selecting a character from the list" src="https://github.com/djmginger/resourcify5e/assets/68353048/2625dba5-b6fd-4714-a06d-34352c415bd6" width="400"/>
 </p>
 <p float="left" align="middle">
-<img align="top" title="Navbar menu shown for mobile devices" src="https://github.com/djmginger/resourcify5e/assets/68353048/c3263a2f-b3a3-4e01-9ffd-166108c1e96f" width="400"/>
-<img align="top" title="Profile page" src="https://github.com/djmginger/resourcify5e/assets/68353048/936b3143-0232-4215-9d33-7f7c5cd78db3" width="400"/>
+<img align="top" title="Navbar menu shown for mobile devices" src="https://github.com/djmginger/resourcify5e/assets/68353048/f2a3f16d-f130-4a7e-a434-4e9c0cf912bd" width="400"/>
+<img align="top" title="Profile page" src="https://github.com/djmginger/resourcify5e/assets/68353048/1adf8a0e-6887-4e2a-95fb-044f9c4fe510" width="400"/>
 </p>
 <hr>
-
-
