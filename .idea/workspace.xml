@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Second Attempt at integrating GA4">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Disabled spellpoint buttons if their value exceeds available spellpoints.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SpellpointDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/SpellpointDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/SpellpointDisplay.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +135,8 @@
       <workItem from="1691733391486" duration="608000" />
       <workItem from="1691775051411" duration="3887000" />
       <workItem from="1692226025340" duration="3369000" />
-      <workItem from="1692310334294" duration="7194000" />
+      <workItem from="1692310334294" duration="7619000" />
+      <workItem from="1693011411611" duration="606000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -440,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692315563278</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Disabled spellpoint buttons if their value exceeds available spellpoints.">
+      <created>1692317769897</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1692317769897</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,7 +456,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Worked on styling for site. Improved responsiveness for mobile devices. Added breakpoint for navbar collapse." />
     <MESSAGE value="Fixed bugs relating to:&#10; - Updating an existing character&#10; - Loading character list on first login&#10; - Extra margin causing unwanted scrollbar on CharacterDisplay page" />
     <MESSAGE value="Added reactive styling for SpellpointDisplay" />
     <MESSAGE value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
@@ -475,7 +480,8 @@
     <MESSAGE value="Refactored RouteSwitch in order to properly collect page navigation info" />
     <MESSAGE value="Refactored react frontend to work with GA4, previous implementation was outdated" />
     <MESSAGE value="Second Attempt at integrating GA4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second Attempt at integrating GA4" />
+    <MESSAGE value="Disabled spellpoint buttons if their value exceeds available spellpoints." />
+    <option name="LAST_COMMIT_MESSAGE" value="Disabled spellpoint buttons if their value exceeds available spellpoints." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
