@@ -182,9 +182,11 @@ function CharacterList({reloadCharacters}) {
                 prevCharName: prevCharName
             }, { withCredentials: true })
                 .then((res) => {
-                    resetForm();
+                    setTimeout(() => {
+                        resetForm();
+                        setIsUpdateMode(false);
+                    }, 150)
                     reloadCharacters();
-                    setIsUpdateMode(false);
                     setShowNewCharacter(false);
                 }).catch((error) => {
                 console.log('Error', error.message);
@@ -205,7 +207,9 @@ function CharacterList({reloadCharacters}) {
                     },
                 }, {withCredentials: true}
             ).then((res) => {
-                resetForm();
+                setTimeout(() => {
+                    resetForm();
+                }, 150)
                 reloadCharacters();
                 setShowNewCharacter(false);
             }).catch(function (error) {
@@ -338,8 +342,10 @@ function CharacterList({reloadCharacters}) {
                 show={showNewCharacter}
                 onHide={() => {
                     setShowNewCharacter(false);
-                    setIsUpdateMode(false);
-                    resetForm();
+                    setTimeout(() => {
+                        resetForm();
+                        setIsUpdateMode(false);
+                    }, 150)
                 }}
                 isUpdateMode={isUpdateMode}
                 classArray={classArray}

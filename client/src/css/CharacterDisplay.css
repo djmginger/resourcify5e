@@ -75,6 +75,16 @@
     /* styles for resource cards go here */
 }
 
+.add-resource-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px;
+}
+
+.add-resource-button {
+    background-color: #2660A4;
+    border-color: #2660A4;
+}
 
 .no-resources {
     margin-top: 50px;

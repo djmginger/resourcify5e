@@ -271,8 +271,7 @@ function AddCharacterModal(props) {
                         </Group>
                     </Row>
 
-                    {statsErrorMessage &&
-                        <Alert variant={"danger"} className="add-alert">All stats must be greater than 0</Alert>}
+                    {statsErrorMessage && <Alert variant={"danger"} className="add-alert">All stats must be greater than 0</Alert>}
 
                     <Row>
                         <Form.Check
@@ -282,8 +281,12 @@ function AddCharacterModal(props) {
                             onChange={() => setUseSpellpoints(prevState => !prevState)}
                             className="switch variant-spellpoint"
                         />
-                        <p className="disclaimer">Changing this setting will reset all spell resources to their max values. </p>
-                        <p className="disclaimer">It is recommended you do this only after a long rest. </p>
+                        {isUpdateMode &&
+                            <>
+                                <p className="disclaimer">Changing this setting will reset all spell resources to their max values. </p>
+                                <p className="disclaimer">It is recommended you do this only after a long rest. </p>
+                            </>
+                        }
                     </Row>
 
                     <Row>

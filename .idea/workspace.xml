@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Removed unused Readme file generated in client folder upon project creation.">
+    <list default="true" id="95788c55-0d15-4df0-8c05-84e8088666a8" name="Changes" comment="Implemented ability to add a custom resource to a character. &#10;Fixed spellpoint disclaimer in the AddCharacterModal to show only when updating an existing character.">
+      <change afterPath="$PROJECT_DIR$/client/src/components/AddResourceModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/css/AddResourceModal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddCharacterModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CharacterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CharacterList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/CharacterDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/CharacterDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/characters.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/characters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +145,10 @@
       <workItem from="1692226025340" duration="3369000" />
       <workItem from="1692310334294" duration="7619000" />
       <workItem from="1693011411611" duration="606000" />
-      <workItem from="1694627866718" duration="3710000" />
+      <workItem from="1694627866718" duration="4238000" />
+      <workItem from="1695145368389" duration="1791000" />
+      <workItem from="1695837363351" duration="12000" />
+      <workItem from="1699632130518" duration="6139000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project creation. Installed dependencies and linked React Client to Node Server.">
       <created>1688707961069</created>
@@ -454,18 +465,34 @@
       <option name="project" value="LOCAL" />
       <updated>1694628069308</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Removed typo in url of character deletion request">
+      <created>1694634258432</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1694634258432</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
-    <MESSAGE value="Added reactive styling for SpellpointDisplay" />
-    <MESSAGE value="- Added functionality for showing/hiding max resource values.&#10;- Fixed navbar not collapsing when navigating between characters.&#10;- Accounted for infinite max values within a characters resource array&#10;- Added a form input to &quot;Confirm Password&quot; when registering a new user account." />
     <MESSAGE value="Added a profile page where a user can change their password or delete their account." />
     <MESSAGE value="Added a logo for navbar. Removed unnecessary files.&#10;Added .env values.&#10;Fixed a bug where characters could not be deleted as a result of the new DeleteConfirmation component.&#10;Fixed a bug where low level characters using Spellpoints would break the display (no powerspells)." />
     <MESSAGE value="Added a Copyright footer to all pages" />
@@ -489,7 +516,9 @@
     <MESSAGE value="Second Attempt at integrating GA4" />
     <MESSAGE value="Disabled spellpoint buttons if their value exceeds available spellpoints." />
     <MESSAGE value="Removed unused Readme file generated in client folder upon project creation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused Readme file generated in client folder upon project creation." />
+    <MESSAGE value="Removed typo in url of character deletion request" />
+    <MESSAGE value="Implemented ability to add a custom resource to a character. &#10;Fixed spellpoint disclaimer in the AddCharacterModal to show only when updating an existing character." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented ability to add a custom resource to a character. &#10;Fixed spellpoint disclaimer in the AddCharacterModal to show only when updating an existing character." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

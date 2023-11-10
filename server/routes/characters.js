@@ -196,6 +196,31 @@ router.put('/', authenticateJWT, async function (req, res) {
     }
 });
 
+router.post('/newResource', authenticateJWT, async function (req, res) {
+    try{
+        const email = req.user.email;
+        const characterName = req.body.characterName;
+        const newResource = req.body.resource;
+
+        const user = await User.findOne({email: email});
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const characterIndex = user.characters.findIndex(character => character.characterName === characterName);
+        if (characterIndex === -1) {
+            return res.status(404).json({ error: 'Character not found' });
+        }
+
+        user.characters[characterIndex].resources.push(newResource);
+        await user.save();
+        return res.status(200).json({ message: 'Resource added successfully' });
+    } catch (err) {
+        console.log("Error occurred", err);
+        return res.status(500).send('Error occurred');
+    }
+});
+
 const generateSpellpoints = (resourceArray) => {
     const spellPointObject = {
             current: undefined,

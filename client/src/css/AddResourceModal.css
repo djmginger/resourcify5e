@@ -1,0 +1,23 @@
+.resource-modal {
+    background-color: #F5F1E3;
+}
+
+.form-label {
+    margin: 0;
+}
+
+#dropdown-basic {
+    display: flex;
+    justify-content: space-between; /* Pushes children to the extremes */
+    align-items: center;
+    width: 10rem;
+}
+
+.rest-check-row,
+.max-uses-label {
+    margin-top: 20px;
+}
+
+.add-alert {
+    margin-top: .5rem;
+}

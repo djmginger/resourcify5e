@@ -9,7 +9,6 @@ const jwtSecret = process.env.JWT_SECRET;
 
 router.post('/', async function (req, res) {
     try {
-        console.log(jwtSecret);
         const user = await User.findOne({email: req.body.email});
 
         if (!user) {

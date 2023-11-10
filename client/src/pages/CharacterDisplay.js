@@ -10,7 +10,7 @@ import "../css/CharacterDisplay.css"
 import {Button} from "react-bootstrap";
 import SpellpointDisplay from "../components/SpellpointDisplay";
 import Copyright from "../components/Copyright";
-
+import AddResourceModal from "../components/AddResourceModal";
 
 function CharacterDisplay() {
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -24,6 +24,13 @@ function CharacterDisplay() {
     const [resourceArray, setResourceArray] = useState([]);
     const [spellpointArray, setSpellpointArray] = useState([]);
     const [initialCharacter, setInitialCharacter] = useState();
+    const [showNewResourceModal, setShowNewResourceModal] = useState(false);
+    const [newResourceName, setNewResourceName] = useState("");
+    const [newResourceMax, setNewResourceMax] = useState(1);
+    const [newResourceResetLong, setNewResourceResetLong] = useState(false);
+    const [newResourceResetShort, setNewResourceResetShort] = useState(false);
+    const [nameErrorMessage, setNameErrorMessage] = useState(false);
+    const [resourceMaxErrorMessage, setResourceMaxErrorMessage] = useState(false);
 
     //Make an api call to get the specific character object given a characterName
     const getCharacter = function(characterName) {
@@ -228,6 +235,44 @@ function CharacterDisplay() {
         setEditEnabled(prevEditEnabled => !prevEditEnabled);
     }
 
+    const handleAddResource = () => {
+        setNameErrorMessage(false);
+        setResourceMaxErrorMessage(false);
+
+        if(newResourceName === "" || !/^[\w\s]{1,50}$/.test(newResourceName ) || newResourceName === undefined){
+            setNameErrorMessage(true);
+        } else if (newResourceMax <= 0) {
+            setResourceMaxErrorMessage(true);
+        } else {
+            axios.post(`${apiUrl}/characters/newResource`, {
+                resource: {
+                    resourceName: newResourceName,
+                    resourceMax: newResourceMax,
+                    resourceCurrent: newResourceMax,
+                    resetOnLong: newResourceResetLong,
+                    resetOnShort: newResourceResetShort
+                },
+                characterName: characterName
+            }, { withCredentials: true})
+                .then((res) => {
+                    resetForm();
+                    setShowNewResourceModal(false);
+                    getCharacter(characterName);
+                }).catch((error) => {
+                console.log('Error', error.message);
+            });
+        }
+    }
+
+    const resetForm = () => {
+        setNewResourceName("");
+        setNewResourceMax(1);
+        setNewResourceResetLong(false);
+        setNewResourceResetShort(false);
+        setNameErrorMessage(false);
+        setResourceMaxErrorMessage(false);
+    }
+
     return (
         <div className="character-display-body">
             <SiteNavbar />
@@ -299,12 +344,37 @@ function CharacterDisplay() {
                                 return null; // Return null for odd indices, as they are handled by even indices
                             })}
                         </div>
+                        {editEnabled && (
+                            <div className="add-resource-container">
+                                <Button className="add-resource-button" onClick={() => setShowNewResourceModal(true)}>
+                                    Add a resource
+                                </Button>
+                            </div>
+                        )}
                     </>
                 ) : (
                     <h1 className={"no-resources"}>There are no resources to track! Lucky you!</h1>
                 )}
                 </div>
             )}
+            <AddResourceModal
+                show={showNewResourceModal}
+                onHide={() => {
+                    setShowNewResourceModal(false);
+                    resetForm();
+                }}
+                handleAddResource={handleAddResource}
+                newResourceName={newResourceName}
+                setNewResourceName={setNewResourceName}
+                newResourceMax={newResourceMax}
+                setNewResourceMax={setNewResourceMax}
+                newResourceResetLong={newResourceResetLong}
+                setNewResourceResetLong={setNewResourceResetLong}
+                newResourceResetShort={newResourceResetShort}
+                setNewResourceResetShort={setNewResourceResetShort}
+                nameErrorMessage={nameErrorMessage}
+                resourceMaxErrorMessage={resourceMaxErrorMessage}
+            />
             <Copyright/>
         </div>
     );
