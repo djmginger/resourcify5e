@@ -221,6 +221,42 @@ router.post('/newResource', authenticateJWT, async function (req, res) {
     }
 });
 
+router.delete('/newResource', authenticateJWT, async function (req, res) {
+    try{
+        const email = req.user.email;
+        const characterName = req.query.characterName;
+        const resourceName = req.query.resourceName;
+
+        const user = await User.findOne({email: email});
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        //Find the index of the character with the given name, return a 404 if one isn't found
+        const characterIndex = user.characters.findIndex(character => character.characterName === characterName);
+        if (characterIndex === -1) {
+            return res.status(404).json({ error: 'Character not found' });
+        }
+
+        const character = user.characters[characterIndex];
+
+        //Find the index of the resource with the given name, return a 404 if one isn't found
+        const resourceIndex = character.resources.findIndex(resource => resource.resourceName === resourceName);
+        if (resourceIndex === -1) {
+            return res.status(404).json({ error: 'Resource not found' });
+        }
+
+        // Remove the resource from the array
+        character.resources.splice(resourceIndex, 1);
+
+        await user.save();
+        return res.status(200).json({ message: 'Resource removed successfully' });
+    } catch (err) {
+        console.log("Error occurred", err);
+        return res.status(500).send('Error occurred');
+    }
+});
+
 const generateSpellpoints = (resourceArray) => {
     const spellPointObject = {
             current: undefined,

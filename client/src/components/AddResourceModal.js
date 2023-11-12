@@ -20,7 +20,8 @@ function AddResourceModal(props) {
         newResourceResetShort,
         setNewResourceResetShort,
         nameErrorMessage,
-        resourceMaxErrorMessage
+        resourceMaxErrorMessage,
+        duplicateErrorMessage
     } = props;
 
     return (
@@ -46,9 +47,8 @@ function AddResourceModal(props) {
                         placeholder="Resource Name"
                     />
 
-                    {nameErrorMessage &&
-                        <Alert variant={"danger"} className="add-alert">Length of resource name must be between 1 and 50, and must include no
-                            special characters</Alert>}
+                    {duplicateErrorMessage && <Alert variant={"danger"} className="add-alert">There is already a resource with that name! Please pick a different name and try again</Alert>}
+                    {nameErrorMessage && <Alert variant={"danger"} className="add-alert">Length of resource name must be between 1 and 50, and must include no special characters</Alert>}
 
                             <Form.Label className="form-label max-uses-label">Maximum Number of Uses:</Form.Label>
                             <Form.Control

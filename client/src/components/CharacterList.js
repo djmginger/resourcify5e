@@ -38,7 +38,7 @@ function CharacterList({reloadCharacters}) {
     const [statsErrorMessage, setStatsErrorMessage] = useState(false);
     const [showDupeCharacterMessage, setShowDupeCharacterMessage] = useState(false);
     const [characterDataLoaded, setCharacterDataLoaded] = useState(false);
-    const [characterToDelete, setCharacterToDelete] = useState(false);
+    const [characterToDelete, setCharacterToDelete] = useState();
     const [deleteConfirmShow, setDeleteConfirmShow] = useState(false);
     const [isUpdateMode, setIsUpdateMode] = useState(false);
     const [prevCharName, setPrevCharName] = useState();
@@ -391,8 +391,8 @@ function CharacterList({reloadCharacters}) {
                     setCharacterToDelete(undefined);
                 }}
                 handleDelete={handleDeleteCharacter}
-                characterToDelete={characterToDelete}
-                isProfileDelete={false}
+                itemToDelete={characterToDelete}
+                confirmationType={"character"}
             />
             </Container>
         </div>

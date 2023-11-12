@@ -2,18 +2,39 @@
     margin-bottom: 1.3rem;
     background-color: #141414;
     border-color: #333333;
+    align-items: center;
 }
 
 .resource-card-title {
     font-size: 1.2rem;
     padding-top: .5rem;
-    padding-bottom: .3rem;
+    padding-bottom: .5rem;
     background-color: #333333;
     width: 100%;
     text-align: center;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     color: #F5F1E3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-text {
+    margin: 0 5px;
+    flex-grow: 1; /* Allows the title to take up all available space */
+}
+
+.edit-button-container {
+    margin: 0 5px 0 0; /* Adjust as needed for spacing */
+    display: flex;
+}
+
+.resource-card-body {
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .resource-card-content {
@@ -40,6 +61,12 @@
     border-radius: 50%;
     background-color: transparent;
     border: none;
+}
+
+.resource-delete-icon {
+    font-size: medium;
+    color:#B80000;
+    cursor: pointer;
 }
 
 .edit-icon {

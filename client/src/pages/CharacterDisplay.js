@@ -11,6 +11,7 @@ import {Button} from "react-bootstrap";
 import SpellpointDisplay from "../components/SpellpointDisplay";
 import Copyright from "../components/Copyright";
 import AddResourceModal from "../components/AddResourceModal";
+import {DeleteConfirmation} from "../components/DeleteConfirmation";
 
 function CharacterDisplay() {
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -31,6 +32,9 @@ function CharacterDisplay() {
     const [newResourceResetShort, setNewResourceResetShort] = useState(false);
     const [nameErrorMessage, setNameErrorMessage] = useState(false);
     const [resourceMaxErrorMessage, setResourceMaxErrorMessage] = useState(false);
+    const [duplicateErrorMessage, setDuplicateErrorMessage] = useState(false);
+    const [deleteConfirmShow, setDeleteConfirmShow] = useState(false);
+    const [resourceToDelete, setResourceToDelete] = useState();
 
     //Make an api call to get the specific character object given a characterName
     const getCharacter = function(characterName) {
@@ -238,11 +242,15 @@ function CharacterDisplay() {
     const handleAddResource = () => {
         setNameErrorMessage(false);
         setResourceMaxErrorMessage(false);
+        setDuplicateErrorMessage(false);
 
         if(newResourceName === "" || !/^[\w\s]{1,50}$/.test(newResourceName ) || newResourceName === undefined){
             setNameErrorMessage(true);
         } else if (newResourceMax <= 0) {
             setResourceMaxErrorMessage(true);
+        } else if (character.resources && character.resources && character.resources.some(resource => resource.resourceName === newResourceName)){
+            //Make sure that there are no other existing resources with the provided name
+            setDuplicateErrorMessage(true);
         } else {
             axios.post(`${apiUrl}/characters/newResource`, {
                 resource: {
@@ -250,7 +258,8 @@ function CharacterDisplay() {
                     resourceMax: newResourceMax,
                     resourceCurrent: newResourceMax,
                     resetOnLong: newResourceResetLong,
-                    resetOnShort: newResourceResetShort
+                    resetOnShort: newResourceResetShort,
+                    extras: { isCustomResource: true }
                 },
                 characterName: characterName
             }, { withCredentials: true})
@@ -260,8 +269,25 @@ function CharacterDisplay() {
                     getCharacter(characterName);
                 }).catch((error) => {
                 console.log('Error', error.message);
-            });
+                });
         }
+    }
+
+    const handleDeleteResource = (resourceName) => {
+        axios.delete(`${apiUrl}/characters/newResource`, {
+            params: {
+                resourceName: resourceName,
+                characterName: characterName
+            },
+            withCredentials: true
+        })
+            .then((res) => {
+                setDeleteConfirmShow(false);
+                setResourceToDelete(undefined);
+                getCharacter(characterName);
+            }).catch((error) => {
+            console.log('Error', error.message);
+        });
     }
 
     const resetForm = () => {
@@ -271,6 +297,7 @@ function CharacterDisplay() {
         setNewResourceResetShort(false);
         setNameErrorMessage(false);
         setResourceMaxErrorMessage(false);
+        setDuplicateErrorMessage(false);
     }
 
     return (
@@ -318,23 +345,27 @@ function CharacterDisplay() {
                                     // It's the first resource of the pair
                                     return (
                                         <div className="row justify-content-center" key={index}>
-                                            <div className="col-6 col-sm-5 col-md-3 col-lg-2 resource-card">
+                                            <div className="col-6 col-sm-5 col-md-3 col-xl-2 resource-card">
                                                 <ResourceDisplay
                                                     resource={resource}
                                                     onDecreaseResource={decreaseResourceValue}
                                                     onIncreaseResource={increaseResourceValue}
                                                     editEnabled={editEnabled}
                                                     maxEnabled={character.settings.showMaxValues}
+                                                    setResourceToDelete={setResourceToDelete}
+                                                    setDeleteConfirmShow={setDeleteConfirmShow}
                                                 />
                                             </div>
                                             {resourceArray[index + 1] && ( // Check if the second resource exists
-                                                <div className="col-6 col-sm-5 col-md-3 col-lg-2 offset-sm-1 resource-card">
+                                                <div className="col-6 col-sm-5 col-md-3 col-xl-2 offset-sm-1 resource-card">
                                                     <ResourceDisplay
                                                         resource={resourceArray[index + 1]}
                                                         onDecreaseResource={decreaseResourceValue}
                                                         onIncreaseResource={increaseResourceValue}
                                                         editEnabled={editEnabled}
                                                         maxEnabled={character.settings.showMaxValues}
+                                                        setResourceToDelete={setResourceToDelete}
+                                                        setDeleteConfirmShow={setDeleteConfirmShow}
                                                     />
                                                 </div>
                                             )}
@@ -357,6 +388,7 @@ function CharacterDisplay() {
                 )}
                 </div>
             )}
+
             <AddResourceModal
                 show={showNewResourceModal}
                 onHide={() => {
@@ -374,7 +406,20 @@ function CharacterDisplay() {
                 setNewResourceResetShort={setNewResourceResetShort}
                 nameErrorMessage={nameErrorMessage}
                 resourceMaxErrorMessage={resourceMaxErrorMessage}
+                duplicateErrorMessage={duplicateErrorMessage}
             />
+
+            <DeleteConfirmation
+                show={deleteConfirmShow}
+                onHide={() => {
+                    setDeleteConfirmShow(false);
+                    setResourceToDelete(undefined);
+                }}
+                handleDelete={handleDeleteResource}
+                itemToDelete={resourceToDelete}
+                confirmationType={"resource"}
+            />
+
             <Copyright/>
         </div>
     );

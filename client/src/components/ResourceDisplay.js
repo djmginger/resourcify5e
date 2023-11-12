@@ -6,9 +6,10 @@ import {Card} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareMinus, faSquarePlus} from '@fortawesome/free-regular-svg-icons';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import "../css/ResourceDisplay.css"
 
-function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, editEnabled, maxEnabled }) {
+function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, editEnabled, maxEnabled, setResourceToDelete, setDeleteConfirmShow}) {
 
     const currentVal = resource.resourceCurrent;
     const maxVal = resource.resourceMax;
@@ -23,9 +24,24 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
 
     return (
         <div>
-            <Card className="align-items-center resource-card">
-                <Card.Title className="resource-card-title">{resource.resourceName}</Card.Title>
-                <Card.Body className="d-flex justify-content-center align-items-center">
+            <Card className="resource-card">
+                <Card.Title className="resource-card-title">
+                    <span className="title-text">{resource.resourceName}</span>
+                    {editEnabled && resource.extras && resource.extras.isCustomResource && (
+                        <div className="edit-button-container">
+                            <FontAwesomeIcon
+                                size={"lg"}
+                                icon={faTrashCan}
+                                className={"resource-delete-icon"}
+                                onClick={() => {
+                                    setResourceToDelete(resource.resourceName);
+                                    setDeleteConfirmShow(true);
+                                }}
+                            />
+                        </div>
+                    )}
+                </Card.Title>
+                <Card.Body className="resource-card-body">
                     <div className="resource-card-content col-10 col-sm-12">
                         {editEnabled && (
                             <div>
@@ -67,7 +83,11 @@ function ResourceDisplay({ resource, onDecreaseResource, onIncreaseResource, edi
                         </div>
                         {editEnabled && (
                             <div>
-                                <FontAwesomeIcon size={"lg"} icon={faSquarePlus} onClick={increaseResourceValue} className={"edit-icon plus"}/>
+                                <FontAwesomeIcon
+                                    size={"lg"}
+                                    icon={faSquarePlus}
+                                    onClick={increaseResourceValue}
+                                    className={"edit-icon plus"}/>
                             </div>
                         )}
 

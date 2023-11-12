@@ -126,7 +126,7 @@ function Profile() {
                     show={showDelConfirm}
                     onHide={() => {setShowDelConfirm(false)}}
                     handleDelete={handleDelete}
-                    isProfileDelete={true}
+                    confirmationType={"profile"}
                 />
             </div>
             <Copyright/>
